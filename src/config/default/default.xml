@@ -505,7 +505,7 @@
         </String>
         <String dnOrder="99" id="PIN_105_FUNCTION_NAME">
           <Values dnOrder="0">
-            <User dnOrder="0" value="ANEM_TXD1"/>
+            <User dnOrder="0" value="USART1_TXD1"/>
           </Values>
         </String>
         <String dnOrder="100" id="PIN_105_FUNCTION_TYPE">
@@ -550,7 +550,7 @@
         </String>
         <String dnOrder="108" id="PIN_20_FUNCTION_NAME">
           <Values dnOrder="0">
-            <User dnOrder="0" value="GPS_TXD0"/>
+            <User dnOrder="0" value="USART0_TXD0"/>
           </Values>
         </String>
         <String dnOrder="109" id="PIN_20_FUNCTION_TYPE">
@@ -565,7 +565,7 @@
         </String>
         <String dnOrder="111" id="PIN_21_FUNCTION_NAME">
           <Values dnOrder="0">
-            <User dnOrder="0" value="GPS_RXD0"/>
+            <User dnOrder="0" value="USART0_RXD0"/>
           </Values>
         </String>
         <String dnOrder="112" id="PIN_21_FUNCTION_TYPE">
@@ -605,7 +605,7 @@
         </String>
         <String dnOrder="119" id="PIN_32_FUNCTION_NAME">
           <Values dnOrder="0">
-            <User dnOrder="0" value="ANEM_RXD1"/>
+            <User dnOrder="0" value="USART1_RXD1"/>
           </Values>
         </String>
         <String dnOrder="120" id="PIN_32_FUNCTION_TYPE">
@@ -1992,47 +1992,84 @@
             </Boolean>
           </Attributes>
         </Integer>
-        <Boolean dnOrder="3" id="SYS_FS_IDX0">
+        <Boolean dnOrder="3" id="SYS_FS_FAT_READONLY">
+          <Values dnOrder="0">
+            <User dnOrder="0" value="false"/>
+          </Values>
+        </Boolean>
+        <Boolean dnOrder="4" id="SYS_FS_IDX0">
           <Values dnOrder="0">
             <Dynamic dnOrder="0" id="sys_fs" value="true"/>
+            <User dnOrder="1" value="false"/>
           </Values>
         </Boolean>
-        <Boolean dnOrder="4" id="SYS_FS_IDX1">
+        <Boolean dnOrder="5" id="SYS_FS_IDX1">
           <Values dnOrder="0">
             <Dynamic dnOrder="0" id="sys_fs" value="false"/>
           </Values>
         </Boolean>
-        <Boolean dnOrder="5" id="SYS_FS_IDX2">
+        <Boolean dnOrder="6" id="SYS_FS_IDX2">
           <Values dnOrder="0">
             <Dynamic dnOrder="0" id="sys_fs" value="false"/>
           </Values>
         </Boolean>
-        <Boolean dnOrder="6" id="SYS_FS_IDX3">
+        <Boolean dnOrder="7" id="SYS_FS_IDX3">
           <Values dnOrder="0">
             <Dynamic dnOrder="0" id="sys_fs" value="false"/>
           </Values>
         </Boolean>
-        <Integer dnOrder="7" id="SYS_FS_INSTANCES_NUMBER">
+        <Integer dnOrder="8" id="SYS_FS_INSTANCES_NUMBER">
           <Values dnOrder="0">
             <User dnOrder="0" value="1"/>
           </Values>
         </Integer>
-        <Integer dnOrder="8" id="SYS_FS_MAX_FILES">
+        <Integer dnOrder="9" id="SYS_FS_MAX_FILES">
           <Values dnOrder="0">
             <User dnOrder="0" value="1"/>
           </Values>
         </Integer>
-        <String dnOrder="9" id="SYS_FS_MEDIA_MOUNT_1_NAME_IDX0">
+        <Integer dnOrder="10" id="SYS_FS_MAX_FILE_SYSTEM_TYPE">
+          <Values dnOrder="0">
+            <User dnOrder="0" value="1"/>
+          </Values>
+        </Integer>
+        <String dnOrder="11" id="SYS_FS_MEDIA_MOUNT_1_NAME_IDX0">
           <Values dnOrder="0">
             <User dnOrder="0" value="/mnt/myDrive1"/>
           </Values>
         </String>
-        <Integer dnOrder="10" id="SYS_FS_TOTAL_VOLUMES">
+        <Boolean dnOrder="12" id="SYS_FS_MPFS">
+          <Values dnOrder="0">
+            <User dnOrder="0" value="false"/>
+          </Values>
+        </Boolean>
+        <File dnOrder="13" id="SYS_FS_MPFS_HEADER">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">false</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="14" id="SYS_FS_MPFS_LOCAL_HEADER">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">false</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="15" id="SYS_FS_MPFS_SOURCE">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">false</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <Integer dnOrder="16" id="SYS_FS_TOTAL_VOLUMES">
           <Values dnOrder="0">
             <Dynamic dnOrder="0" id="sys_fs" value="1"/>
           </Values>
         </Integer>
-        <Integer dnOrder="11" id="SYS_FS_VOLUME_NUMBER">
+        <Integer dnOrder="17" id="SYS_FS_VOLUME_NUMBER">
           <Attributes dnOrder="0">
             <Boolean dnOrder="0" id="visible">
               <Value dnOrder="0">true</Value>
@@ -2543,15 +2580,14 @@
     </UniqueComponent>
   </Components>
   <UserData>
-    <GraphSettings canvasHeight="400" canvasWidth="400" dnOrder="0"/>
-    <ComponentGraph dnOrder="1" id="__ROOTVIEW">
+    <ComponentGraph dnOrder="0" id="__ROOTVIEW">
       <ElementPositions dnOrder="0">
         <ElementPosition dnOrder="0" id="HarmonyCore" x="463" y="13"/>
         <ElementPosition dnOrder="1" id="cmsis" x="320" y="20"/>
         <ElementPosition dnOrder="2" id="core" x="220" y="20"/>
         <ElementPosition dnOrder="3" id="dfp" x="20" y="20"/>
         <ElementPosition dnOrder="4" id="drv_sdmmc" x="400" y="306"/>
-        <ElementPosition dnOrder="5" id="drv_usart" x="927" y="20"/>
+        <ElementPosition dnOrder="5" id="drv_usart" x="905" y="21"/>
         <ElementPosition dnOrder="6" id="efc" x="54" y="67"/>
         <ElementPosition dnOrder="7" id="hsmci" x="226" y="392"/>
         <ElementPosition dnOrder="8" id="sys_fs" x="576" y="366"/>
@@ -2562,5 +2598,6 @@
         <ElementPosition dnOrder="13" id="usart1" x="768" y="131"/>
       </ElementPositions>
     </ComponentGraph>
+    <GraphSettings canvasHeight="400" canvasWidth="400" dnOrder="1"/>
   </UserData>
 </Configuration>
