@@ -78,14 +78,6 @@ build/default/production/_ext/1171490990/tasks.o:  \
  ../src/config/default/peripheral/tc/plib_tc0.h  \
  ../src/config/default/peripheral/tc/plib_tc_common.h  \
  ../src/config/default/system/time/sys_time.h  \
- ../src/config/default/driver/usart/drv_usart.h  \
- ../src/config/default/driver/driver.h  \
- ../src/config/default/driver/usart/drv_usart_definitions.h  \
- ../src/config/default/system/dma/sys_dma.h  \
- ../src/config/default/system/dma/sys_dma_mapping.h  \
- ../src/config/default/peripheral/xdmac/plib_xdmac.h  \
- ../src/config/default/driver/usart/src/drv_usart_local.h  \
- ../src/config/default/driver/usart/drv_usart.h  \
  ../src/config/default/system/fs/sys_fs.h  \
  ../src/config/default/system/fs/sys_fs_media_manager.h  \
  ../src/config/default/system/fs/sys_fs.h  \
@@ -105,7 +97,6 @@ build/default/production/_ext/1171490990/tasks.o:  \
  ../src/config/default/peripheral/hsmci/plib_hsmci_common.h  \
  ../src/config/default/system/int/sys_int.h  \
  ../src/config/default/system/cache/sys_cache.h  \
- ../src/config/default/system/dma/sys_dma.h  \
  ../src/config/default/osal/osal.h  \
  ../src/config/default/system/debug/sys_debug.h  \
 ../src/app.h 

@@ -71,17 +71,15 @@ bool USART0_Write( void *buffer, const size_t size );
 
 bool USART0_Read( void *buffer, const size_t size );
 
-bool USART0_WriteIsBusy( void );
+int USART0_ReadByte( void );
 
-bool USART0_ReadIsBusy( void );
+void USART0_WriteByte( int data );
 
-size_t USART0_WriteCountGet( void );
+bool USART0_TransmitterIsReady( void );
 
-size_t USART0_ReadCountGet( void );
+bool USART0_TransmitComplete( void );
 
-void USART0_WriteCallbackRegister( USART_CALLBACK callback, uintptr_t context );
-
-void USART0_ReadCallbackRegister( USART_CALLBACK callback, uintptr_t context );
+bool USART0_ReceiverIsReady( void );
 
 
 // DOM-IGNORE-BEGIN

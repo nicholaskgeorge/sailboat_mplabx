@@ -86,13 +86,14 @@ int main ( void )
     
     
 
-    int state = 0;
-    const char *buf = "Hello World";
-    size_t nbytes = sizeof(*buf);
-    size_t bytes_written= sizeof(*buf);
+    uint8_t buf[128];
+    size_t nbytes = 128;
+    size_t bytes_written= nbytes;
+    size_t bytes_read = -1;
     char readBuf[256];
     int i = 0;
     const int BOUND = 100;
+    int state = 0;
 
     while ( true )
     {     
@@ -152,13 +153,20 @@ int main ( void )
         /* Maintain state machines of all polled MPLAB Harmony modules. */
         SYS_Tasks ( );
         
-        
+  
+       
         if (state==0){ // Mount SD card
             if(SYS_FS_Mount("/dev/mmcblka1", "/mnt/myDrive", FAT, 0, NULL) == SYS_FS_RES_SUCCESS)
             {
-                USART1_Write("MountSuccess\n",sizeof("MountSuccess\n"));
+                
                 state++;
                 
+            }else {
+                char fail_message[100];
+                SYS_FS_ERROR err = SYS_FS_Error();
+                sprintf(fail_message, "FAIL MESSAGE:%i\r\n", err);
+  
+                USART1_Write(fail_message,sizeof(fail_message));
             }
 
         }else if(state==1){
@@ -168,11 +176,15 @@ int main ( void )
                 
             }
             else{
-                USART1_Write("DriverSuccess\r\n",sizeof("DriverSuccess\r\n"));
+                
                 state++;
             }
         }else if (state==2){
-            SYS_FS_HANDLE handle = SYS_FS_FileOpen("/mnt/myDrive/test.txt", (SYS_FS_FILE_OPEN_WRITE_PLUS));
+            SYS_FS_HANDLE handle = SYS_FS_FileOpen("/mnt/myDrive/test.txt", (SYS_FS_FILE_OPEN_APPEND_PLUS));
+            
+            // read GPS value
+            USART0_Read(&buf[0], nbytes);
+            
             if (handle == SYS_FS_HANDLE_INVALID){
                 
 //                uint32_t totalSectors, freeSectors;
@@ -180,27 +192,24 @@ int main ( void )
                 char fail_message[100];
                 SYS_FS_ERROR err = SYS_FS_Error();
                 sprintf(fail_message, "FAIL MESSAGE:%i\r\n", err);
-                USART1_Write(fail_message,sizeof(fail_message));
-                    
+  
             }else{ 
                
-                USART1_Write( "OpenFileSuccess\r\n",sizeof( "OpenFileSuccess\r\n"));
-                bytes_written = SYS_FS_FileWrite(handle, (const void *)buf, nbytes);
-                if (bytes_written != -1){
-                   
-                    USART1_Write("WriteSuccess\r\n",sizeof("WriteSuccess\r\n"));
-                    state++;
-                } 
+                bytes_written = SYS_FS_FileWrite(handle, &buf[0], nbytes);
                 SYS_FS_FileClose(handle);
+                if (bytes_written != -1){
+                                    
+                    state=4;
+                } else {
+                    USART1_Write("File Write fail \r\n",sizeof("File Write fail \r\n"));
+                }
+                
             }       
         }else if(state==3){
             SYS_FS_HANDLE rhandle = SYS_FS_FileOpen("/mnt/myDrive/test.txt", (SYS_FS_FILE_OPEN_READ));
             if (rhandle != SYS_FS_HANDLE_INVALID){
-         
-                USART1_Write("OpenFileAgainSuccess\r\n",sizeof("OpenFileAgainSuccess\r\n"));
-                while (i<BOUND){
-                     SYS_FS_FileRead(rhandle, readBuf, bytes_written);
-                     USART1_Write(readBuf,sizeof(readBuf));
+                while (i<BOUND &&  bytes_read==-1){
+                     bytes_read = SYS_FS_FileRead(rhandle, readBuf, bytes_written);
                      i++;
                 }
                 state++;
@@ -209,7 +218,7 @@ int main ( void )
         }else if (state==4) {
         
             USART1_Write("FileSystemSuccess\r\n",sizeof("FileSystemSuccess\r\n"));
-        
+            state++;
         }
     }
 

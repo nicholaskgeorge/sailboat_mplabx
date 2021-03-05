@@ -56,7 +56,6 @@
 #include "peripheral/efc/plib_efc.h"
 #include "peripheral/tc/plib_tc0.h"
 #include "system/time/sys_time.h"
-#include "driver/usart/drv_usart.h"
 #include "system/fs/sys_fs.h"
 #include "system/fs/sys_fs_media_manager.h"
 #include "system/fs/sys_fs_fat_interface.h"
@@ -69,7 +68,6 @@
 #include "peripheral/hsmci/plib_hsmci.h"
 #include "system/int/sys_int.h"
 #include "system/cache/sys_cache.h"
-#include "system/dma/sys_dma.h"
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
 #include "app.h"
@@ -194,10 +192,7 @@ Remarks:
         
 typedef struct
 {
-    SYS_MODULE_OBJ  drvUsart2;
-    SYS_MODULE_OBJ  drvUsart1;
     SYS_MODULE_OBJ  sysTime;
-    SYS_MODULE_OBJ  drvUsart0;
     SYS_MODULE_OBJ  drvSDMMC0;
 
 
