@@ -36,24 +36,6 @@
 // *****************************************************************************
 
 
-GPS_INFO* GPS_info;
-char GPS_incoming;
-char last_GPS='$';
-
-uint8_t GPS_values[100];
-char NMEA_buffer[200];
-char* ptr = NMEA_buffer;
-bool isGPS = false; // true -> read GPS value; false-> read Anemometer value
-bool isGPSinfoReady = false; // true-> GPS info parsed; false -> otherwise
-
-Anemometer_INFO* Anemometer_info;
-uint8_t Anemometer_values[101];
-char Ane_incoming;
-double data;
-
-uint8_t SBDFeedback[50];
-uint8_t* SBDF=SBDFeedback;
-
 // tc0 callback function which happens every TimerPeriod
 /*
 static void tc0EventHandler (TC_TIMER_STATUS status, uintptr_t context)
@@ -76,16 +58,12 @@ int main ( void )
 {
     /* Initialize all modules */
     SYS_Initialize ( NULL );
+    
     /* //Timer interrupt event
     TC0_CH0_TimerCallbackRegister(tc0EventHandler, 0);
     TC0_CH0_TimerPeriodSet(2000);
     TC0_CH0_TimerStart();*/
     
-    // Initialize SD card handler
-    //DRV_HANDLE handle =DRV_SDMMC_Open (DRV_SDMMC_INDEX_0, DRV_IO_INTENT_READWRITE | DRV_IO_INTENT_EXCLUSIVE);
-    
-    
-
     uint8_t buf[128];
     size_t nbytes = 128;
     size_t bytes_written= nbytes;
@@ -97,23 +75,7 @@ int main ( void )
 
     while ( true )
     {     
-        /*
-        if (!DRV_SDMMC_IsAttached(handle))
-        USART0_Write("Open invalid\n",sizeof("Open invalid\n"));
-        else 
-        USART0_Write("Open Valid\n",sizeof("Open Valid\n")); */
-        
        
-        
-        
-        /*
-            else
-            {
-                // Mount was successful. Do further file operations
-              USART0_Write("Success\n",sizeof("Success\n"));
-              mountSuc = true;
-            }
-        }*/
         /* // write GPS in MCU byte by byte
         if (USART0_ReceiverIsReady()){
             GPS_incoming = USART0_ReadByte(); 
@@ -130,7 +92,10 @@ int main ( void )
             }    
             last_GPS = GPS_incoming;
         }*/
-           //USART0_Read(GPS_values,sizeof(GPS_values)); // Read all GPS packet in a buffer
+        
+        //USART0_Read(GPS_values,sizeof(GPS_values)); // Read all GPS packet in a buffer
+        
+        
        /* // Read Anemometer data output
         * if (USART1_ReceiverIsReady()){
             Ane_incoming = USART1_ReadByte(); 
@@ -162,6 +127,7 @@ int main ( void )
                 state++;
                 
             }else {
+                
                 char fail_message[100];
                 SYS_FS_ERROR err = SYS_FS_Error();
                 sprintf(fail_message, "FAIL MESSAGE:%i\r\n", err);

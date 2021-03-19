@@ -17,7 +17,6 @@
 #include <math.h>
 #include <string.h>
 #include  <ctype.h> 
-#include "./default/peripheral/usart/plib_usart0.h"
 
 /* Setup the buffer storing GPS output string.
 * Input: GPS_info: GPS_INFO struct pointer
