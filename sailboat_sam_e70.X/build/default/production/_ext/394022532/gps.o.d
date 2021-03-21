@@ -100,4 +100,4 @@ build/default/production/_ext/394022532/gps.o:  \
  ../src/config/default/osal/osal.h  \
  ../src/config/default/system/debug/sys_debug.h  \
 ../src/app.h  \
- ../src/config/./default/peripheral/usart/plib_usart0.h 
+ ../src/../src/sdcard.h 

@@ -99,5 +99,4 @@ build/default/production/_ext/1360937237/main.o:  \
  ../src/config/default/osal/osal.h  \
  ../src/config/default/system/debug/sys_debug.h  \
 ../src/app.h  \
- ../src/./config/gps.h  \
-../src/./config/Anemometer.h 
+ ../src/../src/sdcard.h 

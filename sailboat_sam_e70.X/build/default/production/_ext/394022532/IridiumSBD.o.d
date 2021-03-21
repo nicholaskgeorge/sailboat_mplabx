@@ -99,4 +99,5 @@ build/default/production/_ext/394022532/IridiumSBD.o:  \
  ../src/config/default/system/cache/sys_cache.h  \
  ../src/config/default/osal/osal.h  \
  ../src/config/default/system/debug/sys_debug.h  \
-../src/app.h 
+../src/app.h  \
+ ../src/../src/sdcard.h 

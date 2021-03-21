@@ -99,4 +99,6 @@ build/default/production/_ext/1171490990/exceptions.o:  \
  ../src/config/default/system/cache/sys_cache.h  \
  ../src/config/default/osal/osal.h  \
  ../src/config/default/system/debug/sys_debug.h  \
-../src/app.h 
+../src/app.h  \
+ ../src/../src/sdcard.h  \
+../src/config/default/definitions.h 
