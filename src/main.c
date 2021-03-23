@@ -64,14 +64,13 @@ int main ( void )
     TC0_CH0_TimerPeriodSet(2000);
     TC0_CH0_TimerStart();*/
     
-    uint8_t buf[128];
-    size_t nbytes = 128;
-    USART0_Read(&buf[0], nbytes);
+    char* sensorFiles[3] = {"GPS.txt","Anem.txt","IMU.txt"};
+    
     
     SDCARD_WriteorRead(false);
-    SDCARD_FileName("test.txt");
+    SDCARD_FileName(sensorFiles,3);
     SDCARD_StateSwitch(SDCARD_STATE_CARD_MOUNT);
-    SDCARD_FillBuffer(buf,nbytes);
+  
 //    /* SD Card code work initialize */
 //    uint8_t buf[128];
 //    size_t nbytes = 128;
