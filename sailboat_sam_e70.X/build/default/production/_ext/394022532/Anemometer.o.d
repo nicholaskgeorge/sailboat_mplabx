@@ -99,6 +99,7 @@ build/default/production/_ext/394022532/Anemometer.o:  \
  ../src/config/default/system/cache/sys_cache.h  \
  ../src/config/default/osal/osal.h  \
  ../src/config/default/system/debug/sys_debug.h  \
+ ../src/config/default/peripheral/usart/plib_usart2.h  \
 ../src/app.h  \
  ../src/../src/sdcard.h  \
  ../src/config/./default/peripheral/usart/plib_usart0.h 

@@ -58,35 +58,100 @@ int main ( void )
 {
     /* Initialize all modules */
     SYS_Initialize ( NULL );
-    SDCARD_Initialize();
+    
     /* //Timer interrupt event
     TC0_CH0_TimerCallbackRegister(tc0EventHandler, 0);
     TC0_CH0_TimerPeriodSet(2000);
     TC0_CH0_TimerStart();*/
     
-    char* sensorFiles[3] = {"GPS.txt","Anem.txt","IMU.txt"};
     
-    
-    SDCARD_WriteorRead(false);
-    SDCARD_FileName(sensorFiles,3);
-    SDCARD_StateSwitch(SDCARD_STATE_CARD_MOUNT);
+    //    /* SD Card code work initialize */
+//    SDCARD_Initialize();
+//    char* sensorFiles[3] = {"GPS.txt","Anem.txt","IMU.txt"};
+//    SDCARD_WriteorRead(false);
+//    SDCARD_FileName(sensorFiles,3);
+//    SDCARD_StateSwitch(SDCARD_STATE_CARD_MOUNT);
   
-//    /* SD Card code work initialize */
+
+
 //    uint8_t buf[128];
 //    size_t nbytes = 128;
-//    size_t bytes_written= nbytes;
-//    size_t bytes_read = -1;
-//    char readBuf[256];
-//    int i = 0;
-//    const int BOUND = 100;
-//    int state = 0;
-
+//    int state=0;
     while ( true )
     {     
-       SDCARD_Tasks();
+        
+        UART0_Write("suc \r\n",sizeof("suc \r\n"));
+//              if (state==0){ // Mount SD card
+//            if(SYS_FS_Mount("/dev/mmcblka1", "/mnt/myDrive", FAT, 0, NULL) == SYS_FS_RES_SUCCESS)
+//            {
+//                
+//                state++;
+//                
+//            }else {
+//                
+//                char fail_message[100];
+//                SYS_FS_ERROR err = SYS_FS_Error();
+//                sprintf(fail_message, "FAIL MESSAGE:%i\r\n", err);
+//  
+//                USART1_Write(fail_message,sizeof(fail_message));
+//            }
+//
+//        }else if(state==1){
+//            if(SYS_FS_CurrentDriveSet("/mnt/myDrive") == SYS_FS_RES_FAILURE)
+//            {
+//                USART1_Write("DriverFail\r\n",sizeof("DriverFail\r\n"));
+//                
+//            }
+//            else{
+//                
+//                state++;
+//            }
+//        }else if (state==2){
+//            SYS_FS_HANDLE handle = SYS_FS_FileOpen("/mnt/myDrive/test.txt", (SYS_FS_FILE_OPEN_APPEND_PLUS));
+//            
+//            // read GPS value
+//            USART0_Read(&buf[0], nbytes);
+//            
+//            if (handle == SYS_FS_HANDLE_INVALID){
+//               
+//                char fail_message[100];
+//                SYS_FS_ERROR err = SYS_FS_Error();
+//                sprintf(fail_message, "FAIL MESSAGE:%i\r\n", err);
+//  
+//            }else{ 
+//               
+//                size_t bytes_written = SYS_FS_FileWrite(handle, &buf[0], nbytes);
+//                SYS_FS_FileClose(handle);
+//                if (bytes_written != -1){
+//                                    
+//                    state=4;
+//                } else {
+//                    USART1_Write("File Write fail \r\n",sizeof("File Write fail \r\n"));
+//                }
+//                
+//            }       
+//        }else if(state==3){
+//            SYS_FS_HANDLE rhandle = SYS_FS_FileOpen("/mnt/myDrive/test.txt", (SYS_FS_FILE_OPEN_READ));
+//            if (rhandle != SYS_FS_HANDLE_INVALID){
+//                while (i<BOUND &&  bytes_read==-1){
+//                     bytes_read = SYS_FS_FileRead(rhandle, readBuf, bytes_written);
+//                     i++;
+//                }
+//                state++;
+//                SYS_FS_FileClose(rhandle); 
+//            }     
+//        }else if (state==4) {
+//        
+//            USART1_Write("FileSystemSuccess\r\n",sizeof("FileSystemSuccess\r\n"));
+//            state++;
+//        }
+    
+        /* SD Card code work */
+//       SDCARD_Tasks();
+       
         /* // write GPS in MCU byte by byte
         if (USART0_ReceiverIsReady()){
-            GPS_incoming = USART0_ReadByte(); 
+            GPS_incoming = USART0_ReadB                                           yte(); 
             if (ptr >= &NMEA_buffer[199]){    
                  
                 *ptr = '\0';//incoming_char;
@@ -126,76 +191,7 @@ int main ( void )
         /* Maintain state machines of all polled MPLAB Harmony modules. */
         SYS_Tasks ( );
         
-  
-       
-        /*SD Card code work*/
-        
-//        if (state==0){ // Mount SD card
-//            if(SYS_FS_Mount("/dev/mmcblka1", "/mnt/myDrive", FAT, 0, NULL) == SYS_FS_RES_SUCCESS)
-//            {
-//                
-//                state++;
-//                
-//            }else {
-//                
-//                char fail_message[100];
-//                SYS_FS_ERROR err = SYS_FS_Error();
-//                sprintf(fail_message, "FAIL MESSAGE:%i\r\n", err);
-//  
-//                USART1_Write(fail_message,sizeof(fail_message));
-//            }
-//
-//        }else if(state==1){
-//            if(SYS_FS_CurrentDriveSet("/mnt/myDrive") == SYS_FS_RES_FAILURE)
-//            {
-//                USART1_Write("DriverFail\r\n",sizeof("DriverFail\r\n"));
-//                
-//            }
-//            else{
-//                
-//                state++;
-//            }
-//        }else if (state==2){
-//            SYS_FS_HANDLE handle = SYS_FS_FileOpen("/mnt/myDrive/test.txt", (SYS_FS_FILE_OPEN_APPEND_PLUS));
-//            
-//            // read GPS value
-//            USART0_Read(&buf[0], nbytes);
-//            
-//            if (handle == SYS_FS_HANDLE_INVALID){
-//                
-////                uint32_t totalSectors, freeSectors;
-////                SYS_FS_DriveSectorGet("/mnt/myDrive", &totalSectors, &freeSectors);
-//                char fail_message[100];
-//                SYS_FS_ERROR err = SYS_FS_Error();
-//                sprintf(fail_message, "FAIL MESSAGE:%i\r\n", err);
-//  
-//            }else{ 
-//               
-//                bytes_written = SYS_FS_FileWrite(handle, &buf[0], nbytes);
-//                SYS_FS_FileClose(handle);
-//                if (bytes_written != -1){
-//                                    
-//                    state=4;
-//                } else {
-//                    USART1_Write("File Write fail \r\n",sizeof("File Write fail \r\n"));
-//                }
-//                
-//            }       
-//        }else if(state==3){
-//            SYS_FS_HANDLE rhandle = SYS_FS_FileOpen("/mnt/myDrive/test.txt", (SYS_FS_FILE_OPEN_READ));
-//            if (rhandle != SYS_FS_HANDLE_INVALID){
-//                while (i<BOUND &&  bytes_read==-1){
-//                     bytes_read = SYS_FS_FileRead(rhandle, readBuf, bytes_written);
-//                     i++;
-//                }
-//                state++;
-//                SYS_FS_FileClose(rhandle); 
-//            }     
-//        }else if (state==4) {
-//        
-//            USART1_Write("FileSystemSuccess\r\n",sizeof("FileSystemSuccess\r\n"));
-//            state++;
-//        }
+
     }
 
     /* Execution should not come here during normal operation */

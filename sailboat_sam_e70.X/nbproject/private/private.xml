@@ -8,7 +8,9 @@
             <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/default/system/fs/src/sys_fs.c</file>
             <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/default/system/fs/sys_fs.h</file>
             <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/default/definitions.h</file>
+            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/default/peripheral/usart/plib_usart1.c</file>
             <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/sdcard.h</file>
+            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/default/peripheral/uart/plib_uart0.c</file>
         </group>
     </open-files>
 </project-private>

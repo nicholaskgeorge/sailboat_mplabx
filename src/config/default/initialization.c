@@ -264,6 +264,8 @@ void SYS_Initialize ( void* data )
 
 	HSMCI_Initialize();
 
+	USART2_Initialize();
+
 
 
     sysObj.drvSDMMC0 = DRV_SDMMC_Initialize(DRV_SDMMC_INDEX_0,(SYS_MODULE_INIT *)&drvSDMMC0InitData);

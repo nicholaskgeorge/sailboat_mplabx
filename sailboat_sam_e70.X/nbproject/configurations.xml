@@ -48,6 +48,7 @@
               <itemPath>../src/config/default/peripheral/usart/plib_usart_common.h</itemPath>
               <itemPath>../src/config/default/peripheral/usart/plib_usart1.h</itemPath>
               <itemPath>../src/config/default/peripheral/usart/plib_usart0.h</itemPath>
+              <itemPath>../src/config/default/peripheral/usart/plib_usart2.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f4" displayName="xdmac" projectFiles="true">
               <itemPath>../src/config/default/peripheral/xdmac/plib_xdmac_common.h</itemPath>
@@ -209,6 +210,7 @@
             <logicalFolder name="f8" displayName="usart" projectFiles="true">
               <itemPath>../src/config/default/peripheral/usart/plib_usart1.c</itemPath>
               <itemPath>../src/config/default/peripheral/usart/plib_usart0.c</itemPath>
+              <itemPath>../src/config/default/peripheral/usart/plib_usart2.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f4" displayName="xdmac" projectFiles="true">
               <itemPath>../src/config/default/peripheral/xdmac/plib_xdmac.c</itemPath>

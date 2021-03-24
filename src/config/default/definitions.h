@@ -70,8 +70,10 @@
 #include "system/cache/sys_cache.h"
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
+#include "peripheral/usart/plib_usart2.h"
 #include "app.h"
 #include "../src/sdcard.h"
+
 
 
 // DOM-IGNORE-BEGIN
