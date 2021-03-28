@@ -12,6 +12,8 @@
               <itemPath>../src/config/default/driver/sdmmc/src/drv_sdmmc_local.h</itemPath>
               <itemPath>../src/config/default/driver/sdmmc/drv_sdmmc_definitions.h</itemPath>
             </logicalFolder>
+            <itemPath>../src/config/default/driver/driver.h</itemPath>
+            <itemPath>../src/config/default/driver/driver_common.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f4" displayName="modules" projectFiles="true">
             <itemPath>../src/config/Anemometer.h</itemPath>
@@ -42,6 +44,7 @@
             </logicalFolder>
             <logicalFolder name="f7" displayName="uart" projectFiles="true">
               <itemPath>../src/config/default/peripheral/uart/plib_uart_common.h</itemPath>
+              <itemPath>../src/config/default/peripheral/uart/plib_uart1.h</itemPath>
               <itemPath>../src/config/default/peripheral/uart/plib_uart0.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f8" displayName="usart" projectFiles="true">
@@ -205,6 +208,7 @@
               <itemPath>../src/config/default/peripheral/tc/plib_tc0.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f7" displayName="uart" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/uart/plib_uart1.c</itemPath>
               <itemPath>../src/config/default/peripheral/uart/plib_uart0.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f8" displayName="usart" projectFiles="true">

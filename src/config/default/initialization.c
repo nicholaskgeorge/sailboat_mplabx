@@ -256,6 +256,8 @@ void SYS_Initialize ( void* data )
     TC0_CH0_TimerInitialize(); 
      
     
+	UART1_Initialize();
+
 	UART0_Initialize();
 
 	USART1_Initialize();

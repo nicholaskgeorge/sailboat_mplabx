@@ -11,7 +11,10 @@
             <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/default/definitions.h</file>
             <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/default/peripheral/usart/plib_usart1.c</file>
             <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/sdcard.h</file>
+            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/Anemometer.h</file>
             <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/default/peripheral/uart/plib_uart0.c</file>
+            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/Anemometer.c</file>
+            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/default/peripheral/uart/plib_uart1.c</file>
         </group>
     </open-files>
 </project-private>
