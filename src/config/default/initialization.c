@@ -260,6 +260,10 @@ void SYS_Initialize ( void* data )
 
 	UART0_Initialize();
 
+	SPI0_Initialize();
+
+	TWIHS0_Initialize();
+
 	USART1_Initialize();
 
 	USART0_Initialize();

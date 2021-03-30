@@ -64,6 +64,8 @@
 #include "system/fs/fat_fs/file_system/ffconf.h"
 #include "system/fs/fat_fs/hardware_access/diskio.h"
 #include "peripheral/uart/plib_uart0.h"
+#include "peripheral/spi/plib_spi0.h"
+#include "peripheral/twihs/plib_twihs0.h"
 #include "peripheral/usart/plib_usart1.h"
 #include "peripheral/usart/plib_usart0.h"
 #include "peripheral/hsmci/plib_hsmci.h"
