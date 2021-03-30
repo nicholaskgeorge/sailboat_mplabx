@@ -8,18 +8,24 @@ c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/f
                               c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_aeabi_uldivmod.o) (__udivmoddi4)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_dvmd_tls.o)
                               c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_aeabi_uldivmod.o) (__aeabi_ldiv0)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o)
+                              build/default/production/_ext/394022532/IridiumSBD.o (atoi)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atol.o)
+                              build/default/production/_ext/394022532/IridiumSBD.o (atol)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-difftime.o)
+                              build/default/production/_ext/394022532/IridiumSBD.o (difftime)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-init.o)
                               build/default/production/_ext/1171490990/startup_xc32.o (__libc_init_array)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-locale.o)
                               build/default/production/_ext/394022532/Anemometer.o (__locale_ctype_ptr)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-malloc.o)
-                              build/default/production/_ext/1360937237/sdcard.o (malloc)
+                              build/default/production/_ext/394022532/IridiumSBD.o (malloc)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-mbtowc_r.o)
                               c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-locale.o) (__ascii_mbtowc)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-memcpy-stub.o)
                               build/default/production/_ext/60167248/plib_efc.o (memcpy)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-memset.o)
-                              build/default/production/_ext/101884895/sys_time.o (memset)
+                              build/default/production/_ext/394022532/IridiumSBD.o (memset)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-nano-freer.o)
                               c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-malloc.o) (_free_r)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-nano-mallocr.o)
@@ -28,20 +34,28 @@ c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../.
                               c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-nano-mallocr.o) (_sbrk_r)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(_lib_a-sprintf.cdnopuxX.o)
                               (_sprintf_cdnopuxX)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strchr.o)
+                              build/default/production/_ext/394022532/IridiumSBD.o (strchr)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strcmp.o)
                               build/default/production/_ext/394022532/gps.o (strcmp)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strcpy.o)
                               build/default/production/_ext/1269487135/sys_fs.o (strcpy)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strlen.o)
-                              build/default/production/_ext/1269487135/sys_fs.o (strlen)
+                              build/default/production/_ext/394022532/IridiumSBD.o (strlen)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strncmp.o)
                               build/default/production/_ext/1269487135/sys_fs.o (strncmp)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strncpy.o)
                               build/default/production/_ext/1269487135/sys_fs.o (strncpy)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtod.o)
                               build/default/production/_ext/394022532/Anemometer.o (strtod)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok.o)
+                              build/default/production/_ext/394022532/IridiumSBD.o (strtok)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok_r.o)
+                              c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok.o) (__strtok_r)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtol.o)
-                              build/default/production/_ext/394022532/Anemometer.o (strtol)
+                              c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o) (_strtol_r)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-time.o)
+                              build/default/production/_ext/394022532/IridiumSBD.o (time)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-wctomb_r.o)
                               c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-locale.o) (__ascii_wctomb)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-ctype_.o)
@@ -50,6 +64,8 @@ c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../.
                               c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtod.o) (__gethex)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gdtoa-hexnan.o)
                               c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtod.o) (__match)
+c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gettimeofdayr.o)
+                              c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-time.o) (_gettimeofday_r)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-impure.o)
                               c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-locale.o) (_impure_ptr)
 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-localeconv.o)
@@ -440,7 +456,7 @@ section                    address  length [bytes]      (dec)  Description
 .bss.LfnBuf             0x20401720          0x200         512   
 .bss.timers             0x20401920           0xa0         160   
 .bss.gSystemCounterObj  0x204019c0           0x38          56   
-.bss.cmd.11635          0x204019f8            0x4           4   
+.bss.cmd.11708          0x204019f8            0x4           4   
 .bss.FatFs              0x204019fc            0x4           4   
 .bss.FATFSDirObject     0x20401a00           0x38          56   
 .bss.drvSDMMC0BufferObj 0x20401a38           0x24          36   
@@ -482,13 +498,13 @@ Discarded input sections
                 0x00000000      0x152 build/default/production/_ext/394022532/Anemometer.o
  .text.Anem_Process
                 0x00000000       0x5e build/default/production/_ext/394022532/Anemometer.o
- .debug_info    0x00000000     0x1408 build/default/production/_ext/394022532/Anemometer.o
+ .debug_info    0x00000000     0x144f build/default/production/_ext/394022532/Anemometer.o
  .debug_abbrev  0x00000000      0x260 build/default/production/_ext/394022532/Anemometer.o
  .debug_loc     0x00000000      0x191 build/default/production/_ext/394022532/Anemometer.o
  .debug_aranges
                 0x00000000       0x28 build/default/production/_ext/394022532/Anemometer.o
  .debug_ranges  0x00000000       0x18 build/default/production/_ext/394022532/Anemometer.o
- .debug_line    0x00000000      0x303 build/default/production/_ext/394022532/Anemometer.o
+ .debug_line    0x00000000      0x30d build/default/production/_ext/394022532/Anemometer.o
  .debug_str     0x00000000       0x31 build/default/production/_ext/394022532/Anemometer.o
  .comment       0x00000000       0x3d build/default/production/_ext/394022532/Anemometer.o
  .debug_frame   0x00000000       0x50 build/default/production/_ext/394022532/Anemometer.o
@@ -521,13 +537,13 @@ Discarded input sections
  .text.NMEA_Process
                 0x00000000       0xa8 build/default/production/_ext/394022532/gps.o
  .rodata        0x00000000        0x8 build/default/production/_ext/394022532/gps.o
- .debug_info    0x00000000     0x1a11 build/default/production/_ext/394022532/gps.o
+ .debug_info    0x00000000     0x1a58 build/default/production/_ext/394022532/gps.o
  .debug_abbrev  0x00000000      0x300 build/default/production/_ext/394022532/gps.o
  .debug_loc     0x00000000      0x857 build/default/production/_ext/394022532/gps.o
  .debug_aranges
                 0x00000000       0x78 build/default/production/_ext/394022532/gps.o
  .debug_ranges  0x00000000       0x80 build/default/production/_ext/394022532/gps.o
- .debug_line    0x00000000      0x407 build/default/production/_ext/394022532/gps.o
+ .debug_line    0x00000000      0x411 build/default/production/_ext/394022532/gps.o
  .debug_str     0x00000000       0x2a build/default/production/_ext/394022532/gps.o
  .comment       0x00000000       0x3d build/default/production/_ext/394022532/gps.o
  .debug_frame   0x00000000      0x154 build/default/production/_ext/394022532/gps.o
@@ -536,13 +552,50 @@ Discarded input sections
  .text          0x00000000        0x0 build/default/production/_ext/394022532/IridiumSBD.o
  .data          0x00000000        0x0 build/default/production/_ext/394022532/IridiumSBD.o
  .bss           0x00000000        0x0 build/default/production/_ext/394022532/IridiumSBD.o
- .debug_info    0x00000000     0x108b build/default/production/_ext/394022532/IridiumSBD.o
- .debug_abbrev  0x00000000      0x1af build/default/production/_ext/394022532/IridiumSBD.o
+ .text.debug_print
+                0x00000000        0xa build/default/production/_ext/394022532/IridiumSBD.o
+ .text.debug_print_int
+                0x00000000       0x28 build/default/production/_ext/394022532/IridiumSBD.o
+ .text.debug_print_size
+                0x00000000       0x28 build/default/production/_ext/394022532/IridiumSBD.o
+ .text.send     0x00000000       0x2c build/default/production/_ext/394022532/IridiumSBD.o
+ .text.send_int
+                0x00000000       0x2c build/default/production/_ext/394022532/IridiumSBD.o
+ .text.send_size
+                0x00000000       0x2c build/default/production/_ext/394022532/IridiumSBD.o
+ .text.SBD_Tasks
+                0x00000000        0x2 build/default/production/_ext/394022532/IridiumSBD.o
+ .text.adjustATTimeout
+                0x00000000        0x4 build/default/production/_ext/394022532/IridiumSBD.o
+ .text.waitForATResponse
+                0x00000000       0xd8 build/default/production/_ext/394022532/IridiumSBD.o
+ .text.doSBDIX  0x00000000       0x9c build/default/production/_ext/394022532/IridiumSBD.o
+ .text.doSBDRT  0x00000000       0x44 build/default/production/_ext/394022532/IridiumSBD.o
+ .text.sendSBDText
+                0x00000000       0xb0 build/default/production/_ext/394022532/IridiumSBD.o
+ .text.sendSBDBinary
+                0x00000000       0xc0 build/default/production/_ext/394022532/IridiumSBD.o
+ .text.checkMailBox
+                0x00000000      0x120 build/default/production/_ext/394022532/IridiumSBD.o
+ .text.getSignalQuality
+                0x00000000       0x64 build/default/production/_ext/394022532/IridiumSBD.o
+ .text.power    0x00000000       0xa8 build/default/production/_ext/394022532/IridiumSBD.o
+ .text.sleep_ISBD
+                0x00000000       0x2a build/default/production/_ext/394022532/IridiumSBD.o
+ .text.begin    0x00000000       0x9c build/default/production/_ext/394022532/IridiumSBD.o
+ .text.SBD_Initialize
+                0x00000000       0x40 build/default/production/_ext/394022532/IridiumSBD.o
+ .rodata        0x00000000      0x1d0 build/default/production/_ext/394022532/IridiumSBD.o
+ .debug_info    0x00000000     0x2ead build/default/production/_ext/394022532/IridiumSBD.o
+ .debug_abbrev  0x00000000      0x3e6 build/default/production/_ext/394022532/IridiumSBD.o
+ .debug_loc     0x00000000      0xd9d build/default/production/_ext/394022532/IridiumSBD.o
  .debug_aranges
-                0x00000000       0x18 build/default/production/_ext/394022532/IridiumSBD.o
- .debug_line    0x00000000      0x272 build/default/production/_ext/394022532/IridiumSBD.o
- .debug_str     0x00000000        0xe build/default/production/_ext/394022532/IridiumSBD.o
+                0x00000000       0xb0 build/default/production/_ext/394022532/IridiumSBD.o
+ .debug_ranges  0x00000000      0x108 build/default/production/_ext/394022532/IridiumSBD.o
+ .debug_line    0x00000000      0x5ea build/default/production/_ext/394022532/IridiumSBD.o
+ .debug_str     0x00000000       0xbc build/default/production/_ext/394022532/IridiumSBD.o
  .comment       0x00000000       0x3d build/default/production/_ext/394022532/IridiumSBD.o
+ .debug_frame   0x00000000      0x260 build/default/production/_ext/394022532/IridiumSBD.o
  .ARM.attributes
                 0x00000000       0x37 build/default/production/_ext/394022532/IridiumSBD.o
  .text          0x00000000        0x0 build/default/production/_ext/1360937237/sdcard.o
@@ -559,24 +612,22 @@ Discarded input sections
  .text.SDCARD_FillBuffer
                 0x00000000       0x58 build/default/production/_ext/1360937237/sdcard.o
  .text.SDCARD_Tasks
-                0x00000000      0x180 build/default/production/_ext/1360937237/sdcard.o
+                0x00000000      0x18c build/default/production/_ext/1360937237/sdcard.o
  .text.SDCARD_SetDevice
                 0x00000000        0xc build/default/production/_ext/1360937237/sdcard.o
  .text.SDCARD_SetMount
                 0x00000000        0xc build/default/production/_ext/1360937237/sdcard.o
- .text.SDCARD_CloseFile
-                0x00000000       0x18 build/default/production/_ext/1360937237/sdcard.o
  .rodata        0x00000000       0x78 build/default/production/_ext/1360937237/sdcard.o
- .debug_info    0x00000000     0x1c98 build/default/production/_ext/1360937237/sdcard.o
- .debug_abbrev  0x00000000      0x2d9 build/default/production/_ext/1360937237/sdcard.o
- .debug_loc     0x00000000      0x138 build/default/production/_ext/1360937237/sdcard.o
+ .debug_info    0x00000000     0x1cd8 build/default/production/_ext/1360937237/sdcard.o
+ .debug_abbrev  0x00000000      0x2b0 build/default/production/_ext/1360937237/sdcard.o
+ .debug_loc     0x00000000       0xbf build/default/production/_ext/1360937237/sdcard.o
  .debug_aranges
-                0x00000000       0x60 build/default/production/_ext/1360937237/sdcard.o
+                0x00000000       0x58 build/default/production/_ext/1360937237/sdcard.o
  .debug_ranges  0x00000000       0x68 build/default/production/_ext/1360937237/sdcard.o
- .debug_line    0x00000000      0x3f8 build/default/production/_ext/1360937237/sdcard.o
- .debug_str     0x00000000       0xc2 build/default/production/_ext/1360937237/sdcard.o
+ .debug_line    0x00000000      0x40d build/default/production/_ext/1360937237/sdcard.o
+ .debug_str     0x00000000       0xb7 build/default/production/_ext/1360937237/sdcard.o
  .comment       0x00000000       0x3d build/default/production/_ext/1360937237/sdcard.o
- .debug_frame   0x00000000       0xe0 build/default/production/_ext/1360937237/sdcard.o
+ .debug_frame   0x00000000       0xc8 build/default/production/_ext/1360937237/sdcard.o
  .ARM.attributes
                 0x00000000       0x37 build/default/production/_ext/1360937237/sdcard.o
  COMMON         0x00000000       0x30 build/default/production/_ext/1360937237/sdcard.o
@@ -1012,6 +1063,57 @@ Discarded input sections
  .ARM.extab     0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_udivmoddi4.o)
  .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_dvmd_tls.o)
  .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_dvmd_tls.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o)
+ .text.atoi     0x00000000        0x8 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o)
+ .text._atoi_r  0x00000000        0x8 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o)
+ .debug_info    0x00000000      0xe9b c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o)
+ .debug_abbrev  0x00000000      0x199 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o)
+ .debug_loc     0x00000000       0x63 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o)
+ .debug_aranges
+                0x00000000       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o)
+ .debug_ranges  0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o)
+ .debug_line    0x00000000      0x210 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o)
+ .debug_str     0x00000000       0x13 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o)
+ .debug_frame   0x00000000       0x30 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o)
+ .ARM.attributes
+                0x00000000       0x32 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atoi.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atol.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atol.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atol.o)
+ .text.atol     0x00000000        0x8 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atol.o)
+ .text._atol_r  0x00000000        0x8 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atol.o)
+ .debug_info    0x00000000      0xe9b c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atol.o)
+ .debug_abbrev  0x00000000      0x199 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atol.o)
+ .debug_loc     0x00000000       0x63 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atol.o)
+ .debug_aranges
+                0x00000000       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atol.o)
+ .debug_ranges  0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atol.o)
+ .debug_line    0x00000000      0x20e c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atol.o)
+ .debug_str     0x00000000       0x13 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atol.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atol.o)
+ .debug_frame   0x00000000       0x30 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atol.o)
+ .ARM.attributes
+                0x00000000       0x32 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-atol.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-difftime.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-difftime.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-difftime.o)
+ .text.difftime
+                0x00000000        0xc c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-difftime.o)
+ .debug_info    0x00000000      0xedc c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-difftime.o)
+ .debug_abbrev  0x00000000      0x16c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-difftime.o)
+ .debug_loc     0x00000000       0x21 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-difftime.o)
+ .debug_aranges
+                0x00000000       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-difftime.o)
+ .debug_ranges  0x00000000       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-difftime.o)
+ .debug_line    0x00000000      0x20d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-difftime.o)
+ .debug_str     0x00000000        0x9 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-difftime.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-difftime.o)
+ .debug_frame   0x00000000       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-difftime.o)
+ .ARM.attributes
+                0x00000000       0x32 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-difftime.o)
  .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-init.o)
  .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-init.o)
  .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-init.o)
@@ -1157,6 +1259,22 @@ Discarded input sections
  .debug_frame   0x00000000       0x44 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(_lib_a-sprintf.cdnopuxX.o)
  .ARM.attributes
                 0x00000000       0x32 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(_lib_a-sprintf.cdnopuxX.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strchr.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strchr.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strchr.o)
+ .text.strchr   0x00000000       0x1c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strchr.o)
+ .debug_info    0x00000000      0xe20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strchr.o)
+ .debug_abbrev  0x00000000      0x168 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strchr.o)
+ .debug_loc     0x00000000       0x6b c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strchr.o)
+ .debug_aranges
+                0x00000000       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strchr.o)
+ .debug_ranges  0x00000000       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strchr.o)
+ .debug_line    0x00000000      0x208 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strchr.o)
+ .debug_str     0x00000000        0x9 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strchr.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strchr.o)
+ .debug_frame   0x00000000       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strchr.o)
+ .ARM.attributes
+                0x00000000       0x32 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strchr.o)
  .text          0x00000000       0x14 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strcmp.o)
  .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strcmp.o)
  .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strcmp.o)
@@ -1238,6 +1356,41 @@ Discarded input sections
  .debug_frame   0x00000000      0x128 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtod.o)
  .ARM.attributes
                 0x00000000       0x32 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtod.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok.o)
+ .text.strtok   0x00000000       0x54 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok.o)
+ .debug_info    0x00000000      0xeab c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok.o)
+ .debug_abbrev  0x00000000      0x1c5 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok.o)
+ .debug_loc     0x00000000       0xc0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok.o)
+ .debug_aranges
+                0x00000000       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok.o)
+ .debug_ranges  0x00000000       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok.o)
+ .debug_line    0x00000000      0x20d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok.o)
+ .debug_str     0x00000000       0x1b c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok.o)
+ .debug_frame   0x00000000       0x38 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok.o)
+ .ARM.attributes
+                0x00000000       0x32 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok_r.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok_r.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok_r.o)
+ .text.__strtok_r
+                0x00000000       0x52 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok_r.o)
+ .text.strtok_r
+                0x00000000        0x6 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok_r.o)
+ .debug_info    0x00000000      0xee4 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok_r.o)
+ .debug_abbrev  0x00000000      0x1b4 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok_r.o)
+ .debug_loc     0x00000000      0x1b6 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok_r.o)
+ .debug_aranges
+                0x00000000       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok_r.o)
+ .debug_ranges  0x00000000       0x18 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok_r.o)
+ .debug_line    0x00000000      0x233 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok_r.o)
+ .debug_str     0x00000000        0x9 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok_r.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok_r.o)
+ .debug_frame   0x00000000       0x40 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok_r.o)
+ .ARM.attributes
+                0x00000000       0x32 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtok_r.o)
  .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtol.o)
  .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtol.o)
  .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtol.o)
@@ -1260,6 +1413,22 @@ Discarded input sections
  .debug_frame   0x00000000       0x88 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtol.o)
  .ARM.attributes
                 0x00000000       0x32 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strtol.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-time.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-time.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-time.o)
+ .text.time     0x00000000       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-time.o)
+ .debug_info    0x00000000      0xed1 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-time.o)
+ .debug_abbrev  0x00000000      0x193 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-time.o)
+ .debug_loc     0x00000000       0x58 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-time.o)
+ .debug_aranges
+                0x00000000       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-time.o)
+ .debug_ranges  0x00000000       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-time.o)
+ .debug_line    0x00000000      0x219 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-time.o)
+ .debug_str     0x00000000       0x19 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-time.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-time.o)
+ .debug_frame   0x00000000       0x2c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-time.o)
+ .ARM.attributes
+                0x00000000       0x32 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-time.o)
  .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-wctomb_r.o)
  .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-wctomb_r.o)
  .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-wctomb_r.o)
@@ -1332,6 +1501,23 @@ Discarded input sections
  .debug_frame   0x00000000       0x74 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gdtoa-hexnan.o)
  .ARM.attributes
                 0x00000000       0x32 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gdtoa-hexnan.o)
+ .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gettimeofdayr.o)
+ .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gettimeofdayr.o)
+ .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gettimeofdayr.o)
+ .text._gettimeofday_r
+                0x00000000       0x24 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gettimeofdayr.o)
+ .debug_info    0x00000000      0xf3b c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gettimeofdayr.o)
+ .debug_abbrev  0x00000000      0x1b2 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gettimeofdayr.o)
+ .debug_loc     0x00000000       0x99 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gettimeofdayr.o)
+ .debug_aranges
+                0x00000000       0x20 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gettimeofdayr.o)
+ .debug_ranges  0x00000000       0x28 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gettimeofdayr.o)
+ .debug_line    0x00000000      0x227 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gettimeofdayr.o)
+ .debug_str     0x00000000       0x17 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gettimeofdayr.o)
+ .comment       0x00000000       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gettimeofdayr.o)
+ .debug_frame   0x00000000       0x2c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gettimeofdayr.o)
+ .ARM.attributes
+                0x00000000       0x32 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-gettimeofdayr.o)
  .text          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-impure.o)
  .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-impure.o)
  .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-impure.o)
@@ -2383,46 +2569,46 @@ LOAD data_init
  .comment       0x0000003c       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-memset.o)
  .comment       0x0000003c       0x3d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strncpy.o)
 
-.debug_info     0x00000000    0x385e2
+.debug_info     0x00000000    0x38745
  .debug_info    0x00000000      0xc64 build/default/production/_ext/20954303/drv_sdmmc_file_system.o
  .debug_info    0x00000c64     0x1122 build/default/production/_ext/1360937237/main.o
- .debug_info    0x00001d86     0x36b3 build/default/production/_ext/1171490990/initialization.o
- .debug_info    0x00005439     0x1c25 build/default/production/_ext/1171490990/interrupts.o
- .debug_info    0x0000705e     0x10d1 build/default/production/_ext/1171490990/exceptions.o
- .debug_info    0x0000812f      0x8b7 build/default/production/_ext/60165520/plib_clk.o
- .debug_info    0x000089e6      0xf09 build/default/production/_ext/60177924/plib_pio.o
- .debug_info    0x000098ef     0x1126 build/default/production/_ext/1865468468/plib_nvic.o
- .debug_info    0x0000aa15      0xc18 build/default/production/_ext/2003650513/plib_xdmac.o
- .debug_info    0x0000b62d     0x1a0c build/default/production/_ext/1171490990/startup_xc32.o
- .debug_info    0x0000d039     0x12ec build/default/production/_ext/60167248/plib_efc.o
- .debug_info    0x0000e325      0x976 build/default/production/_ext/829342655/plib_tc0.o
- .debug_info    0x0000ec9b     0x357a build/default/production/_ext/101884895/sys_time.o
- .debug_info    0x00012215      0xbd8 build/default/production/_ext/1865657120/plib_uart1.o
- .debug_info    0x00012ded     0x4ddf build/default/production/_ext/1269487135/sys_fs.o
- .debug_info    0x00017bcc     0x2de7 build/default/production/_ext/1269487135/sys_fs_media_manager.o
- .debug_info    0x0001a9b3     0x216c build/default/production/_ext/1269487135/sys_fs_fat_interface.o
- .debug_info    0x0001cb1f     0x5c45 build/default/production/_ext/411819097/ff.o
- .debug_info    0x00022764      0x5f2 build/default/production/_ext/411819097/ffunicode.o
- .debug_info    0x00022d56     0x1aaf build/default/production/_ext/565198302/diskio.o
- .debug_info    0x00024805      0xbd8 build/default/production/_ext/1865657120/plib_uart0.o
- .debug_info    0x000253dd     0x549d build/default/production/_ext/20954303/drv_sdmmc.o
- .debug_info    0x0002a87a      0xf44 build/default/production/_ext/2001315827/plib_usart1.o
- .debug_info    0x0002b7be      0xf44 build/default/production/_ext/2001315827/plib_usart0.o
- .debug_info    0x0002c702     0x1cf6 build/default/production/_ext/1989321110/plib_hsmci.o
- .debug_info    0x0002e3f8      0xcfd build/default/production/_ext/1881668453/sys_int.o
- .debug_info    0x0002f0f5     0x13c0 build/default/production/_ext/1014039709/sys_cache.o
- .debug_info    0x000304b5      0xf0c build/default/production/_ext/1360937237/app.o
- .debug_info    0x000313c1     0x1050 build/default/production/_ext/1171490990/tasks.o
- .debug_info    0x00032411      0xf44 build/default/production/_ext/2001315827/plib_usart2.o
- .debug_info    0x00033355      0x296 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libpic32c.a(data_init.o)
- .debug_info    0x000335eb       0xfa c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_info    0x000336e5     0x168d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_udivmoddi4.o)
- .debug_info    0x00034d72       0xfe c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_dvmd_tls.o)
- .debug_info    0x00034e70      0x410 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-init.o)
- .debug_info    0x00035280      0xe5c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-memcpy-stub.o)
- .debug_info    0x000360dc     0x159f c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-memset.o)
- .debug_info    0x0003767b      0x127 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strlen.o)
- .debug_info    0x000377a2      0xe40 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strncpy.o)
+ .debug_info    0x00001d86     0x36fa build/default/production/_ext/1171490990/initialization.o
+ .debug_info    0x00005480     0x1c6c build/default/production/_ext/1171490990/interrupts.o
+ .debug_info    0x000070ec     0x1118 build/default/production/_ext/1171490990/exceptions.o
+ .debug_info    0x00008204      0x8b7 build/default/production/_ext/60165520/plib_clk.o
+ .debug_info    0x00008abb      0xf09 build/default/production/_ext/60177924/plib_pio.o
+ .debug_info    0x000099c4     0x1126 build/default/production/_ext/1865468468/plib_nvic.o
+ .debug_info    0x0000aaea      0xc18 build/default/production/_ext/2003650513/plib_xdmac.o
+ .debug_info    0x0000b702     0x1a53 build/default/production/_ext/1171490990/startup_xc32.o
+ .debug_info    0x0000d155     0x12ec build/default/production/_ext/60167248/plib_efc.o
+ .debug_info    0x0000e441      0x976 build/default/production/_ext/829342655/plib_tc0.o
+ .debug_info    0x0000edb7     0x357a build/default/production/_ext/101884895/sys_time.o
+ .debug_info    0x00012331      0xbd8 build/default/production/_ext/1865657120/plib_uart1.o
+ .debug_info    0x00012f09     0x4ddf build/default/production/_ext/1269487135/sys_fs.o
+ .debug_info    0x00017ce8     0x2de7 build/default/production/_ext/1269487135/sys_fs_media_manager.o
+ .debug_info    0x0001aacf     0x216c build/default/production/_ext/1269487135/sys_fs_fat_interface.o
+ .debug_info    0x0001cc3b     0x5c45 build/default/production/_ext/411819097/ff.o
+ .debug_info    0x00022880      0x5f2 build/default/production/_ext/411819097/ffunicode.o
+ .debug_info    0x00022e72     0x1aaf build/default/production/_ext/565198302/diskio.o
+ .debug_info    0x00024921      0xbd8 build/default/production/_ext/1865657120/plib_uart0.o
+ .debug_info    0x000254f9     0x549d build/default/production/_ext/20954303/drv_sdmmc.o
+ .debug_info    0x0002a996      0xf44 build/default/production/_ext/2001315827/plib_usart1.o
+ .debug_info    0x0002b8da      0xf44 build/default/production/_ext/2001315827/plib_usart0.o
+ .debug_info    0x0002c81e     0x1cf6 build/default/production/_ext/1989321110/plib_hsmci.o
+ .debug_info    0x0002e514      0xcfd build/default/production/_ext/1881668453/sys_int.o
+ .debug_info    0x0002f211     0x13c0 build/default/production/_ext/1014039709/sys_cache.o
+ .debug_info    0x000305d1      0xf0c build/default/production/_ext/1360937237/app.o
+ .debug_info    0x000314dd     0x1097 build/default/production/_ext/1171490990/tasks.o
+ .debug_info    0x00032574      0xf44 build/default/production/_ext/2001315827/plib_usart2.o
+ .debug_info    0x000334b8      0x296 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libpic32c.a(data_init.o)
+ .debug_info    0x0003374e       0xfa c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_info    0x00033848     0x168d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_udivmoddi4.o)
+ .debug_info    0x00034ed5       0xfe c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_dvmd_tls.o)
+ .debug_info    0x00034fd3      0x410 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-init.o)
+ .debug_info    0x000353e3      0xe5c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-memcpy-stub.o)
+ .debug_info    0x0003623f     0x159f c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-memset.o)
+ .debug_info    0x000377de      0x127 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strlen.o)
+ .debug_info    0x00037905      0xe40 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strncpy.o)
 
 .debug_abbrev   0x00000000     0x540c
  .debug_abbrev  0x00000000      0x155 build/default/production/_ext/20954303/drv_sdmmc_file_system.o
@@ -2617,46 +2803,46 @@ LOAD data_init
  .debug_ranges  0x000014d0       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-memset.o)
  .debug_ranges  0x000014e0       0x10 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strncpy.o)
 
-.debug_line     0x00000000     0x904c
+.debug_line     0x00000000     0x907e
  .debug_line    0x00000000      0x1e7 build/default/production/_ext/20954303/drv_sdmmc_file_system.o
  .debug_line    0x000001e7      0x2ca build/default/production/_ext/1360937237/main.o
- .debug_line    0x000004b1      0x6c0 build/default/production/_ext/1171490990/initialization.o
- .debug_line    0x00000b71      0x2bf build/default/production/_ext/1171490990/interrupts.o
- .debug_line    0x00000e30      0x2cc build/default/production/_ext/1171490990/exceptions.o
- .debug_line    0x000010fc      0x172 build/default/production/_ext/60165520/plib_clk.o
- .debug_line    0x0000126e      0x239 build/default/production/_ext/60177924/plib_pio.o
- .debug_line    0x000014a7      0x1d0 build/default/production/_ext/1865468468/plib_nvic.o
- .debug_line    0x00001677      0x28b build/default/production/_ext/2003650513/plib_xdmac.o
- .debug_line    0x00001902      0x399 build/default/production/_ext/1171490990/startup_xc32.o
- .debug_line    0x00001c9b      0x295 build/default/production/_ext/60167248/plib_efc.o
- .debug_line    0x00001f30      0x213 build/default/production/_ext/829342655/plib_tc0.o
- .debug_line    0x00002143      0x783 build/default/production/_ext/101884895/sys_time.o
- .debug_line    0x000028c6      0x2f7 build/default/production/_ext/1865657120/plib_uart1.o
- .debug_line    0x00002bbd      0xf81 build/default/production/_ext/1269487135/sys_fs.o
- .debug_line    0x00003b3e      0x623 build/default/production/_ext/1269487135/sys_fs_media_manager.o
- .debug_line    0x00004161      0x4f2 build/default/production/_ext/1269487135/sys_fs_fat_interface.o
- .debug_line    0x00004653     0x139f build/default/production/_ext/411819097/ff.o
- .debug_line    0x000059f2      0x1ae build/default/production/_ext/411819097/ffunicode.o
- .debug_line    0x00005ba0      0x336 build/default/production/_ext/565198302/diskio.o
- .debug_line    0x00005ed6      0x2f7 build/default/production/_ext/1865657120/plib_uart0.o
- .debug_line    0x000061cd      0x8f7 build/default/production/_ext/20954303/drv_sdmmc.o
- .debug_line    0x00006ac4      0x30a build/default/production/_ext/2001315827/plib_usart1.o
- .debug_line    0x00006dce      0x30a build/default/production/_ext/2001315827/plib_usart0.o
- .debug_line    0x000070d8      0x3e8 build/default/production/_ext/1989321110/plib_hsmci.o
- .debug_line    0x000074c0      0x233 build/default/production/_ext/1881668453/sys_int.o
- .debug_line    0x000076f3      0x441 build/default/production/_ext/1014039709/sys_cache.o
- .debug_line    0x00007b34      0x145 build/default/production/_ext/1360937237/app.o
- .debug_line    0x00007c79      0x2eb build/default/production/_ext/1171490990/tasks.o
- .debug_line    0x00007f64      0x30a build/default/production/_ext/2001315827/plib_usart2.o
- .debug_line    0x0000826e       0xd8 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libpic32c.a(data_init.o)
- .debug_line    0x00008346       0x9c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_line    0x000083e2      0x32c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_udivmoddi4.o)
- .debug_line    0x0000870e       0x9c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_dvmd_tls.o)
- .debug_line    0x000087aa      0x11d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-init.o)
- .debug_line    0x000088c7      0x218 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-memcpy-stub.o)
- .debug_line    0x00008adf      0x2ae c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-memset.o)
- .debug_line    0x00008d8d       0xb1 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strlen.o)
- .debug_line    0x00008e3e      0x20e c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strncpy.o)
+ .debug_line    0x000004b1      0x6ca build/default/production/_ext/1171490990/initialization.o
+ .debug_line    0x00000b7b      0x2c9 build/default/production/_ext/1171490990/interrupts.o
+ .debug_line    0x00000e44      0x2d6 build/default/production/_ext/1171490990/exceptions.o
+ .debug_line    0x0000111a      0x172 build/default/production/_ext/60165520/plib_clk.o
+ .debug_line    0x0000128c      0x239 build/default/production/_ext/60177924/plib_pio.o
+ .debug_line    0x000014c5      0x1d0 build/default/production/_ext/1865468468/plib_nvic.o
+ .debug_line    0x00001695      0x28b build/default/production/_ext/2003650513/plib_xdmac.o
+ .debug_line    0x00001920      0x3a3 build/default/production/_ext/1171490990/startup_xc32.o
+ .debug_line    0x00001cc3      0x295 build/default/production/_ext/60167248/plib_efc.o
+ .debug_line    0x00001f58      0x213 build/default/production/_ext/829342655/plib_tc0.o
+ .debug_line    0x0000216b      0x783 build/default/production/_ext/101884895/sys_time.o
+ .debug_line    0x000028ee      0x2f7 build/default/production/_ext/1865657120/plib_uart1.o
+ .debug_line    0x00002be5      0xf81 build/default/production/_ext/1269487135/sys_fs.o
+ .debug_line    0x00003b66      0x623 build/default/production/_ext/1269487135/sys_fs_media_manager.o
+ .debug_line    0x00004189      0x4f2 build/default/production/_ext/1269487135/sys_fs_fat_interface.o
+ .debug_line    0x0000467b     0x139f build/default/production/_ext/411819097/ff.o
+ .debug_line    0x00005a1a      0x1ae build/default/production/_ext/411819097/ffunicode.o
+ .debug_line    0x00005bc8      0x336 build/default/production/_ext/565198302/diskio.o
+ .debug_line    0x00005efe      0x2f7 build/default/production/_ext/1865657120/plib_uart0.o
+ .debug_line    0x000061f5      0x8f7 build/default/production/_ext/20954303/drv_sdmmc.o
+ .debug_line    0x00006aec      0x30a build/default/production/_ext/2001315827/plib_usart1.o
+ .debug_line    0x00006df6      0x30a build/default/production/_ext/2001315827/plib_usart0.o
+ .debug_line    0x00007100      0x3e8 build/default/production/_ext/1989321110/plib_hsmci.o
+ .debug_line    0x000074e8      0x233 build/default/production/_ext/1881668453/sys_int.o
+ .debug_line    0x0000771b      0x441 build/default/production/_ext/1014039709/sys_cache.o
+ .debug_line    0x00007b5c      0x145 build/default/production/_ext/1360937237/app.o
+ .debug_line    0x00007ca1      0x2f5 build/default/production/_ext/1171490990/tasks.o
+ .debug_line    0x00007f96      0x30a build/default/production/_ext/2001315827/plib_usart2.o
+ .debug_line    0x000082a0       0xd8 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libpic32c.a(data_init.o)
+ .debug_line    0x00008378       0x9c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_line    0x00008414      0x32c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_udivmoddi4.o)
+ .debug_line    0x00008740       0x9c c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/v7e-m/fpv5/hard\libgcc.a(_dvmd_tls.o)
+ .debug_line    0x000087dc      0x11d c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-init.o)
+ .debug_line    0x000088f9      0x218 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-memcpy-stub.o)
+ .debug_line    0x00008b11      0x2ae c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-memset.o)
+ .debug_line    0x00008dbf       0xb1 c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strlen.o)
+ .debug_line    0x00008e70      0x20e c:/program files/microchip/xc32/v2.41/bin/bin/../../lib/gcc/pic32c/6.2.1/../../../../pic32c/lib/v7e-m/fpv5/hard\libc_nano.a(lib_a-strncpy.o)
 
 .debug_str      0x00000000      0xd06
  .debug_str     0x00000000       0x1e build/default/production/_ext/20954303/drv_sdmmc_file_system.o
@@ -2812,9 +2998,9 @@ LOAD data_init
 .bss.Files%16   0x20401ac8       0x10
  .bss.Files     0x20401ac8       0x10 build/default/production/_ext/411819097/ff.o
 
-.bss.cmd.11635%17
+.bss.cmd.11708%17
                 0x204019f8        0x4
- .bss.cmd.11635
+ .bss.cmd.11708
                 0x204019f8        0x4 build/default/production/_ext/1171490990/startup_xc32.o
 
 .bss.FatFs%18   0x204019fc        0x4

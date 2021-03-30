@@ -1,6 +1,11 @@
 build/default/production/_ext/394022532/IridiumSBD.o:  \
  ../src/config/IridiumSBD.c  \
 ../src/config/IridiumSBD.h  \
+ ../src/config/default/configuration.h  \
+../src/config/default/user.h  \
+ ../src/config/default/toolchain_specifics.h  \
+ ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h  \
+ ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_gcc.h  \
  ../src/config/default/definitions.h  \
  ../src/config/default/driver/sdmmc/drv_sdmmc.h  \
  ../src/config/default/system/system.h  \
@@ -14,7 +19,6 @@ build/default/production/_ext/394022532/IridiumSBD.o:  \
  ../src/packs/CMSIS/CMSIS/Core/Include/core_cm7.h  \
  ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_version.h  \
  ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h  \
- ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_gcc.h  \
  ../src/packs/CMSIS/CMSIS/Core/Include/mpu_armv7.h  \
  ../src/packs/ATSAME70Q21B_DFP/component/acc.h  \
  ../src/packs/ATSAME70Q21B_DFP/component/aes.h  \
@@ -55,7 +59,6 @@ build/default/production/_ext/394022532/IridiumSBD.o:  \
  ../src/packs/ATSAME70Q21B_DFP/pio/same70q21b.h  \
  ../src/config/default/device_cache.h  \
  ../src/config/default/toolchain_specifics.h  \
- ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h  \
  ../src/config/default/system/int/sys_int_mapping.h  \
  ../src/config/default/system/system_media.h  \
  ../src/config/default/driver/sdmmc/drv_sdmmc_definitions.h  \
@@ -63,9 +66,6 @@ build/default/production/_ext/394022532/IridiumSBD.o:  \
  ../src/config/default/driver/sdmmc/drv_sdmmc.h  \
  ../src/config/default/system/time/sys_time.h  \
  ../src/config/default/system/time/sys_time_definitions.h  \
- ../src/config/default/configuration.h  \
-../src/config/default/user.h  \
- ../src/config/default/toolchain_specifics.h  \
  ../src/config/default/osal/osal.h  \
  ../src/config/default/osal/osal_definitions.h  \
  ../src/config/default/osal/osal_impl_basic.h  \
