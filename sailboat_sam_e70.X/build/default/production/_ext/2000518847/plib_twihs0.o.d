@@ -1,5 +1,5 @@
-build/default/production/_ext/1865657120/plib_uart1.o:  \
- ../src/config/default/peripheral/uart/plib_uart1.c  \
+build/default/production/_ext/2000518847/plib_twihs0.o:  \
+ ../src/config/default/peripheral/twihs/plib_twihs0.c  \
  ../src/packs/ATSAME70Q21B_DFP/device.h  \
  ../src/packs/ATSAME70Q21B_DFP/atsame70q21b.h  \
  ../src/packs/CMSIS/CMSIS/Core/Include/core_cm7.h  \
@@ -47,5 +47,5 @@ build/default/production/_ext/1865657120/plib_uart1.o:  \
  ../src/config/default/device_cache.h  \
  ../src/config/default/toolchain_specifics.h  \
  ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h  \
- ../src/config/default/peripheral/uart/plib_uart1.h  \
- ../src/config/default/peripheral/uart/plib_uart_common.h 
+ ../src/config/default/peripheral/twihs/plib_twihs0.h  \
+ ../src/config/default/peripheral/twihs/plib_twihs_master.h 

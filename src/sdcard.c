@@ -11,6 +11,15 @@
 
 SDCARD_DATA SdcardData;
 
+
+
+static void tc0EventHandler (TC_TIMER_STATUS status, uintptr_t context)
+{
+    
+    SdcardData.state = SDCARD_STATE_TIMEOUT;
+     TC0_CH0_TimerStop();
+}
+
 /* This is initialization function */
 
 void SDCARD_Initialize(void)
@@ -25,19 +34,21 @@ void SDCARD_Initialize(void)
     SdcardData.nbytes = 128;
     SdcardData.nbytesReturned = 0;
     SdcardData.devName = "/dev/mmcblka1";
-    SdcardData.mntName = "/mnt/myDrive";
+    SdcardData.mntName = "/mnt/myDrive1";
+    
+    TC0_CH0_TimerPeriodSet(SD_CARD_DEFAULT_TIMOUT);
+    TC0_CH0_TimerCallbackRegister(tc0EventHandler, 0);
 }
 
 /* This is the task routine for this lab */
 
 void SDCARD_Tasks(void)
 {
-    time_t endwait;
-    int seconds = SD_CARD_DEFAULT_TIMOUT ;
+    
+    
+    TC0_CH0_TimerStart();
 
-    endwait = time (NULL) + seconds ;
-
-    while (time (NULL) < endwait && SdcardData.state!=SDCARD_STATE_SUCCESS){
+    while (SdcardData.state!=SDCARD_STATE_TIMEOUT && SdcardData.state!=SDCARD_STATE_SUCCESS){
         switch(SdcardData.state)
         {
 
@@ -45,9 +56,8 @@ void SDCARD_Tasks(void)
                   if(SYS_FS_Mount(SdcardData.devName, SdcardData.mntName, FAT, 0, NULL) != SYS_FS_RES_SUCCESS)
                   {
                       /* The disk could not be mounted. Try mounting again until success. */
-                      SdcardData.state = SDCARD_STATE_CARD_MOUNT;
-
-
+                      
+                      USART1_Write("Keep mounting...\r\n",sizeof("Keep mounting...\r\n"));
                   }
                   else
                   {
@@ -58,6 +68,7 @@ void SDCARD_Tasks(void)
 
 
                 case SDCARD_STATE_CARD_CURRENT_DRIVE_SET:
+                    USART1_Write("Set Drive...\r\n",sizeof("Set Drive...\r\n"));
                   if(SYS_FS_CurrentDriveSet(SdcardData.mntName) == SYS_FS_RES_FAILURE)
                   {
                       /* Error while setting current drive */
@@ -65,7 +76,6 @@ void SDCARD_Tasks(void)
                   }
                   else
                   {
-
                     if(SdcardData.WorR){
                       SdcardData.state = SDCARD_STATE_WRITE_FILE;
                     }else{
@@ -76,6 +86,7 @@ void SDCARD_Tasks(void)
                   break;
 
                 case SDCARD_STATE_WRITE_FILE:
+                    USART1_Write("Open file...\r\n",sizeof("Open file...\r\n"));
                   SdcardData.fileHandle = SYS_FS_FileOpen(SdcardData.fileOpen[--SdcardData.numFile], SYS_FS_FILE_OPEN_APPEND);// try create a new file named "fileopen" and see
                   if(SdcardData.fileHandle == SYS_FS_HANDLE_INVALID)
                   {
@@ -85,12 +96,14 @@ void SDCARD_Tasks(void)
                   else
                   {
                     SDCARD_FillBuffer();
+                    USART1_Write("Write to file...\r\n",sizeof("Write to file...\r\n"));
                     SdcardData.nbytesReturned = SYS_FS_FileWrite(SdcardData.fileHandle, (void *)SdcardData.buf, SdcardData.nbytes);
                     if (SdcardData.nbytesReturned == -1){
                       SdcardData.state = SDCARD_STATE_ERROR;
                     }else if (SdcardData.numFile==0) {
                       SdcardData.state = SDCARD_STATE_SUCCESS;
                     }else{
+                        USART1_Write("Next file...\r\n",sizeof("Next file...\r\n"));
                       SdcardData.state = SDCARD_STATE_WRITE_FILE;  
                     }
                     SYS_FS_FileClose(SdcardData.fileHandle);
@@ -149,10 +162,16 @@ void SDCARD_Tasks(void)
 
                 case SDCARD_STATE_SUCCESS:
                   USART1_Write("File Operation Success!\r\n",sizeof("File Operation Success!\r\n"));
+                  SdcardData.state = SDCARD_STATE_WAITING;
                   break;
 
                 case SDCARD_STATE_WAITING:
                   // do nothing until state changed
+                    
+                  break;
+                case SDCARD_STATE_TIMEOUT:
+                  // do nothing until state changed
+                    USART1_Write("File Operation TIMEOUT!\r\n",sizeof("File Operation TIMEOUT!\r\n"));
                   break;
 
                 default:
@@ -160,8 +179,15 @@ void SDCARD_Tasks(void)
                 }
                 break;
         }
+        SYS_Tasks ( );
     }
-    if (SdcardData.state == SDCARD_STATE_SUCCESS)
+    if (SdcardData.state == SDCARD_STATE_SUCCESS){
+        USART1_Write("File Operation Success!\r\n",sizeof("File Operation Success!\r\n"));
+      
+    }else{
+        USART1_Write("File Operation TIMEOUT!\r\n",sizeof("File Operation TIMEOUT!\r\n"));
+        
+    }
         SdcardData.state = SDCARD_STATE_WAITING;
 }
 
@@ -182,14 +208,14 @@ void SDCARD_StateSwitch(SDCARD_STATES state){
 }
 
 void SDCARD_FillBuffer(void){
-    uint8_t buf[128];
-    size_t nbytes = 128;
+    uint8_t buf[256];
+    size_t nbytes = 256;
     if (strcmp(SdcardData.fileOpen[SdcardData.numFile],"GPS.txt")==0){
-        USART0_Read(&buf[0], nbytes);
+        TWIHS0_Read(0x42, buf, nbytes );
     }else if (strcmp(SdcardData.fileOpen[SdcardData.numFile],"Anem.txt")==0) {
-        USART0_Read(&buf[0], nbytes);
+        USART1_Read(&buf[0], nbytes);
     }else if (strcmp(SdcardData.fileOpen[SdcardData.numFile],"IMU.txt")==0) {
-        USART0_Read(&buf[0], nbytes);
+        USART2_Read(&buf[0], nbytes);
     }else{
         USART0_Read(&buf[0], nbytes);
     }

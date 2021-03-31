@@ -62,6 +62,15 @@
 // *****************************************************************************
 
 
+/*** Macros for IMU_CS pin ***/
+#define IMU_CS_Set()               (PIOD_REGS->PIO_SODR = (1<<25))
+#define IMU_CS_Clear()             (PIOD_REGS->PIO_CODR = (1<<25))
+#define IMU_CS_Toggle()            (PIOD_REGS->PIO_ODSR ^= (1<<25))
+#define IMU_CS_Get()               ((PIOD_REGS->PIO_PDSR >> 25) & 0x1)
+#define IMU_CS_OutputEnable()      (PIOD_REGS->PIO_OER = (1<<25))
+#define IMU_CS_InputEnable()       (PIOD_REGS->PIO_ODR = (1<<25))
+#define IMU_CS_PIN                  PIO_PIN_PD25
+
 /*** Macros for LED pin ***/
 #define LED_Set()               (PIOC_REGS->PIO_SODR = (1<<8))
 #define LED_Clear()             (PIOC_REGS->PIO_CODR = (1<<8))

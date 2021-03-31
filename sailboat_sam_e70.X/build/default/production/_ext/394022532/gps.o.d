@@ -78,8 +78,6 @@ build/default/production/_ext/394022532/gps.o:  \
  ../src/config/default/peripheral/tc/plib_tc0.h  \
  ../src/config/default/peripheral/tc/plib_tc_common.h  \
  ../src/config/default/system/time/sys_time.h  \
- ../src/config/default/peripheral/uart/plib_uart1.h  \
- ../src/config/default/peripheral/uart/plib_uart_common.h  \
  ../src/config/default/system/fs/sys_fs.h  \
  ../src/config/default/system/fs/sys_fs_media_manager.h  \
  ../src/config/default/system/fs/sys_fs.h  \
@@ -90,7 +88,8 @@ build/default/production/_ext/394022532/gps.o:  \
  ../src/config/default/system/fs/fat_fs/file_system/ffconf.h  \
  ../src/config/default/system/fs/fat_fs/hardware_access/diskio.h  \
  ../src/config/default/system/fs/fat_fs/file_system/ff.h  \
- ../src/config/default/peripheral/uart/plib_uart0.h  \
+ ../src/config/default/peripheral/twihs/plib_twihs0.h  \
+ ../src/config/default/peripheral/twihs/plib_twihs_master.h  \
  ../src/config/default/peripheral/usart/plib_usart1.h  \
  ../src/config/default/peripheral/usart/plib_usart_common.h  \
  ../src/config/default/peripheral/usart/plib_usart0.h  \

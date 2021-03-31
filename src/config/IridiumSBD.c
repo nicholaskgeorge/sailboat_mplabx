@@ -34,7 +34,7 @@ bool send(char *buffer){
    debug_print(">> ");
    debug_print(buffer);
    debug_print("\r\n");
-   bool status = UART0_Write((void*)buffer, sizeof((void*)buffer));
+   bool status = USART0_Write((void*)buffer, sizeof((void*)buffer));
    return status;
 }
 

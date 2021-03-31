@@ -27,7 +27,6 @@
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include "definitions.h"                // SYS function prototypes
 #include <stdio.h>
-#include <time.h>
 
 // *****************************************************************************
 // *****************************************************************************
@@ -36,97 +35,107 @@
 // *****************************************************************************
 
 
-// tc0 callback function which happens every TimerPeriod
-/*
-static void tc0EventHandler (TC_TIMER_STATUS status, uintptr_t context)
-{
-    // write to IridiumSBD
-    UART0_Write("AT+SBDIX\r",sizeof("AT+SBDIX\r"));
-    if ( UART0_ReceiverIsReady())
-    UART0_Read(SBDFeedback,sizeof(SBDFeedback));
-          
-    uint8_t a = UART0_ReadByte();  
-    while(a!=0x0A){
-        *SBDF=a;
-        SBDF++;
-        a = UART0_ReadByte();
-    }    
-}
-*/
+
+
 
 int main ( void )
 {
     /* Initialize all modules */
     SYS_Initialize ( NULL );
     
-    /* //Timer interrupt event
-    TC0_CH0_TimerCallbackRegister(tc0EventHandler, 0);
-    TC0_CH0_TimerPeriodSet(2000);
-    TC0_CH0_TimerStart();*/
+//      uint8_t buf[128];
+//    size_t nbytes = 128;
+//    size_t bytes_written= nbytes;
+//    size_t bytes_read = -1;
+//    char readBuf[256];
+//    int i = 0;
+//    const int BOUND = 100;
+//    int state = 0;
+    
+        /* SD Card code work initialize */
+    SDCARD_Initialize();
+    char* sensorFiles[3] = {"GPS.txt","Anem.txt","IMU.txt"};
+    SDCARD_WriteorRead(true);
+    SDCARD_FileName(sensorFiles,3);
+    SDCARD_StateSwitch(SDCARD_STATE_CARD_MOUNT);
     
     
-    //    /* SD Card code work initialize */
-//    SDCARD_Initialize();
-//    char* sensorFiles[3] = {"GPS.txt","Anem.txt","IMU.txt"};
-//    SDCARD_WriteorRead(false);
-//    SDCARD_FileName(sensorFiles,3);
-//    SDCARD_StateSwitch(SDCARD_STATE_CARD_MOUNT);
-  
-
-
-    uint8_t buf[128];
-    size_t nbytes = 128;
-//    int state=0;
     while ( true )
     {     
-        USART1_Read(&buf[0],nbytes);
-        USART1_Write(buf,nbytes); 
-
+              SDCARD_Tasks();
+//        if (state==0){ // Mount SD card
+//            if(SYS_FS_Mount("/dev/mmcblka1", "/mnt/myDrive", FAT, 0, NULL) == SYS_FS_RES_SUCCESS)
+//            {
+//                
+//                state++;
+//                
+//            }else {
+//                char fail_message[100];
+//                SYS_FS_ERROR err = SYS_FS_Error();
+//                sprintf(fail_message, "FAIL MESSAGE:%i\r\n", err);
+//  
+//                USART1_Write(fail_message,sizeof(fail_message));
+//            }
+//
+//        }else if(state==1){
+//            if(SYS_FS_CurrentDriveSet("/mnt/myDrive") == SYS_FS_RES_FAILURE)
+//            {
+//                USART1_Write("DriverFail\r\n",sizeof("DriverFail\r\n"));
+//                
+//            }
+//            else{
+//                
+//                state++;
+//            }
+//        }else if (state==2){
+//            SYS_FS_HANDLE handle = SYS_FS_FileOpen("/mnt/myDrive/IMU.txt", (SYS_FS_FILE_OPEN_APPEND_PLUS));
+//            
+//            // read GPS value
+//            USART2_Read(&buf[0], nbytes);
+//            
+//            if (handle == SYS_FS_HANDLE_INVALID){
+//                
+////                uint32_t totalSectors, freeSectors;
+////                SYS_FS_DriveSectorGet("/mnt/myDrive", &totalSectors, &freeSectors);
+//                char fail_message[100];
+//                SYS_FS_ERROR err = SYS_FS_Error();
+//                sprintf(fail_message, "FAIL MESSAGE:%i\r\n", err);
+//  
+//            }else{ 
+//               
+//                bytes_written = SYS_FS_FileWrite(handle, &buf[0], nbytes);
+//                SYS_FS_FileClose(handle);
+//                if (bytes_written != -1){
+//                                    
+//                    state=4;
+//                } else {
+//                    USART1_Write("File Write fail \r\n",sizeof("File Write fail \r\n"));
+//                }
+//                
+//            }       
+//        }else if(state==3){
+//            SYS_FS_HANDLE rhandle = SYS_FS_FileOpen("/mnt/myDrive/test.txt", (SYS_FS_FILE_OPEN_READ));
+//            if (rhandle != SYS_FS_HANDLE_INVALID){
+//                while (i<BOUND &&  bytes_read==-1){
+//                     bytes_read = SYS_FS_FileRead(rhandle, readBuf, bytes_written);
+//                     i++;
+//                }
+//                state++;
+//                SYS_FS_FileClose(rhandle); 
+//            }     
+//        }else if (state==4) {
+//        
+//            USART1_Write("FileSystemSuccess\r\n",sizeof("FileSystemSuccess\r\n"));
+//            state++;
+//        }
     
-        /* SD Card code work */
-//       SDCARD_Tasks();
-       
-        /* // write GPS in MCU byte by byte
-        if (USART0_ReceiverIsReady()){
-            GPS_incoming = USART0_ReadB                                           yte(); 
-            if (ptr >= &NMEA_buffer[199]){    
-                 
-                *ptr = '\0';//incoming_char;
-                ptr = NMEA_buffer;
-            } else {
-                // Terminate buffer then reset pointer
-                
-                *ptr = GPS_incoming;//incoming_char;
-                if (ptr < &NMEA_buffer[199])
-                    ++ptr;
-            }    
-            last_GPS = GPS_incoming;
-        }*/
-        
-        //USART0_Read(GPS_values,sizeof(GPS_values)); // Read all GPS packet in a buffer
-        
-        
-       /* // Read Anemometer data output
-        * if (USART1_ReceiverIsReady()){
-            Ane_incoming = USART1_ReadByte(); 
-            if (ptr >= &Anemometer_values[49]){    
-                 
-                *ptr = '\0';//incoming_char;
-                ptr = Anemometer_values;
-            } else {
-                // Terminate buffer then reset pointer
-                
-                *ptr = Ane_incoming;//incoming_char;
-                if (ptr < &Anemometer_values[49])
-                    ++ptr;
-            }    
-        }
-        USART1_Read(Anemometer_values,sizeof(Anemometer_values));
-        Anem_Process(Anemometer_info,(char*)Anemometer_values);*/
-
-        
+//        USART2_Read(buf,nbytes); 
+//       // TWIHS0_Read( 0x42, buf, nbytes );
+//        USART1_Write(buf,nbytes); 
+    
+   
         /* Maintain state machines of all polled MPLAB Harmony modules. */
-        SYS_Tasks ( );
+        //SYS_Tasks ( );
         
 
     }

@@ -40,7 +40,7 @@ extern "C" {
 // *****************************************************************************
 
 #define MAX_SD_CARD_READ_BUFFER_SIZE    200
-#define SD_CARD_DEFAULT_TIMOUT   30
+#define SD_CARD_DEFAULT_TIMOUT   30000
 
 // *****************************************************************************
 /* Application states
@@ -64,7 +64,8 @@ typedef enum
     SDCARD_STATE_WAITING,
     SDCARD_STATE_SUCCESS,
     SDCARD_STATE_READ_FILE_SIZE,
-    SDCARD_STATE_CARD_READ
+    SDCARD_STATE_CARD_READ,
+    SDCARD_STATE_TIMEOUT
 
 
 } SDCARD_STATES;
