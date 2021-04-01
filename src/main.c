@@ -28,41 +28,84 @@
 #include "definitions.h"                // SYS function prototypes
 #include <stdio.h>
 
+#include <string.h>
+#include <ctype.h>
 // *****************************************************************************
 // *****************************************************************************
 // Section: Main Entry Point
 // *****************************************************************************
 // *****************************************************************************
 
+// Stores the trimmed input string into the given output buffer, which must be
+// large enough to store the result.  If it is too small, the output is
+// truncated.
+typedef struct
+{
+  uint8_t* ptr;
+  size_t len;
+  
+}Buffer;
 
 
-
+Buffer remove_spaces(uint8_t* s,size_t len) {
+        uint8_t* d = s;
+        uint8_t* end = s+len-1;
+        Buffer t;
+        while (*d == ' '||*d == '\t'||*d == '\n'||*d =='\v'||*d =='\f'||*d =='\r') {
+            ++d;
+        }
+        t.ptr = d;
+        d = end;
+        while (*d == ' '||*d == '\t'||*d == '\n'||*d =='\v'||*d =='\f'||*d =='\r'||*d == 0) {
+            --d;
+        }
+        t.len = d-t.ptr+1;
+        uint8_t* ptr_end = t.ptr+t.len;
+        *ptr_end= '\0';
+        return t;
+}
 
 int main ( void )
 {
     /* Initialize all modules */
     SYS_Initialize ( NULL );
-    
-//      uint8_t buf[128];
-//    size_t nbytes = 128;
-//    size_t bytes_written= nbytes;
-//    size_t bytes_read = -1;
-//    char readBuf[256];
-//    int i = 0;
-//    const int BOUND = 100;
-//    int state = 0;
-    
-        /* SD Card code work initialize */
-    SDCARD_Initialize();
+   
+    SDCARD_DATA* SdcardData=malloc(sizeof(SDCARD_DATA*));
+    /* SD Card code work initialize */
+    SDCARD_Initialize(SdcardData);
     char* sensorFiles[3] = {"GPS.txt","Anem.txt","IMU.txt"};
-    SDCARD_WriteorRead(true);
-    SDCARD_FileName(sensorFiles,3);
-    SDCARD_StateSwitch(SDCARD_STATE_CARD_MOUNT);
-    
-    
-    while ( true )
-    {     
-              SDCARD_Tasks();
+    SDCARD_WriteorRead(SdcardData,true);
+    SDCARD_FileName(SdcardData,sensorFiles[0]);
+    SDCARD_StateSwitch(SdcardData,SDCARD_STATE_CARD_MOUNT);
+//    SYS_TIME_HANDLE timer = SYS_TIME_HANDLE_INVALID;
+//
+    uint8_t buf[500];
+    size_t nbytes = 500;
+
+    while ( true ){     
+        //SDCARD_Tasks(SdcardData);
+        TWIHS0_Read(0x42, &buf[0], nbytes );
+        Buffer b = remove_spaces(buf, nbytes);
+        USART1_Write(b.ptr,b.len); 
+        SDCARD_FillinBuffer(SdcardData,b.ptr,b.len);
+        
+        /* Maintain state machines of all polled MPLAB Harmony modules. */
+        SYS_Tasks ( );
+        
+//        SDCARD_FillBuffer(SdcardData);
+//        if (SYS_TIME_DelayMS(500, &timer) != SYS_TIME_SUCCESS)
+//        {
+//            USART1_Write("no timer suc\r\n",sizeof("no timer suc\r\n"));
+//        }
+//        else if(SYS_TIME_DelayIsComplete(timer) != true)
+//        {
+//            // Wait till the delay has not expired
+//            while (SYS_TIME_DelayIsComplete(timer) == false);
+//        }
+ 
+   
+        
+        
 //        if (state==0){ // Mount SD card
 //            if(SYS_FS_Mount("/dev/mmcblka1", "/mnt/myDrive", FAT, 0, NULL) == SYS_FS_RES_SUCCESS)
 //            {
@@ -133,10 +176,6 @@ int main ( void )
 //       // TWIHS0_Read( 0x42, buf, nbytes );
 //        USART1_Write(buf,nbytes); 
     
-   
-        /* Maintain state machines of all polled MPLAB Harmony modules. */
-        //SYS_Tasks ( );
-        
 
     }
 
