@@ -1,12 +1,7 @@
-build/default/debug/_ext/1360937237/sdcard.o:  \
-../src/sdcard.c  \
- ../src/sdcard.h  \
-../src/config/default/configuration.h  \
- ../src/config/default/user.h  \
-../src/config/default/toolchain_specifics.h  \
- ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h  \
- ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_gcc.h  \
- ../src/config/default/definitions.h  \
+build/default/debug/_ext/1360937237/Helper_func.o:  \
+../src/Helper_func.c  \
+ ../src/Helper_func.h  \
+../src/config/default/definitions.h  \
  ../src/config/default/driver/sdmmc/drv_sdmmc.h  \
  ../src/config/default/system/system.h  \
  ../src/config/default/system/system_common.h  \
@@ -19,6 +14,7 @@ build/default/debug/_ext/1360937237/sdcard.o:  \
  ../src/packs/CMSIS/CMSIS/Core/Include/core_cm7.h  \
  ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_version.h  \
  ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h  \
+ ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_gcc.h  \
  ../src/packs/CMSIS/CMSIS/Core/Include/mpu_armv7.h  \
  ../src/packs/ATSAME70Q21B_DFP/component/acc.h  \
  ../src/packs/ATSAME70Q21B_DFP/component/aes.h  \
@@ -59,6 +55,7 @@ build/default/debug/_ext/1360937237/sdcard.o:  \
  ../src/packs/ATSAME70Q21B_DFP/pio/same70q21b.h  \
  ../src/config/default/device_cache.h  \
  ../src/config/default/toolchain_specifics.h  \
+ ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h  \
  ../src/config/default/system/int/sys_int_mapping.h  \
  ../src/config/default/system/system_media.h  \
  ../src/config/default/driver/sdmmc/drv_sdmmc_definitions.h  \
@@ -66,6 +63,9 @@ build/default/debug/_ext/1360937237/sdcard.o:  \
  ../src/config/default/driver/sdmmc/drv_sdmmc.h  \
  ../src/config/default/system/time/sys_time.h  \
  ../src/config/default/system/time/sys_time_definitions.h  \
+ ../src/config/default/configuration.h  \
+../src/config/default/user.h  \
+ ../src/config/default/toolchain_specifics.h  \
  ../src/config/default/osal/osal.h  \
  ../src/config/default/osal/osal_definitions.h  \
  ../src/config/default/osal/osal_impl_basic.h  \
@@ -102,4 +102,4 @@ build/default/debug/_ext/1360937237/sdcard.o:  \
  ../src/config/default/peripheral/usart/plib_usart2.h  \
 ../src/app.h  \
  ../src/../src/sdcard.h  \
-../src/Helper_func.h 
+../src/../src/Helper_func.h 

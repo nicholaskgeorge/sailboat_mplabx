@@ -24,6 +24,8 @@ void SDCARD_Initialize(SDCARD_DATA* SdcardData){
     SdcardData->nbytesReturned = 0;
     SdcardData->devName = "/dev/mmcblka1";
     SdcardData->mntName = "/mnt/myDrive1";
+    SdcardData->bufFilled = false;
+    SdcardData->buf = malloc(sizeof(uint8_t)*500);
 //    SdcardData->timeHandle = SYS_TIME_CallbackRegisterMS(SDMountTimeout_Callback, (uintptr_t)0, SD_CARD_DEFAULT_TIMOUT*1000, SYS_TIME_SINGLE);
 }
 
@@ -81,17 +83,23 @@ void SDCARD_Tasks(SDCARD_DATA* SdcardData){
               }
               break;
 
-            case SDCARD_STATE_WRITE_FILE:;
-
-                SdcardData->nbytesReturned = SYS_FS_FileWrite(SdcardData->fileHandle,SdcardData->buf, SdcardData->nbytes);
-
-                if (SdcardData->nbytesReturned == -1){
-                  SdcardData->state = SDCARD_STATE_ERROR;
+            case SDCARD_STATE_WRITE_FILE:
+                
+                
+                if(!SdcardData->bufFilled){
+                    SdcardData->state = SDCARD_STATE_WRITE_FILE;
                 }else{
-                  SdcardData->state = SDCARD_STATE_SUCCESS;
+                    //USART1_Write(SdcardData->buf,SdcardData->nbytes);
+                    SdcardData->nbytesReturned = SYS_FS_FileWrite(SdcardData->fileHandle,SdcardData->buf, SdcardData->nbytes);
+                    if (SdcardData->nbytesReturned == -1){
+                      SdcardData->state = SDCARD_STATE_ERROR;
+                    }else{
+                      SdcardData->state = SDCARD_STATE_SUCCESS;
+                    }
+                    SYS_FS_FileClose(SdcardData->fileHandle);
+                    //USART1_Write("Write to file...\r\n",sizeof("Write to file...\r\n"));
                 }
-                SYS_FS_FileClose(SdcardData->fileHandle);
-                //USART1_Write("Write to file...\r\n",sizeof("Write to file...\r\n"));
+                
 
               break;
 
@@ -180,6 +188,7 @@ void SDCARD_StateSwitch(SDCARD_DATA* SdcardData,SDCARD_STATES state){
 void SDCARD_FillinBuffer(SDCARD_DATA* SdcardData,uint8_t* buf,size_t nbytes){
     SdcardData->buf= buf;
     SdcardData->nbytes = nbytes;
+    SdcardData->bufFilled = true;
 }
 
 void SDCARD_SetDevice(SDCARD_DATA* SdcardData,char* devName){

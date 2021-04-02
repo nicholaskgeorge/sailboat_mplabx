@@ -102,4 +102,5 @@ build/default/production/_ext/1171490990/tasks.o:  \
  ../src/config/default/peripheral/usart/plib_usart2.h  \
 ../src/app.h  \
  ../src/../src/sdcard.h  \
-../src/config/default/definitions.h 
+../src/config/default/definitions.h  \
+ ../src/../src/Helper_func.h 

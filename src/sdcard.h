@@ -24,6 +24,7 @@
 #include "definitions.h"                // SYS function prototypes
 #include <stdio.h>
 #include <time.h>
+#include "Helper_func.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -100,6 +101,8 @@ typedef struct
     int32_t fileSize;
     /* Message to be written/read */
     uint8_t *buf;
+    /* if message buffer is filled */
+    bool bufFilled;
     /* size of buf*/
     size_t nbytes;
     /* size of buf after operation*/
