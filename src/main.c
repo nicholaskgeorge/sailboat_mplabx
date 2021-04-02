@@ -60,16 +60,21 @@ int main ( void )
     while ( true ){     
         
         
-        /* I2C data logging Starts */
-        TWIHS0_Read(0x42, &buf[0], nbytes );
-        if (!isallspace(buf,nbytes)){
-            Buffer b = remove_spaces(buf, nbytes);
-            SDCARD_FillinBuffer(SdcardData,b.ptr,b.len);
-            SDCARD_Tasks(SdcardData);
-        }
-        /* I2C data logging Ends */
+//        /* I2C data logging Starts */
+//        TWIHS0_Read(0x42, &buf[0], nbytes );
+//        if (!isallspace(buf,nbytes)){
+//            Buffer b = remove_spaces(buf, nbytes);
+//            SDCARD_FillinBuffer(SdcardData,b.ptr,b.len);
+//            SDCARD_Tasks(SdcardData);
+//        }
+//        /* I2C data logging Ends */
         
-       
+        /* USART data logging Starts */
+        USART2_Read(&buf[0],nbytes);
+        SDCARD_FillinBuffer(SdcardData,buf,nbytes);
+        SDCARD_Tasks(SdcardData);
+        /* USART data logging Ends */
+        
         /* Maintain state machines of all polled MPLAB Harmony modules. */
         SYS_Tasks ( );
         
