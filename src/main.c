@@ -50,15 +50,15 @@ int main ( void )
     SDCARD_Initialize(SdcardData);
     char* sensorFiles[3] = {"GPS.txt","Anem.txt","IMU.txt"};
     SDCARD_WriteorRead(SdcardData,true);
-    SDCARD_FileName(SdcardData,sensorFiles[0]);
+    SDCARD_FileName(SdcardData,sensorFiles[1]);
     SDCARD_StateSwitch(SdcardData,SDCARD_STATE_CARD_MOUNT);
     /* SD Card code work initialize Ends */
-
+    
     uint8_t buf[500];
     size_t nbytes = 500;
 
     while ( true ){     
-        
+
         
 //        /* I2C data logging Starts */
 //        TWIHS0_Read(0x42, &buf[0], nbytes );
@@ -70,10 +70,14 @@ int main ( void )
 //        /* I2C data logging Ends */
         
         /* USART data logging Starts */
-        USART2_Read(&buf[0],nbytes);
+        USART1_Read(&buf[0],nbytes);
         SDCARD_FillinBuffer(SdcardData,buf,nbytes);
         SDCARD_Tasks(SdcardData);
         /* USART data logging Ends */
+        
+        
+        /* Sleep Mode entry (wake up by any interrupt)*/
+//        __WFI();
         
         /* Maintain state machines of all polled MPLAB Harmony modules. */
         SYS_Tasks ( );
