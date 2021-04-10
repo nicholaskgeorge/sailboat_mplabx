@@ -45,6 +45,7 @@ int main ( void )
 {
     /* Initialize all modules */
     SYS_Initialize ( NULL );
+    
     /* SD Card code work initialize Starts */
     SDCARD_DATA* SdcardData=malloc(sizeof(SDCARD_DATA*));
     SDCARD_Initialize(SdcardData);
@@ -54,6 +55,9 @@ int main ( void )
     SDCARD_StateSwitch(SdcardData,SDCARD_STATE_CARD_MOUNT);
     /* SD Card code work initialize Ends */
     
+    /* PWM Generation initialize Starts */
+//    PWM0_ChannelsStart(PWM_CHANNEL_#_MASK);
+    /* PWM Generation initialize Ends */
     uint8_t buf[500];
     size_t nbytes = 500;
 
@@ -76,8 +80,13 @@ int main ( void )
         /* USART data logging Ends */
         
         
-        /* Sleep Mode entry (wake up by any interrupt)*/
+        /* Sleep Mode entry (wake up by any interrupt) Starts */
 //        __WFI();
+        /* Sleep Mode entry (wake up by any interrupt) Ends*/
+        
+        /* Generate PWM signal Starts */
+//        PWM0_ChannelDutySet(PWM_CHANNEL_#, duty#);
+        /* Generate PWM signal Ends */
         
         /* Maintain state machines of all polled MPLAB Harmony modules. */
         SYS_Tasks ( );

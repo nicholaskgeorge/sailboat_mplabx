@@ -3,18 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/sdcard.c</file>
+            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/packs/CMSIS/CMSIS/Core/Include/cmsis_gcc.h</file>
             <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/main.c</file>
-            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/IridiumSBD.c</file>
-            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/Helper_func.c</file>
-            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/sdcard.h</file>
-            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/default/exceptions.c</file>
-            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/default/peripheral/twihs/plib_twihs0.c</file>
-            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/default/system/int/src/sys_int.c</file>
-            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/app.c</file>
-            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/default/system/time/src/sys_time.c</file>
-            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/default/peripheral/uart/plib_uart1.c</file>
-            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/Helper_func.h</file>
+            <file>file:/C:/Users/daisy/HarmonyProjects/SAME70/firmware/src/config/default/system/time/sys_time.h</file>
         </group>
     </open-files>
 </project-private>
