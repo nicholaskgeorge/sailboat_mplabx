@@ -11,7 +11,7 @@
 /*========================== HELPER FUNCTION STARTS =============================*/
 
 /* print message on debug port */
-void debug_print(char* str){
+void debug_print(void * str){
   USART1_Write(str,sizeof(str));
 }
 
@@ -364,11 +364,13 @@ void sleep_ISBD(IridiumSBD* self){
 
 void power(IridiumSBD* self,bool on)
 {
-   self->isAsleep = !on;
+   
 
    if (self->sleep_pin == -1)
       return;
-
+   
+   self->isAsleep = !on;
+   
    PIO_PinOutputEnable(self->sleep_pin);
 
    if (on)
@@ -409,7 +411,7 @@ void begin(IridiumSBD* self){
    }
 
    send("AT&K0\r");
-   if (!waitForATResponse(self,NULL,0,NULL,"OK\r\n")){
+   if (!waitForATResponse(self,NULL,0,NULL,"OK\r\n")){ 
      debug_print("Protocal error!\r\n");
      self->current_mode  =  ISBD_PROTOCOL_ERROR;
    }
