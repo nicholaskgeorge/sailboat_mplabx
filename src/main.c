@@ -73,6 +73,10 @@ int main ( void )
 //        }
 //        /* I2C data logging Ends */
         
+        
+        
+        
+        
         /* USART data logging Starts */
         USART1_Read(&buf[0],nbytes);
         SDCARD_FillinBuffer(SdcardData,buf,nbytes);
@@ -80,13 +84,25 @@ int main ( void )
         /* USART data logging Ends */
         
         
+        
+        
+        
         /* Sleep Mode entry (wake up by any interrupt) Starts */
 //        __WFI();
         /* Sleep Mode entry (wake up by any interrupt) Ends*/
         
+        
+        
+        
         /* Generate PWM signal Starts */
 //        PWM0_ChannelDutySet(PWM_CHANNEL_#, duty#);
         /* Generate PWM signal Ends */
+        
+        
+        
+        
+        
+        
         
         /* Maintain state machines of all polled MPLAB Harmony modules. */
         SYS_Tasks ( );
