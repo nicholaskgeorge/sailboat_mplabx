@@ -58,6 +58,12 @@ int main ( void )
     /* PWM Generation initialize Starts */
 //    PWM0_ChannelsStart(PWM_CHANNEL_#_MASK);
     /* PWM Generation initialize Ends */
+    
+    
+     /* Read Duty Cycle Starts */
+//    TC0_CH0_CaptureStart();
+     /* Read Duty Cycle Ends */
+    
     uint8_t buf[500];
     size_t nbytes = 500;
 
@@ -99,7 +105,17 @@ int main ( void )
         /* Generate PWM signal Ends */
         
         
-        
+        /* Generate PWM signal Starts */
+//        while(((TC_CAPTURE_STATUS)(TC0_REGS->TC_CHANNEL[0].TC_SR & TC_CAPTURE_STATUS_MSK) & TC_CAPTURE_B_LOAD) != TC_CAPTURE_B_LOAD);
+//        
+//        off_time = TC0_CH0_CaptureAGet();
+//        period = TC0_CH0_CaptureBGet();
+//
+//        /* Read Duty Cycle in percentage and Frequency in Hz */
+//        on_time = period - off_time;
+//        duty = ((on_time) * 100U) / period;
+//        frequency = (TC0_CH0_CaptureFrequencyGet() / period);
+          /* Read PWM signal Ends */
         
         
         
