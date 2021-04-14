@@ -47,12 +47,12 @@ int main ( void )
     SYS_Initialize ( NULL );
     
     /* SD Card code work initialize Starts */
-    SDCARD_DATA* SdcardData=malloc(sizeof(SDCARD_DATA*));
-    SDCARD_Initialize(SdcardData);
-    char* sensorFiles[3] = {"GPS.txt","Anem.txt","IMU.txt"};
-    SDCARD_WriteorRead(SdcardData,true);
-    SDCARD_FileName(SdcardData,sensorFiles[1]);
-    SDCARD_StateSwitch(SdcardData,SDCARD_STATE_CARD_MOUNT);
+//    SDCARD_DATA* SdcardData=malloc(sizeof(SDCARD_DATA*));
+//    SDCARD_Initialize(SdcardData);
+//    char* sensorFiles[3] = {"GPS.txt","Anem.txt","IMU.txt"};
+//    SDCARD_WriteorRead(SdcardData,true);
+//    SDCARD_FileName(SdcardData,sensorFiles[1]);
+//    SDCARD_StateSwitch(SdcardData,SDCARD_STATE_CARD_MOUNT);
     /* SD Card code work initialize Ends */
     
     /* PWM Generation initialize Starts */
@@ -64,11 +64,21 @@ int main ( void )
 //    TC0_CH0_CaptureStart();
      /* Read Duty Cycle Ends */
     
-    uint8_t buf[500];
+    
+    
+    char buf[500];
     size_t nbytes = 500;
-
+    
     while ( true ){     
-
+        USART2_Read(&buf[0],nbytes);
+        USART1_Write(&buf[0],nbytes);
+                
+                
+        /* Parse Anemometer information Starts*/
+//        Anemometer_INFO* ane_info=malloc(sizeof(Anemometer_INFO*));
+//        USART1_Read(&buf[0],nbytes);
+//        Anem_Process(ane_info,buf);
+        /* Parse Anemometer information Ends*/
         
 //        /* I2C data logging Starts */
 //        TWIHS0_Read(0x42, &buf[0], nbytes );
@@ -84,9 +94,9 @@ int main ( void )
         
         
         /* USART data logging Starts */
-        USART1_Read(&buf[0],nbytes);
-        SDCARD_FillinBuffer(SdcardData,buf,nbytes);
-        SDCARD_Tasks(SdcardData);
+//        USART1_Read(&buf[0],nbytes);
+//        SDCARD_FillinBuffer(SdcardData,buf,nbytes);
+//        SDCARD_Tasks(SdcardData);
         /* USART data logging Ends */
         
         

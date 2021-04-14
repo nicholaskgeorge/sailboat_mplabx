@@ -9,15 +9,6 @@
 
 #include "gps.h"
 
-#include <stddef.h>                     // Defines NULL
-#include <stdbool.h>                    // Defines true
-#include <stdlib.h>                     // Defines EXIT_FAILURE
-#include "definitions.h"                // SYS function prototypes
-#include <stdio.h>
-#include <math.h>
-#include <string.h>
-#include  <ctype.h> 
-
 /* Setup the buffer storing GPS output string.
 * Input: GPS_info: GPS_INFO struct pointer
 *        buf: empty buffer

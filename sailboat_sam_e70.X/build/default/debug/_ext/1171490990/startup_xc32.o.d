@@ -102,4 +102,7 @@ build/default/debug/_ext/1171490990/startup_xc32.o:  \
 ../src/app.h  \
  ../src/../src/sdcard.h  \
 ../src/config/default/definitions.h  \
- ../src/../src/Helper_func.h 
+ ../src/../src/Helper_func.h  \
+../src/config/default/../Anemometer.h  \
+ ../src/config/default/../gps.h  \
+../src/config/default/../IridiumSBD.h 

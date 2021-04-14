@@ -15,6 +15,10 @@
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include "definitions.h"                // SYS function prototypes
 #include <stdio.h>
+#include "configuration.h"
+#include <math.h>
+#include <string.h>
+#include  <ctype.h> 
 
 #ifdef	__cplusplus
 extern "C" {
@@ -25,17 +29,17 @@ typedef struct
 	// Sentence buffer and associated pointers
 
 	// char _buffer[_bufferLen];
-	uint8_t bufferLen;
+	size_t bufferLen;
 	char* buffer;
 
 
 	// Variables parsed and kept for user
 	double speed;
-	uint8_t direction;
+	double direction;
 	double u,v,w; 
 	double temp,humidity,pressure; 
 	double pitch,roll;
-    uint8_t magnetic_dir;
+    double magnetic_dir;
 
 } Anemometer_INFO ;
 

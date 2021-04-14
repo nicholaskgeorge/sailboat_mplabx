@@ -102,4 +102,7 @@ build/default/debug/_ext/1360937237/sdcard.o:  \
  ../src/config/default/peripheral/usart/plib_usart2.h  \
 ../src/app.h  \
  ../src/../src/sdcard.h  \
-../src/Helper_func.h 
+../src/config/default/../Anemometer.h  \
+ ../src/config/default/../gps.h  \
+../src/config/default/../IridiumSBD.h  \
+ ../src/Helper_func.h 

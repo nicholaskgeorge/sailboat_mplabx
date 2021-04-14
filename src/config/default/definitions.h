@@ -73,8 +73,10 @@
 #include "peripheral/usart/plib_usart2.h"
 #include "app.h"
 #include "../src/sdcard.h"
-
-
+#include "../Anemometer.h"
+#include "../gps.h"
+#include "../IridiumSBD.h"
+#include "../../IMU.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility

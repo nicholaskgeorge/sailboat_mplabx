@@ -102,4 +102,7 @@ build/default/debug/_ext/1360937237/main.o:  \
 ../src/app.h  \
  ../src/../src/sdcard.h  \
 ../src/../src/Helper_func.h  \
+ ../src/config/default/../Anemometer.h  \
+../src/config/default/../gps.h  \
+ ../src/config/default/../IridiumSBD.h  \
 ../src/Helper_func.h 
