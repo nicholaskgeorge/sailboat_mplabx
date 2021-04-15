@@ -68,10 +68,16 @@ int main ( void )
     
     char buf[500];
     size_t nbytes = 500;
-    
+        
+    IMU_INFO* IMU_info=malloc(sizeof(IMU_INFO*));
+    USART2_Read(&buf[0],nbytes);
     while ( true ){     
-        USART2_Read(&buf[0],nbytes);
         USART1_Write(&buf[0],nbytes);
+        USART2_Read(&buf[0],nbytes);
+        if (!IMU_Process(IMU_info,buf))
+            USART2_Read(&buf[0],nbytes);
+            
+         
                 
                 
         /* Parse Anemometer information Starts*/

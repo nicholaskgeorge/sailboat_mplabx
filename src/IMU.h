@@ -42,7 +42,7 @@ typedef struct
 } IMU_INFO ;
 
 bool IMU_Process(IMU_INFO* IMU_info,char* incoming_str);
-char* Parse_IMU_Field(IMU_INFO* IMU_info,char* s);
+bool Parse_IMU_Field(IMU_INFO* IMU_info);
 
 
 

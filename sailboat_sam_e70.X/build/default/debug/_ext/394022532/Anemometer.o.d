@@ -105,4 +105,5 @@ build/default/debug/_ext/394022532/Anemometer.o:  \
 ../src/../src/Helper_func.h  \
  ../src/config/default/../Anemometer.h  \
 ../src/config/default/../gps.h  \
- ../src/config/default/../IridiumSBD.h 
+ ../src/config/default/../IridiumSBD.h  \
+../src/config/default/../../IMU.h 

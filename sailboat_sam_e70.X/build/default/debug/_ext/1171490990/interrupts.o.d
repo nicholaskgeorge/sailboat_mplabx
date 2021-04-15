@@ -106,4 +106,5 @@ build/default/debug/_ext/1171490990/interrupts.o:  \
  ../src/../src/Helper_func.h  \
 ../src/config/default/../Anemometer.h  \
  ../src/config/default/../gps.h  \
-../src/config/default/../IridiumSBD.h 
+../src/config/default/../IridiumSBD.h  \
+ ../src/config/default/../../IMU.h 

@@ -1,5 +1,6 @@
-build/default/debug/_ext/1360937237/main.o:  \
-../src/main.c  \
+build/default/debug/_ext/1360937237/IMU.o:  \
+../src/IMU.c  \
+../src/IMU.h  \
  ../src/config/default/definitions.h  \
  ../src/config/default/driver/sdmmc/drv_sdmmc.h  \
  ../src/config/default/system/system.h  \
@@ -105,5 +106,4 @@ build/default/debug/_ext/1360937237/main.o:  \
  ../src/config/default/../Anemometer.h  \
 ../src/config/default/../gps.h  \
  ../src/config/default/../IridiumSBD.h  \
-../src/config/default/../../IMU.h  \
- ../src/Helper_func.h 
+../src/config/default/../../IMU.h 
