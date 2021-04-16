@@ -30,43 +30,37 @@ typedef struct
 	// Sentence buffer and associated pointers
 
 	// char _buffer[_bufferLen];
-	uint8_t bufferLen;
+	size_t bufferLen;
 	char* buffer;
-	char *ptr;
 
 	// Information from current NMEA sentence
 	char talkerID;
-	char messageID[6];
+	char messageID[3];
 
 	// Variables parsed and kept for user
 	char navSystem;
 	bool isValid;
 	long latitude, longitude; // In millionths of a degree
-	long altitude; // In millimetres
+	double altitude; // In meters
 	bool altitudeValid;
-	long speed, course;
-	uint16_t year;
-	uint8_t month, day, hour, minute, second,hundredths;
-	uint8_t numSat;
-	uint8_t hdop;
+	double speed, course; // speed in m/s, course is track angle in degrees (True)
+	long year;
+	long month, day, hour, minute, second,hundredths;
+	int numSat;
+	double hdop;
 
 
 
 
 } GPS_INFO ;
 
-void setGPSBuffer(GPS_INFO* GPS_info,void* buf, uint8_t len);
-bool NMEA_Process(GPS_INFO* GPS_info,char* incoming_char);
-const char* parseField(const char* s, char *result, int len);
-bool processGGA(GPS_INFO* GPS_info,const char *s);
-bool processRMC(GPS_INFO* GPS_info,const char* s);
+bool GPS_Process(GPS_INFO* GPS_info,char* incoming_char);
+bool processGGA(GPS_INFO* GPS_info,const char *start);
+bool processRMC(GPS_INFO* GPS_info,const char* start);
 const char* parseTime(GPS_INFO* GPS_info,const char* s);
 const char* parseDate(GPS_INFO* GPS_info,const char* s);
-const char* skipField(const char* s);
-unsigned int parseUnsignedInt(const char *s, uint8_t len);
 long parseDegreeMinute(const char* s, uint8_t degWidth,const char **eptr);
-long parseFloat(const char* s, uint8_t log10Multiplier, const char** eptr);
-long exp_10(uint8_t b);
+long parseFloat(const char* s, const char** eptr);
 #ifdef	__cplusplus
 }
 #endif

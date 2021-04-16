@@ -9,87 +9,6 @@
 
 #include "gps.h"
 
-/* Setup the buffer storing GPS output string.
-* Input: GPS_info: GPS_INFO struct pointer
-*        buf: empty buffer
-*        len: length of the buffer
-*/
-void setGPSBuffer(GPS_INFO* GPS_info,void* buf, uint8_t len){
-    
-	GPS_info->bufferLen = len;
-	GPS_info->buffer = (char*)buf;
-	GPS_info->ptr = GPS_info->buffer;
-	if (GPS_info->bufferLen) {
-		*GPS_info->ptr = '\0';
-		GPS_info->buffer[GPS_info->bufferLen - 1] = '\0';
-	}
-}
-
-/* Parse the GPS output
-* Input: 
-*        s: char pointer pointing to the start of one field of GPS string 
-*        result: char pointer pointing to where stores the field value
-*        len: length of the result storage buffer 
-* Returns: the char pointer which points to the end of one field.
-*/
-const char* parseField(const char* s, char *result, int len){
-
-	if (s == NULL)
-		return NULL;
-
-	int i = 0;
-	while (*s != ',' && *s != '\0') {
-		if (result && i++ < len)
-			*result++ = *s;
-		++s;
-	}
-	if (result && i < len)
-		*result = '\0'; // Terminate unless too long
-
-	if (*s == ',')
-		return ++s; // Location of start of next field
-	else
-		return NULL; // End of string or valid sentence
-}
-
-/* Skip any field of the GPS output
-* Input: 
-*        s: char pointer pointing to ',', the end of last field
-* Returns: the char pointer which points to the start of next field.
-*/
-const char* skipField(const char* s)
-{   
-	if (s == NULL)
-		return NULL;
-
-	while (*s != '\0') {
-		if (*s == ',') {
-			// Check next character
-			if (*s++ != '\0')
-				break;
-			else
-				return s;
-		}
-		++s;
-	}
-	return NULL; // End of string or valid sentence
-}
-
-/* Convert char* to unsigned integer
-* Input: 
-*        s: char pointer pointing to digit character
-*       len: length of the digit string
-* Returns: the value of the digit string representing for 
-*/
-unsigned int parseUnsignedInt(const char *s, uint8_t len)
-{
-    
-	int r = 0;
-	while (len--)
-		r = 10 * r + *s++ - '0';
-	return r;
-}
-
 /* Parse output and update GPS_info accordingly.
 * Input: 
 *        GPS_info: GPS_INFO pointer struct
@@ -99,12 +18,16 @@ unsigned int parseUnsignedInt(const char *s, uint8_t len)
 const char* parseTime(GPS_INFO* GPS_info,const char* s)
 {
 	if (*s == ',')
-		return skipField(s);
-	GPS_info->hour = parseUnsignedInt(s, 2);
-	GPS_info->minute = parseUnsignedInt(s + 2, 2);
-	GPS_info->second = parseUnsignedInt(s + 4, 2);
-	GPS_info->hundredths = parseUnsignedInt(s + 7, 2);
-	return skipField(s + 9);
+		return s+1;
+    char *end = s+1;
+	GPS_info->hour = strtol(s, &end, 10);
+    end = s+3;
+	GPS_info->minute = strtol(s + 2,&end,10);
+    end = s+5;
+	GPS_info->second = strtol(s + 4,&end,10);
+    end = s+8;
+	GPS_info->hundredths = strtol(s + 7,&end,10);
+	return s+10;
 }
 
 /* Parse output and update GPS_info accordingly.
@@ -116,64 +39,34 @@ const char* parseTime(GPS_INFO* GPS_info,const char* s)
 const char* parseDate(GPS_INFO* GPS_info,const char* s)
 {
 	if (*s == ',')
-		return skipField(s);
-	GPS_info->day = parseUnsignedInt(s, 2);
-	GPS_info->month = parseUnsignedInt(s + 2, 2);
-	GPS_info->year = parseUnsignedInt(s + 4, 2) + 2000;
-	return skipField(s + 6);
-}
-
-/* Calculates power of 10 with exponent = b
- * Input:
- *      b: the exponent
- * Returns: power of 10 with exponent b */
-long exp_10(uint8_t b)
-{
-	long r = 1;
-	while (b--)
-		r *= 10;
-	return r;
+		return s+1;
+    char *end = s+1;
+	GPS_info->day = strtol(s, &end, 10);
+    end = s+3;
+	GPS_info->month =  strtol(s+2, &end, 10);
+    end = s+5;
+	GPS_info->year =  strtol(s+4, &end, 10) + 2000;
+	return (s + 7);
 }
 
 /* Convert char* to float
 * Input: 
 *        s: char pointer pointing to digit character
-*      log10Multiplier: the exponent of power of 10
 *       eptr: points to the addess of the pointer pointing to the end of the field
 * Returns: the value of the digit string representing for 
 */
-long parseFloat(const char* s, uint8_t log10Multiplier, const char** eptr)
+double parseFloat(const char* s,  const char** eptr)
 {
-	int8_t neg = 1;
-	long r = 0;
-	while (isspace(*s))
-		++s;
-	if (*s == '-') {
-		neg = -1;
-		++s;
+    if (*s == ',') { 
+		if (eptr)
+			*eptr = s+1;
+		return 0;
 	}
-	else if (*s == '+')
-		++s;
-
-	while (isdigit(*s))
-		r = 10*r + *s++ - '0';
-	r *= exp_10(log10Multiplier);
-
-	if (*s == '.') {
-		++s;
-		long frac = 0;
-		while (isdigit(*s) && log10Multiplier) {
-			frac = 10 * frac + *s++ -'0';
-			--log10Multiplier;
-		}
-		frac *= exp_10(log10Multiplier);
-		r += frac;
-	}
-	r *= neg; // Include effect of any minus sign
-
-	if (eptr)
-		*eptr = skipField(s);
-	return r;
+    char* end=strchr(s,',')-1;
+    
+    double parsed_val =  strtod (s, &end);
+    *eptr = end+2;
+    return parsed_val;
 }
 
 /* Convert the input string to degree minute
@@ -181,7 +74,7 @@ long parseFloat(const char* s, uint8_t log10Multiplier, const char** eptr)
 *        
 *       s: the char pointer which points to the start of field
 *      degWidth: the length of degree string
-*       eptr: points to the addess of the pointer pointing to the end of the field
+*       eptr: points to the address of the pointer pointing to the end of the field
 * Returns: the value in degree minute
 */
 long parseDegreeMinute(const char* s, uint8_t degWidth,
@@ -189,12 +82,16 @@ long parseDegreeMinute(const char* s, uint8_t degWidth,
 {
 	if (*s == ',') { 
 		if (eptr)
-			*eptr = skipField(s);
+			*eptr = s+1;
 		return 0;
 	}
-	long r = parseUnsignedInt(s, degWidth) * 1000000L;
+
+    char* end = s+degWidth-1;
+	long r = strtol(s,&end,10);
 	s += degWidth;
-	r += parseFloat(s, 6, eptr) / 60;
+    end = s+7;
+	r += strtod(s, &end)/60;
+    *eptr = end+2;
 	return r;
 }
 
@@ -204,14 +101,17 @@ long parseDegreeMinute(const char* s, uint8_t degWidth,
  *      s: points to the start of GGA message
  * Returns: true-> process a complete GGA message, false-> otherwise
  */
-bool processGGA(GPS_INFO* GPS_info,const char *s)
+bool processGGA(GPS_INFO* GPS_info,const char *start)
 {
 	// Process GGA format messages. 
 	GPS_info->navSystem = GPS_info->talkerID;
-
-	s = parseTime(GPS_info,s);
-	// ++s;
+    
+    char* s = start;
+    s=strchr(start,',');
+	s = parseTime(GPS_info,s+1);
+    
 	GPS_info->latitude = parseDegreeMinute(s, 2, &s);
+    
 	if (*s == ',')
 		++s;
 	else {
@@ -219,7 +119,9 @@ bool processGGA(GPS_INFO* GPS_info,const char *s)
 			GPS_info->latitude *= -1;
 		s += 2; // Skip N/S and comma
 	}
+    
 	GPS_info->longitude = parseDegreeMinute(s, 3, &s);
+    
 	if (*s == ',')
 		++s;
 	else {
@@ -227,11 +129,16 @@ bool processGGA(GPS_INFO* GPS_info,const char *s)
 			GPS_info->longitude *= -1;
 		s += 2; // Skip E/W and comma
 	}
+    
 	GPS_info->isValid = (*s == '1' || *s == '2');
+    
+    if (!GPS_info->isValid )
+        return false;
+    
 	s += 2; // Skip position fix flag and comma
-	GPS_info->numSat = parseFloat(s, 0, &s);
-	GPS_info->hdop = parseFloat(s, 1, &s);
-	GPS_info->altitude = parseFloat(s, 3, &s);
+	GPS_info->numSat = int(parseFloat(s,&s));
+	GPS_info->hdop = parseFloat(s,  &s);
+	GPS_info->altitude = parseFloat(s,  &s);
 	GPS_info->altitudeValid = true;
 	// That's all we care about
 	return true;
@@ -243,33 +150,46 @@ bool processGGA(GPS_INFO* GPS_info,const char *s)
  *      s: points to the start of RMC message
  * Returns: true-> process a complete RMC message, false-> otherwise
  */
-bool processRMC(GPS_INFO* GPS_info,const char* s)
+bool processRMC(GPS_INFO* GPS_info,const char* start)
 {
 	// RMC format message
 	GPS_info->navSystem = GPS_info->talkerID;
 
-	s = parseTime(GPS_info,s);
-	GPS_info->isValid = (*s == 'A');
-	s += 2; // Skip validity and comma
-	GPS_info->latitude = parseDegreeMinute(s, 2, &s);
-	if (*s == ',')
-		++s;
+    char* ptr = start;
+    
+    ptr=strchr(start,',');
+	ptr = parseTime(GPS_info,ptr+1);
+    
+    
+	GPS_info->isValid = (*ptr == 'A');
+    
+    if (!GPS_info->isValid )
+        return false;
+    
+	ptr += 2; // Skip validity and comma
+    
+	GPS_info->latitude = parseDegreeMinute(ptr, 2, &ptr);
+    
+	if (*ptr == ',')
+		++ptr;
 	else {
-		if (*s == 'S')
+		if (*ptr == 'S')
 			GPS_info->latitude *= -1;
-		s += 2; // Skip N/S and comma
+		ptr += 2; // Skip N/S and comma
 	}
-	GPS_info->longitude = parseDegreeMinute(s, 3, &s);
-	if (*s == ',')
-		++s;
+    
+	GPS_info->longitude = parseDegreeMinute(ptr, 3, &ptr);
+	if (*ptr == ',')
+		++ptr;
 	else {
-		if (*s == 'W')
+		if (*ptr == 'W')
 			GPS_info->longitude *= -1;
-		s += 2; // Skip E/W and comma
+		ptr += 2; // Skip E/W and comma
 	}
-	GPS_info->speed = parseFloat(s, 3, &s);
-	GPS_info->course = parseFloat(s, 3, &s);
-	s = parseDate(GPS_info,s);
+    
+	GPS_info->speed = parseFloat(ptr, &ptr);
+	GPS_info->course = parseFloat(ptr,&ptr);
+	ptr = parseDate(GPS_info,ptr);
 	// That's all we care about
 	return true;
 }
@@ -280,39 +200,46 @@ bool processRMC(GPS_INFO* GPS_info,const char* s)
  *      incoming_str: points to the start of NMEA string
  * Returns: true-> process a complete NMEA message, false-> otherwise
  */
-bool NMEA_Process(GPS_INFO* GPS_info,char* incoming_str)
+bool GPS_Process(GPS_INFO* GPS_info,char* incoming_str)
 {
     
     char* ptr = incoming_str;
+    char* start = ptr;
+    char* end = ptr;
     
-
-    while (*ptr!='\0'){
-        if (*ptr == '$') {
-            char* endptr = ptr;
-            while (*endptr!='\0'){
-                if (*endptr == '\r')
-                    break;
-                ++endptr;
-            }
-
-            // Valid message
-            const char* data;
-            if (ptr[1] == 'G') {
-                GPS_info->talkerID = ptr[2];
-                data = parseField(&ptr[3], &GPS_info->messageID[0], sizeof(GPS_info->messageID));
-            }
-            else {               
-                GPS_info->talkerID = '\0';
-                data = parseField(&ptr[1], &GPS_info->messageID[0], sizeof(GPS_info->messageID));
-            }
-
-            if (strcmp(&GPS_info->messageID[0], "GGA") == 0)
-                return processGGA(GPS_info,data);
-            else if (strcmp(&GPS_info->messageID[0], "RMC") == 0)
-                return processRMC(GPS_info,data);
-            ptr = endptr;
-        }
-        ptr++;
+    bool result[2] = {false,false}; 
+    
+    while (*ptr=='\0'){ // find the start of non-null values
+        ++ptr;
     }
-    return false;
+    
+    while (*ptr != '\0'){ // find the start of the message
+        if (*ptr == '$'){
+            start = ptr;
+            end = start;
+            while (*end!='\0'){
+                if (*end == '\r')
+                    break;
+                ++end;
+            }
+            
+            if (*end == '\0'){
+                return result[0]&&result[1];
+            }
+            
+            GPS_info->bufferLen = end-start;
+            GPS_info->buffer = start;
+            
+            GPS_info->talkerID = start[2];
+            strncpy(GPS_info->messageID, start+3, 3);
+            if (strcmp(&GPS_info->messageID[0], "GGA") == 0)
+                result[0] = processGGA(GPS_info,start);
+            else if (strcmp(&GPS_info->messageID[0], "RMC") == 0)
+                result[1] = processRMC(GPS_info,start);
+            
+            ptr = end;
+        }
+        ++ptr;
+    }
+    return result[0]&&result[1];
 }

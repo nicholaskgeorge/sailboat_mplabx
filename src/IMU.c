@@ -65,30 +65,30 @@ bool Parse_IMU_Field(IMU_INFO* IMU_info){
     }
     strncpy(IMU_info->messagetype, str+3, 3);
 
-      char* endptr = str+field_index[1]-1;
-      IMU_info->yaw = strtod (str+1+field_index[0], &endptr);
-      endptr = str+field_index[2]-1;
-      IMU_info->pitch = strtod (str+1+field_index[1], &endptr);
-      endptr = str+field_index[3]-1;
-      IMU_info->roll = strtod (str+1+field_index[2], &endptr);
-      endptr = str+field_index[4]-1;
-      IMU_info->MagX = strtod (str+1+field_index[3], &endptr);
-      endptr = str+field_index[5]-1;
-      IMU_info->MagY = strtod (str+1+field_index[4], &(endptr));
-      endptr = str+field_index[6]-1;
-      IMU_info->MagZ = strtod (str+1+field_index[5], &endptr);
-      endptr = str+field_index[7]-1;
-      IMU_info->AccelX = strtod (str+1+field_index[6], &endptr);
-      endptr = str+field_index[8]-1;
-      IMU_info->AccelY = strtod (str+1+field_index[7], &endptr);
-      endptr = str+field_index[9]-1;
-      IMU_info->AccelZ = strtod (str+1+field_index[8], &(endptr));
-      endptr = str+field_index[10]-1;
-      IMU_info->GyroX = strtod (str+1+field_index[9], &endptr);
-      endptr = str+field_index[11]-1;
-      IMU_info->GyroY = strtod (str+1+field_index[10], &endptr);
-      endptr = end-1;
-      IMU_info->GyroZ = strtod (str+1+field_index[11], &endptr);
-      
-      return true;
+    char* endptr = str+field_index[1]-1;
+    IMU_info->yaw = strtod (str+1+field_index[0], &endptr);
+    endptr = str+field_index[2]-1;
+    IMU_info->pitch = strtod (str+1+field_index[1], &endptr);
+    endptr = str+field_index[3]-1;
+    IMU_info->roll = strtod (str+1+field_index[2], &endptr);
+    endptr = str+field_index[4]-1;
+    IMU_info->MagX = strtod (str+1+field_index[3], &endptr);
+    endptr = str+field_index[5]-1;
+    IMU_info->MagY = strtod (str+1+field_index[4], &(endptr));
+    endptr = str+field_index[6]-1;
+    IMU_info->MagZ = strtod (str+1+field_index[5], &endptr);
+    endptr = str+field_index[7]-1;
+    IMU_info->AccelX = strtod (str+1+field_index[6], &endptr);
+    endptr = str+field_index[8]-1;
+    IMU_info->AccelY = strtod (str+1+field_index[7], &endptr);
+    endptr = str+field_index[9]-1;
+    IMU_info->AccelZ = strtod (str+1+field_index[8], &(endptr));
+    endptr = str+field_index[10]-1;
+    IMU_info->GyroX = strtod (str+1+field_index[9], &endptr);
+    endptr = str+field_index[11]-1;
+    IMU_info->GyroY = strtod (str+1+field_index[10], &endptr);
+    endptr = end-1;
+    IMU_info->GyroZ = strtod (str+1+field_index[11], &endptr);
+
+    return true;
 }
