@@ -40,12 +40,12 @@ typedef struct
 	// Variables parsed and kept for user
 	char navSystem;
 	bool isValid;
-	long latitude, longitude; // In millionths of a degree
+	double latitude, longitude; // In millionths of a degree
 	double altitude; // In meters
 	bool altitudeValid;
 	double speed, course; // speed in m/s, course is track angle in degrees (True)
-	long year;
-	long month, day, hour, minute, second,hundredths;
+	int year;
+	int month, day, hour, minute, second,hundredths;
 	int numSat;
 	double hdop;
 
@@ -55,12 +55,12 @@ typedef struct
 } GPS_INFO ;
 
 bool GPS_Process(GPS_INFO* GPS_info,char* incoming_char);
-bool processGGA(GPS_INFO* GPS_info,const char *start);
-bool processRMC(GPS_INFO* GPS_info,const char* start);
-const char* parseTime(GPS_INFO* GPS_info,const char* s);
-const char* parseDate(GPS_INFO* GPS_info,const char* s);
-long parseDegreeMinute(const char* s, uint8_t degWidth,const char **eptr);
-long parseFloat(const char* s, const char** eptr);
+bool processGGA(GPS_INFO* GPS_info, char *start);
+bool processRMC(GPS_INFO* GPS_info, char* start);
+ char* parseTime(GPS_INFO* GPS_info, char* s);
+ char* parseDate(GPS_INFO* GPS_info, char* s);
+double parseDegreeMinute( char* s, uint8_t degWidth, char **eptr);
+double parseFloat( char* s,  char** eptr);
 #ifdef	__cplusplus
 }
 #endif

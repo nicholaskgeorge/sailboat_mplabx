@@ -66,21 +66,20 @@ int main ( void )
     
     
     
-    char buf[500];
-    size_t nbytes = 500;
+//    char buf[500];
+//    size_t nbytes = 500;
         
-    IMU_INFO* IMU_info=malloc(sizeof(IMU_INFO*));
-    USART2_Read(&buf[0],nbytes);
+    GPS_INFO* GPS_info=malloc(sizeof(GPS_INFO*));
+    char nmea[]="$GNRMC,203240.00,A,4226.44379,N,07628.53814,W,0.025,,190820,,,D*74\r$GNVTG,,T,,M,0.027,N,0.049,K,D*30\r$GNGGA,203239.00,4226.44380,N,07628.53813,W,2,11,0.95,285.4,M,-34.5,M,,0000*7C\r$GNGSA,A,3,13,15,29,18,20,,,,,,,,1.64,0.95,1.34*13\r";
+  
     while ( true ){     
-        USART1_Write(&buf[0],nbytes);
-        USART2_Read(&buf[0],nbytes);
-        if (!IMU_Process(IMU_info,buf))
-            USART2_Read(&buf[0],nbytes);
+
+        GPS_Process(GPS_info,nmea);
             
          
                 
                 
-        /* Parse Anemometer information Starts*/
+        /* Parse Anemometer information Starts - Similar for other sensors */
 //        Anemometer_INFO* ane_info=malloc(sizeof(Anemometer_INFO*));
 //        USART1_Read(&buf[0],nbytes);
 //        Anem_Process(ane_info,buf);

@@ -1,6 +1,6 @@
-build/default/production/_ext/1360937237/Helper_func.o:  \
- ../src/Helper_func.c  \
-../src/Helper_func.h  \
+build/default/production/_ext/1360937237/IMU.o:  \
+../src/IMU.c  \
+../src/IMU.h  \
  ../src/config/default/definitions.h  \
  ../src/config/default/driver/sdmmc/drv_sdmmc.h  \
  ../src/config/default/system/system.h  \
