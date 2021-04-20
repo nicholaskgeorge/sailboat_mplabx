@@ -46,23 +46,23 @@ int main ( void )
     /* Initialize all modules */
     SYS_Initialize ( NULL );
     
-    /* SD Card code work initialize Starts */
+    /*********** SD Card code work initialize Starts ***********/
 //    SDCARD_DATA* SdcardData=malloc(sizeof(SDCARD_DATA*));
 //    SDCARD_Initialize(SdcardData);
 //    char* sensorFiles[3] = {"GPS.txt","Anem.txt","IMU.txt"};
 //    SDCARD_WriteorRead(SdcardData,true);
 //    SDCARD_FileName(SdcardData,sensorFiles[1]);
 //    SDCARD_StateSwitch(SdcardData,SDCARD_STATE_CARD_MOUNT);
-    /* SD Card code work initialize Ends */
+    /*********** SD Card code work initialize Ends ***********/
     
-    /* PWM Generation initialize Starts */
+    /*********** PWM Generation initialize Starts ***********/
 //    PWM0_ChannelsStart(PWM_CHANNEL_#_MASK);
-    /* PWM Generation initialize Ends */
+    /*********** PWM Generation initialize Ends ***********/
     
     
-     /* Read Duty Cycle Starts */
+     /*********** Read Duty Cycle Starts ***********/
 //    TC0_CH0_CaptureStart();
-     /* Read Duty Cycle Ends */
+     /*********** Read Duty Cycle Ends ***********/
     
     
     
@@ -79,48 +79,49 @@ int main ( void )
          
                 
                 
-        /* Parse Anemometer information Starts - Similar for other sensors */
+        /*********** Parse Anemometer information Starts - Similar for other sensors ***********/
 //        Anemometer_INFO* ane_info=malloc(sizeof(Anemometer_INFO*));
 //        USART1_Read(&buf[0],nbytes);
 //        Anem_Process(ane_info,buf);
-        /* Parse Anemometer information Ends*/
+        /*********** Parse Anemometer information Ends ***********/
         
-//        /* I2C data logging Starts */
+        
+//        /*********** I2C data logging Starts ***********/
 //        TWIHS0_Read(0x42, &buf[0], nbytes );
 //        if (!isallspace(buf,nbytes)){
 //            Buffer b = remove_spaces(buf, nbytes);
 //            SDCARD_FillinBuffer(SdcardData,b.ptr,b.len);
 //            SDCARD_Tasks(SdcardData);
 //        }
-//        /* I2C data logging Ends */
+//        /*********** I2C data logging Ends ***********/
         
         
         
         
         
-        /* USART data logging Starts */
+        /*********** USART data logging Starts ***********/
 //        USART1_Read(&buf[0],nbytes);
 //        SDCARD_FillinBuffer(SdcardData,buf,nbytes);
 //        SDCARD_Tasks(SdcardData);
-        /* USART data logging Ends */
+        /*********** USART data logging Ends ***********/
         
         
         
         
         
-        /* Sleep Mode entry (wake up by any interrupt) Starts */
+        /*********** Sleep Mode entry (wake up by any interrupt) Starts ***********/
 //        __WFI();
-        /* Sleep Mode entry (wake up by any interrupt) Ends*/
+        /*********** Sleep Mode entry (wake up by any interrupt) Ends ***********/
         
         
         
         
-        /* Generate PWM signal Starts */
+        /*********** Generate PWM signal Starts ***********/
 //        PWM0_ChannelDutySet(PWM_CHANNEL_#, duty#);
-        /* Generate PWM signal Ends */
+        /*********** Generate PWM signal Ends ***********/
         
         
-        /* Generate PWM signal Starts */
+        /*********** Read PWM signal Starts ***********/
 //        while(((TC_CAPTURE_STATUS)(TC0_REGS->TC_CHANNEL[0].TC_SR & TC_CAPTURE_STATUS_MSK) & TC_CAPTURE_B_LOAD) != TC_CAPTURE_B_LOAD);
 //        
 //        off_time = TC0_CH0_CaptureAGet();
@@ -130,7 +131,7 @@ int main ( void )
 //        on_time = period - off_time;
 //        duty = ((on_time) * 100U) / period;
 //        frequency = (TC0_CH0_CaptureFrequencyGet() / period);
-          /* Read PWM signal Ends */
+          /*********** Read PWM signal Ends ***********/
         
         
         
