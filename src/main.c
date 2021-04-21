@@ -122,15 +122,17 @@ int main ( void )
         
         
         /*********** Read PWM signal Starts ***********/
+//        /* Remember to set clock source/frequency */
 //        while(((TC_CAPTURE_STATUS)(TC0_REGS->TC_CHANNEL[0].TC_SR & TC_CAPTURE_STATUS_MSK) & TC_CAPTURE_B_LOAD) != TC_CAPTURE_B_LOAD);
+//        while(((TC_CAPTURE_STATUS)(TC0_REGS->TC_CHANNEL[0].TC_SR & TC_CAPTURE_STATUS_MSK) & TC_CAPTURE_A_LOAD) != TC_CAPTURE_A_LOAD);
 //        
-//        off_time = TC0_CH0_CaptureAGet();
-//        period = TC0_CH0_CaptureBGet();
+//        uint16_t off_time = TC0_CH0_CaptureAGet();
+//        uint16_t period = TC0_CH0_CaptureBGet();
 //
 //        /* Read Duty Cycle in percentage and Frequency in Hz */
-//        on_time = period - off_time;
-//        duty = ((on_time) * 100U) / period;
-//        frequency = (TC0_CH0_CaptureFrequencyGet() / period);
+//        uint16_t on_time = period - off_time;
+//        float duty = ((on_time) * 100.) / period/1.;
+//        float frequency = (TC0_CH0_CaptureFrequencyGet() / period);
           /*********** Read PWM signal Ends ***********/
         
         
