@@ -1,0 +1,14 @@
+configName: sam_e70_xult
+folderName: SailBoatProgram
+format_version: v1.0
+frameworkPath: ..\..\Harmony3
+processor: ATSAME70Q21B
+projectName: SailBoatProgram
+settings:
+  PackageFilter: bsp;core;core_apps_sam_e70_s70_v70_v71;csp;csp_apps_sam_e70_s70_v70_v71;quick_docs;usb
+  FORCE_OPTIMIZATION: 'false'
+  GENERATE_BACKUP: 'true'
+  TRUSTZONE: 'false'
+  CMSISPath: .\dev_packs\arm\CMSIS\5.7.0
+  MERGE_STRATEGY: USER_ALL
+  DFPPath: .\dev_packs\Microchip\SAME70_DFP\4.5.86\same70b\atdf\ATSAME70Q21B.atdf
