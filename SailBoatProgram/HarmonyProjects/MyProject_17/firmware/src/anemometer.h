@@ -41,6 +41,7 @@ typedef struct
 	double pitch,roll;
     double magnetic_dir;
     double boatu,boatv,boatw;
+    double boatwinddir;
 
 } Anemometer_INFO ;
 

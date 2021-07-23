@@ -35,6 +35,7 @@
 #include "driver/usart/drv_usart.h"
 #include "FreeRTOS.h"
 #include "queue.h"
+#include "app_imu.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -98,6 +99,32 @@ typedef struct
 
 } APP_ANEMOMETER_DATA;
 
+typedef struct
+{
+	// Sentence buffer and associated pointers
+
+	// char _buffer[_bufferLen];
+	size_t bufferLen;
+	char* buffer;
+
+
+	// Variables parsed and kept for user
+	double speed;
+	double direction;
+	double u,v,w;
+	double temp,humidity,pressure;
+	double pitch,roll;
+    double magnetic_dir;
+    double boatu,boatv,boatw;
+    double boatwinddir;
+
+} Anemometer_INFO ;
+
+bool Anem_Process(Anemometer_INFO* Anemometer_info,char* incoming_str);
+char* ParseField(Anemometer_INFO* Anemometer_info,char* s);
+extern Anemometer_INFO* Anemometer_info;
+extern uint8_t Anemometer_values[128];
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Application Callback Routines
@@ -142,6 +169,8 @@ typedef struct
   Remarks:
     This routine must be called from the SYS_Initialize function.
 */
+
+void realtive_to_boat(Anemometer_INFO* aminfo, IMU_INFO* iminfo, int mast_angle);
 
 void APP_ANEMOMETER_Initialize ( void );
 

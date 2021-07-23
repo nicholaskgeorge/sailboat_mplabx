@@ -496,6 +496,7 @@ void SYS_Initialize ( void* data )
     APP_RUDDER_CONTROL_Initialize();
     APP_GPS_Initialize();
     APP_IMU_Initialize();
+    APP_SD_Initialize();
 
 
     NVIC_Initialize();

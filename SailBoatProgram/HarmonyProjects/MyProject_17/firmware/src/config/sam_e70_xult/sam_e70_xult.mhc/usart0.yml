@@ -44,6 +44,12 @@ children:
   - type: KeyValueSet
     attributes: {id: USART_MODE}
     children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: readOnly}
+        children:
+        - {type: Value, value: 'true'}
     - type: Values
       children:
       - type: Dynamic
@@ -60,6 +66,12 @@ children:
   - type: KeyValueSet
     attributes: {id: USART_OPERATING_MODE}
     children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: readOnly}
+        children:
+        - {type: Value, value: 'true'}
     - type: Values
       children:
       - type: Dynamic
@@ -80,6 +92,15 @@ children:
         attributes: {id: usart0, value: '150'}
 - type: Attachments
   children:
+  - type: DirectCapability
+    attributes: {id: USART0_SPI}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
   - type: DirectCapability
     attributes: {id: USART0_UART}
     children:

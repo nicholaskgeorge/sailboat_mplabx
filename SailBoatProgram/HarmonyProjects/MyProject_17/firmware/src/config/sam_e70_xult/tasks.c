@@ -149,6 +149,16 @@ void _APP_IMU_Tasks(  void *pvParameters  )
         APP_IMU_Tasks();
     }
 }
+/* Handle for the APP_SD_Tasks. */
+TaskHandle_t xAPP_SD_Tasks;
+
+void _APP_SD_Tasks(  void *pvParameters  )
+{   
+    while(1)
+    {
+        APP_SD_Tasks();
+    }
+}
 
 
 
@@ -252,6 +262,14 @@ void SYS_Tasks ( void )
                 NULL,
                 1,
                 &xAPP_IMU_Tasks);
+
+    /* Create OS Thread for APP_SD_Tasks. */
+    xTaskCreate((TaskFunction_t) _APP_SD_Tasks,
+                "APP_SD_Tasks",
+                1024,
+                NULL,
+                1,
+                &xAPP_SD_Tasks);
 
 
 

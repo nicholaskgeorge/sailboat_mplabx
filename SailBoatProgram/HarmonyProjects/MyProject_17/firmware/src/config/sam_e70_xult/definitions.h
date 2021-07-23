@@ -84,6 +84,7 @@
 #include "app_rudder_control.h"
 #include "app_gps.h"
 #include "app_imu.h"
+#include "app_sd.h"
 
 
 

@@ -5,6 +5,13 @@ children:
 - type: Symbols
   children:
   - type: Integer
+    attributes: {id: HSMCI_CLK}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: hsmci, value: '150000000'}
+  - type: Integer
     attributes: {id: HSMCI_DMA}
     children:
     - type: Values
@@ -27,4 +34,4 @@ children:
         children:
         - {type: Value, value: drv_sdmmc_SDHC_dependency}
 - type: ElementPosition
-  attributes: {x: '395', y: '356', id: hsmci}
+  attributes: {x: '397', y: '450', id: hsmci}

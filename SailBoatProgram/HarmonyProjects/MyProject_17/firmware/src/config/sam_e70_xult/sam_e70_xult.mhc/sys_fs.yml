@@ -12,4 +12,4 @@ children:
       - type: TargetAttachment
         attributes: {targetComponentID: drv_sdmmc_0, targetAttachmentID: drv_media}
 - type: ElementPosition
-  attributes: {x: '723', y: '330', id: sys_fs}
+  attributes: {x: '703', y: '436', id: sys_fs}
