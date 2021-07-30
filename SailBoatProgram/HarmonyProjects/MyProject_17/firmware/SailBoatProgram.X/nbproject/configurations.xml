@@ -282,9 +282,7 @@
       <itemPath>../src/app_rudder_control.h</itemPath>
       <itemPath>../src/app_anemometer.h</itemPath>
       <itemPath>../src/app_gps.h</itemPath>
-      <itemPath>../src/anemometer.h</itemPath>
       <itemPath>../src/app_imu.h</itemPath>
-      <itemPath>../src/app_sd.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -424,9 +422,7 @@
       <itemPath>../src/app_anemometer.c</itemPath>
       <itemPath>../src/app_gps.c</itemPath>
       <itemPath>../src/radio.c</itemPath>
-      <itemPath>../src/anemometer.c</itemPath>
       <itemPath>../src/app_imu.c</itemPath>
-      <itemPath>../src/app_sd.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -516,10 +512,6 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
-      <item path="../src/anemometer.c" ex="true" overriding="false">
-      </item>
-      <item path="../src/anemometer.h" ex="true" overriding="false">
-      </item>
       <AtmelIceTool>
         <property key="AutoSelectMemRanges" value="auto"/>
         <property key="communication.interface" value="swd"/>

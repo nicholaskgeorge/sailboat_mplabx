@@ -142,6 +142,7 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
  ../src/third_party/rtos/FreeRTOS/Source/include/task.h \
  ../src/config/sam_e70_xult/peripheral/clk/plib_clk.h \
  ../src/config/sam_e70_xult/peripheral/pio/plib_pio.h \
+ ../src/config/sam_e70_xult/definitions.h \
  ../src/config/sam_e70_xult/peripheral/nvic/plib_nvic.h \
  ../src/config/sam_e70_xult/peripheral/xdmac/plib_xdmac.h \
  ../src/config/sam_e70_xult/peripheral/xdmac/plib_xdmac_common.h \
@@ -185,12 +186,10 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
  ../src/config/sam_e70_xult/osal/osal.h \
  ../src/config/sam_e70_xult/system/debug/sys_debug.h \
  ../src/config/sam_e70_xult/peripheral/usart/plib_usart2.h \
- ../src/app_anemometer.h ../src/app_communication.h \
+ ../src/app_anemometer.h ../src/app_imu.h ../src/app_communication.h \
  ../src/app_mast_control.h ../src/app_course_algorithm.h \
- ../src/anemometer.h ../src/config/sam_e70_xult/definitions.h \
  ../src/app_rudder_control.h ../src/app_gps.h \
- ../src/config/sam_e70_xult/driver/i2c/drv_i2c.h ../src/app_imu.h \
- ../src/app_sd.h
+ ../src/config/sam_e70_xult/driver/i2c/drv_i2c.h ../src/app_imu.h
 
 ../src/config/sam_e70_xult/configuration.h:
 
@@ -476,6 +475,8 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
 
 ../src/config/sam_e70_xult/peripheral/pio/plib_pio.h:
 
+../src/config/sam_e70_xult/definitions.h:
+
 ../src/config/sam_e70_xult/peripheral/nvic/plib_nvic.h:
 
 ../src/config/sam_e70_xult/peripheral/xdmac/plib_xdmac.h:
@@ -564,15 +565,13 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
 
 ../src/app_anemometer.h:
 
+../src/app_imu.h:
+
 ../src/app_communication.h:
 
 ../src/app_mast_control.h:
 
 ../src/app_course_algorithm.h:
-
-../src/anemometer.h:
-
-../src/config/sam_e70_xult/definitions.h:
 
 ../src/app_rudder_control.h:
 
@@ -581,5 +580,3 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
 ../src/config/sam_e70_xult/driver/i2c/drv_i2c.h:
 
 ../src/app_imu.h:
-
-../src/app_sd.h:

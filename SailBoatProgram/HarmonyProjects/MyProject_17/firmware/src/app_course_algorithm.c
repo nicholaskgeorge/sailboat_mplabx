@@ -168,6 +168,7 @@ void APP_COURSE_ALGORITHM_Tasks ( void )
 
         case APP_COURSE_ALGORITHM_STATE_NAVIGATE:
         {
+            
             //This is a simple straight line point to point procedure
 //            if(destination.destination_reached | destination.gotopoint){
 //                //set mode

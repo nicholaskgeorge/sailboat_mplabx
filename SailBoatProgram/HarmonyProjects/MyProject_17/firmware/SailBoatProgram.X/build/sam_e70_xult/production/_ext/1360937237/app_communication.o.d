@@ -138,8 +138,8 @@ build/sam_e70_xult/production/_ext/1360937237/app_communication.o: \
  ../src/third_party/rtos/FreeRTOS/Source/include/semphr.h \
  ../src/third_party/rtos/FreeRTOS/Source/include/queue.h \
  ../src/third_party/rtos/FreeRTOS/Source/include/task.h \
- ../src/app_mast_control.h ../src/app_course_algorithm.h \
- ../src/anemometer.h ../src/config/sam_e70_xult/definitions.h \
+ ../src/app_mast_control.h ../src/app_course_algorithm.h ../src/radio.h \
+ ../src/config/sam_e70_xult/definitions.h \
  ../src/config/sam_e70_xult/driver/sdmmc/drv_sdmmc.h \
  ../src/config/sam_e70_xult/system/system_media.h \
  ../src/config/sam_e70_xult/driver/sdmmc/drv_sdmmc_definitions.h \
@@ -184,11 +184,10 @@ build/sam_e70_xult/production/_ext/1360937237/app_communication.o: \
  ../src/config/sam_e70_xult/osal/osal.h \
  ../src/config/sam_e70_xult/system/debug/sys_debug.h \
  ../src/config/sam_e70_xult/peripheral/usart/plib_usart2.h \
- ../src/app_anemometer.h ../src/app_communication.h \
+ ../src/app_anemometer.h ../src/app_imu.h ../src/app_communication.h \
  ../src/app_mast_control.h ../src/app_course_algorithm.h \
  ../src/app_rudder_control.h ../src/app_gps.h \
- ../src/config/sam_e70_xult/driver/i2c/drv_i2c.h ../src/app_imu.h \
- ../src/app_sd.h ../src/radio.h
+ ../src/config/sam_e70_xult/driver/i2c/drv_i2c.h ../src/app_imu.h
 
 ../src/app_communication.h:
 
@@ -472,7 +471,7 @@ build/sam_e70_xult/production/_ext/1360937237/app_communication.o: \
 
 ../src/app_course_algorithm.h:
 
-../src/anemometer.h:
+../src/radio.h:
 
 ../src/config/sam_e70_xult/definitions.h:
 
@@ -566,6 +565,8 @@ build/sam_e70_xult/production/_ext/1360937237/app_communication.o: \
 
 ../src/app_anemometer.h:
 
+../src/app_imu.h:
+
 ../src/app_communication.h:
 
 ../src/app_mast_control.h:
@@ -579,7 +580,3 @@ build/sam_e70_xult/production/_ext/1360937237/app_communication.o: \
 ../src/config/sam_e70_xult/driver/i2c/drv_i2c.h:
 
 ../src/app_imu.h:
-
-../src/app_sd.h:
-
-../src/radio.h:

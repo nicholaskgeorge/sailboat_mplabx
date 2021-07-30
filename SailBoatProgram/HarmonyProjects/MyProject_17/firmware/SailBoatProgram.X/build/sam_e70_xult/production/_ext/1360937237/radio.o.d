@@ -181,11 +181,10 @@ build/sam_e70_xult/production/_ext/1360937237/radio.o: ../src/radio.c \
  ../src/config/sam_e70_xult/osal/osal.h \
  ../src/config/sam_e70_xult/system/debug/sys_debug.h \
  ../src/config/sam_e70_xult/peripheral/usart/plib_usart2.h \
- ../src/app_anemometer.h ../src/app_communication.h \
+ ../src/app_anemometer.h ../src/app_imu.h ../src/app_communication.h \
  ../src/app_mast_control.h ../src/app_course_algorithm.h \
- ../src/anemometer.h ../src/app_rudder_control.h ../src/app_gps.h \
- ../src/config/sam_e70_xult/driver/i2c/drv_i2c.h ../src/app_imu.h \
- ../src/app_sd.h
+ ../src/app_rudder_control.h ../src/app_gps.h \
+ ../src/config/sam_e70_xult/driver/i2c/drv_i2c.h ../src/app_imu.h
 
 ../src/radio.h:
 
@@ -557,13 +556,13 @@ build/sam_e70_xult/production/_ext/1360937237/radio.o: ../src/radio.c \
 
 ../src/app_anemometer.h:
 
+../src/app_imu.h:
+
 ../src/app_communication.h:
 
 ../src/app_mast_control.h:
 
 ../src/app_course_algorithm.h:
-
-../src/anemometer.h:
 
 ../src/app_rudder_control.h:
 
@@ -572,5 +571,3 @@ build/sam_e70_xult/production/_ext/1360937237/radio.o: ../src/radio.c \
 ../src/config/sam_e70_xult/driver/i2c/drv_i2c.h:
 
 ../src/app_imu.h:
-
-../src/app_sd.h:

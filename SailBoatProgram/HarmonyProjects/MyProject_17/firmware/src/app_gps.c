@@ -298,6 +298,7 @@ void APP_GPS_Tasks ( void )
 
         case APP_GPS_STATE_SERVICE_TASKS:
         {
+            
             if (true == DRV_I2C_ReadTransfer(app_gpsData.i2cHandle, address, buf, sizeof(buf))){
                 GPS_Process(GPS_info,(char*)buf);
             }

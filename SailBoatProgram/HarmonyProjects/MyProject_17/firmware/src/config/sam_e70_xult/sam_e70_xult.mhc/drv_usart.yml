@@ -13,6 +13,42 @@ children:
         attributes: {id: drv_usart, value: Synchronous}
       - type: User
         attributes: {value: Synchronous}
+  - type: File
+    attributes: {id: USART_ASYNC_LOCAL}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+  - type: File
+    attributes: {id: USART_ASYNC_SOURCE}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+  - type: File
+    attributes: {id: USART_SYNC_LOCAL}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+  - type: File
+    attributes: {id: USART_SYNC_SOURCE}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
 - type: Instances
   children:
   - type: InstanceComponent
@@ -27,15 +63,6 @@ children:
           children:
           - type: User
             attributes: {value: '2'}
-      - type: Comment
-        attributes: {id: DRV_USART_DEPENDENCY_DMA_COMMENT}
-        children:
-        - type: Attributes
-          children:
-          - type: Boolean
-            attributes: {id: visible}
-            children:
-            - {type: Value, value: 'false'}
       - type: String
         attributes: {id: DRV_USART_PLIB}
         children:
@@ -43,13 +70,13 @@ children:
           children:
           - type: Dynamic
             attributes: {id: drv_usart_0, value: USART0}
-      - type: Boolean
-        attributes: {id: DRV_USART_RX_DMA}
+      - type: Integer
+        attributes: {id: DRV_USART_QUEUE_SIZE}
         children:
         - type: Attributes
           children:
           - type: Boolean
-            attributes: {id: readOnly}
+            attributes: {id: visible}
             children:
             - {type: Value, value: 'false'}
       - type: Integer
@@ -59,15 +86,6 @@ children:
           children:
           - type: Dynamic
             attributes: {id: drv_usart_0, value: '-1'}
-      - type: Boolean
-        attributes: {id: DRV_USART_TX_DMA}
-        children:
-        - type: Attributes
-          children:
-          - type: Boolean
-            attributes: {id: readOnly}
-            children:
-            - {type: Value, value: 'false'}
       - type: Integer
         attributes: {id: DRV_USART_TX_DMA_CHANNEL}
         children:
@@ -101,16 +119,7 @@ children:
         - type: Values
           children:
           - type: User
-            attributes: {value: '3'}
-      - type: Comment
-        attributes: {id: DRV_USART_DEPENDENCY_DMA_COMMENT}
-        children:
-        - type: Attributes
-          children:
-          - type: Boolean
-            attributes: {id: visible}
-            children:
-            - {type: Value, value: 'false'}
+            attributes: {value: '4'}
       - type: String
         attributes: {id: DRV_USART_PLIB}
         children:
@@ -119,39 +128,12 @@ children:
           - type: Dynamic
             attributes: {id: drv_usart_1, value: USART1}
       - type: Integer
-        attributes: {id: DRV_USART_QUEUE_SIZE}
-        children:
-        - type: Attributes
-          children:
-          - type: Boolean
-            attributes: {id: visible}
-            children:
-            - {type: Value, value: 'false'}
-      - type: Boolean
-        attributes: {id: DRV_USART_RX_DMA}
-        children:
-        - type: Attributes
-          children:
-          - type: Boolean
-            attributes: {id: readOnly}
-            children:
-            - {type: Value, value: 'false'}
-      - type: Integer
         attributes: {id: DRV_USART_RX_DMA_CHANNEL}
         children:
         - type: Values
           children:
           - type: Dynamic
             attributes: {id: drv_usart_1, value: '-1'}
-      - type: Boolean
-        attributes: {id: DRV_USART_TX_DMA}
-        children:
-        - type: Attributes
-          children:
-          - type: Boolean
-            attributes: {id: readOnly}
-            children:
-            - {type: Value, value: 'false'}
       - type: Integer
         attributes: {id: DRV_USART_TX_DMA_CHANNEL}
         children:
@@ -179,6 +161,15 @@ children:
     children:
     - type: Symbols
       children:
+      - type: Comment
+        attributes: {id: DRV_USART_DEPENDENCY_DMA_COMMENT}
+        children:
+        - type: Attributes
+          children:
+          - type: Boolean
+            attributes: {id: visible}
+            children:
+            - {type: Value, value: 'false'}
       - type: String
         attributes: {id: DRV_USART_PLIB}
         children:
@@ -186,13 +177,13 @@ children:
           children:
           - type: Dynamic
             attributes: {id: drv_usart_2, value: USART2}
-      - type: Integer
-        attributes: {id: DRV_USART_QUEUE_SIZE}
+      - type: Boolean
+        attributes: {id: DRV_USART_RX_DMA}
         children:
         - type: Attributes
           children:
           - type: Boolean
-            attributes: {id: visible}
+            attributes: {id: readOnly}
             children:
             - {type: Value, value: 'false'}
       - type: Integer
@@ -202,6 +193,15 @@ children:
           children:
           - type: Dynamic
             attributes: {id: drv_usart_2, value: '-1'}
+      - type: Boolean
+        attributes: {id: DRV_USART_TX_DMA}
+        children:
+        - type: Attributes
+          children:
+          - type: Boolean
+            attributes: {id: readOnly}
+            children:
+            - {type: Value, value: 'false'}
       - type: Integer
         attributes: {id: DRV_USART_TX_DMA_CHANNEL}
         children:

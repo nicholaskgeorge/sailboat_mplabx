@@ -221,6 +221,7 @@ void APP_IMU_Tasks ( void )
 
         case APP_IMU_STATE_SERVICE_TASKS:
         {
+            
             if (DRV_USART_ReadBuffer(app_imuData.usartHandle, IMU_values, sizeof(IMU_values)) == true){
                 IMU_Process(IMU_info,(char*)IMU_values);
             }

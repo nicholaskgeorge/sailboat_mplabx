@@ -250,6 +250,7 @@ void APP_ANEMOMETER_Tasks ( void )
 
         case APP_ANEMOMETER_STATE_SERVICE_TASKS:
         {
+            
             sdir[5]='\r';
             sdir[6]='\n';
             while(1){
@@ -264,16 +265,16 @@ void APP_ANEMOMETER_Tasks ( void )
 //                delay = 200 / portTICK_PERIOD_MS;
 //                vTaskDelay(delay);
                 dir = Anemometer_info->direction;
-//                if(dir>180){
-//                    dir = 360-dir;
-//                }
-//                else if (dir<180){
-//                    dir*=-1;
-//                }
-//                if(abs(Anemometer_info->u)<0.7 && abs(Anemometer_info->v)<0.7){
-//                    dir = 0;
-//                }
-//                desired_angle = -dir;
+                if(dir>180){
+                    dir = 360-dir;
+                }
+                else if (dir<180){
+                    dir*=-1;
+                }
+                if(abs(Anemometer_info->u)<0.7 && abs(Anemometer_info->v)<0.7){
+                    dir = 0;
+                }
+                desired_angle = -(dir-45);
                 
             }
             break;

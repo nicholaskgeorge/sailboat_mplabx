@@ -34,4 +34,4 @@ children:
         children:
         - {type: Value, value: drv_sdmmc_SDHC_dependency}
 - type: ElementPosition
-  attributes: {x: '397', y: '450', id: hsmci}
+  attributes: {x: '396', y: '460', id: hsmci}

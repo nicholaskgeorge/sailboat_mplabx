@@ -35,7 +35,6 @@
 #include "driver/usart/drv_usart.h"
 #include "FreeRTOS.h"
 #include "queue.h"
-#include "anemometer.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility

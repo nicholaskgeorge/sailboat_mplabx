@@ -16,7 +16,7 @@ int sleep = 0;
 
 void encoder(PIO_PIN pin, uintptr_t context)
 {   
-    if(B_signal_Get()==1){
+    if(Mast_B_signal_Get()==1){
        angle += 1;
     }
     else{
@@ -91,6 +91,7 @@ void APP_MAST_CONTROL_Tasks ( void )
 
         case APP_MAST_CONTROL_STATE_SERVICE_TASKS:
         {
+            
             //angle restriction
             if(desired_angle > 90){
                 desired_angle = 90;
