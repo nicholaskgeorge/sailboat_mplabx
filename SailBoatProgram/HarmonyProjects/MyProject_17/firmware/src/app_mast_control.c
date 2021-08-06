@@ -127,11 +127,6 @@ void APP_MAST_CONTROL_Tasks ( void )
             PWM0_ChannelDutySet(PWM_CHANNEL_0, duty);
             break;
         }
-
-        /* TODO: implement your application state machine.*/
-
-
-        /* The default state should never be executed. */
         default:
         {
             /* TODO: Handle error in application's state machine. */
@@ -140,7 +135,3 @@ void APP_MAST_CONTROL_Tasks ( void )
     }
 }
 
-
-/*******************************************************************************
- End of File
- */
