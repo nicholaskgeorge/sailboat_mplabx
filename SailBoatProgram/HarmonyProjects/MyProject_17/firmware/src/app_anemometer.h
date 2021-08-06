@@ -117,6 +117,7 @@ typedef struct
     double magnetic_dir;
     double boatu,boatv,boatw;
     double boatwinddir;
+    bool wind_is_from_front;
 
 } Anemometer_INFO ;
 

@@ -68,9 +68,9 @@ typedef enum
 
 } APP_MAST_CONTROL_STATES;
 
-extern int desired_angle;
-extern int angle;
-extern int desired_angle;
+extern int desired_mast_angle;
+extern int mast_angle;
+extern int desired_mast_angle;
 extern int error;
 extern int allowed_error;
 //duty values go between 5000 and 10000. Lower value spins faster

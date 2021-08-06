@@ -5,10 +5,10 @@
     Microchip Technology Inc.
 
   File Name
-    plib_pwm0.h
+    plib_pwm1.h
 
   Summary
-    PWM0 peripheral library interface.
+    PWM1 peripheral library interface.
 
   Description
     This file defines the interface to the PWM peripheral library.  This
@@ -42,8 +42,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef PLIB_PWM0_H    // Guards against multiple inclusion
-#define PLIB_PWM0_H
+#ifndef PLIB_PWM1_H    // Guards against multiple inclusion
+#define PLIB_PWM1_H
 
 
 // *****************************************************************************
@@ -85,43 +85,43 @@ extern "C" {
    this interface.
 */
 
-__STATIC_INLINE void PWM0_ChannelDutySet(PWM_CHANNEL_NUM channel, uint16_t duty)
+__STATIC_INLINE void PWM1_ChannelDutySet(PWM_CHANNEL_NUM channel, uint16_t duty)
 {
-  PWM0_REGS->PWM_CH_NUM[channel].PWM_CDTYUPD= duty;
+  PWM1_REGS->PWM_CH_NUM[channel].PWM_CDTYUPD= duty;
 }
 
-void PWM0_Initialize (void);
+void PWM1_Initialize (void);
 
-void PWM0_ChannelsStart (PWM_CHANNEL_MASK channelMask);
+void PWM1_ChannelsStart (PWM_CHANNEL_MASK channelMask);
 
-void PWM0_ChannelsStop (PWM_CHANNEL_MASK channelMask);
+void PWM1_ChannelsStop (PWM_CHANNEL_MASK channelMask);
 
-void PWM0_ChannelPeriodSet (PWM_CHANNEL_NUM channel, uint16_t period);
+void PWM1_ChannelPeriodSet (PWM_CHANNEL_NUM channel, uint16_t period);
 
-uint16_t PWM0_ChannelPeriodGet (PWM_CHANNEL_NUM channel);
+uint16_t PWM1_ChannelPeriodGet (PWM_CHANNEL_NUM channel);
 
-void PWM0_ChannelDeadTimeSet (PWM_CHANNEL_NUM channel, uint16_t deadtime_high, uint16_t deadtime_low);
+void PWM1_ChannelDeadTimeSet (PWM_CHANNEL_NUM channel, uint16_t deadtime_high, uint16_t deadtime_low);
 
-void PWM0_CompareValueSet (PWM_COMPARE cmp_unit, uint16_t cmp_value);
+void PWM1_CompareValueSet (PWM_COMPARE cmp_unit, uint16_t cmp_value);
 
-void PWM0_ChannelCounterEventEnable (PWM_CHANNEL_MASK channelMask);
+void PWM1_ChannelCounterEventEnable (PWM_CHANNEL_MASK channelMask);
 
-void PWM0_ChannelCounterEventDisable (PWM_CHANNEL_MASK  channelMask);
+void PWM1_ChannelCounterEventDisable (PWM_CHANNEL_MASK  channelMask);
 
-void PWM0_SyncUpdateEnable (void);
+void PWM1_SyncUpdateEnable (void);
 
-void PWM0_FaultStatusClear(PWM_FAULT_ID fault_id);
+void PWM1_FaultStatusClear(PWM_FAULT_ID fault_id);
 
-void PWM0_ChannelOverrideEnable(PWM_CHANNEL_NUM channel);
+void PWM1_ChannelOverrideEnable(PWM_CHANNEL_NUM channel);
 
-void PWM0_ChannelOverrideDisable(PWM_CHANNEL_NUM channel);
+void PWM1_ChannelOverrideDisable(PWM_CHANNEL_NUM channel);
 
-void PWM0_CallbackRegister(PWM_CALLBACK callback, uintptr_t context);
+bool PWM1_ChannelCounterEventStatusGet (PWM_CHANNEL_NUM channel);
 
 #ifdef __cplusplus // Provide C++ Compatibility
 }
 #endif
 
-#endif //PLIB_PWM0_H
+#endif //PLIB_PWM1_H
 
 /* End of File */

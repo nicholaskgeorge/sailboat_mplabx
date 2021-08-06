@@ -60,12 +60,15 @@ void Reset_Handler (void);
 void NonMaskableInt_Handler (void);
 void HardFault_Handler (void);
 void xPortSysTickHandler (void);
+void PIOA_InterruptHandler (void);
+void PIOB_InterruptHandler (void);
 void USART0_InterruptHandler (void);
 void USART1_InterruptHandler (void);
 void USART2_InterruptHandler (void);
 void PIOD_InterruptHandler (void);
 void HSMCI_InterruptHandler (void);
 void TWIHS0_InterruptHandler (void);
+void PWM0_InterruptHandler (void);
 void TC3_CH0_InterruptHandler (void);
 void XDMAC_InterruptHandler (void);
 

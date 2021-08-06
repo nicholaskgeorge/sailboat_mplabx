@@ -122,6 +122,92 @@ children:
         attributes: {id: visible}
         children:
         - {type: Value, value: 'true'}
+  - type: Integer
+    attributes: {id: PWM_CH_1_CDTY}
+    children:
+    - type: Attributes
+      children:
+      - type: Integer
+        attributes: {id: max}
+        children:
+        - {type: Value, value: '11500'}
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '10600'}
+  - type: KeyValueSet
+    attributes: {id: PWM_CH_1_CMR_CALG}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+  - type: KeyValueSet
+    attributes: {id: PWM_CH_1_CMR_CPOL}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+  - type: KeyValueSet
+    attributes: {id: PWM_CH_1_CMR_CPRE}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '7'}
+  - type: Boolean
+    attributes: {id: PWM_CH_1_CMR_DTE}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+  - type: Integer
+    attributes: {id: PWM_CH_1_CPRD}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '11500'}
+  - type: Boolean
+    attributes: {id: PWM_CH_1_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: Boolean
+    attributes: {id: PWM_CH_1_FAULT_ENABLE}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
   - type: Comment
     attributes: {id: PWM_CH_1_FREQ_COMMENT}
     children:
@@ -130,7 +216,33 @@ children:
       - type: String
         attributes: {id: text}
         children:
-        - {type: Value, value: '**** PWM Frequency is 10000.0 Hz ****'}
+        - {type: Value, value: '**** PWM Frequency is 50.9510869565 Hz ****'}
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+  - type: Boolean
+    attributes: {id: PWM_CH_1_IER1_CHID}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: Boolean
+    attributes: {id: PWM_CH_1_SYNCENABLE}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
   - type: Comment
     attributes: {id: PWM_CH_2_FREQ_COMMENT}
     children:
@@ -259,7 +371,16 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: pwm0, value: '0'}
+        attributes: {id: pwm0, value: '2'}
+  - type: Comment
+    attributes: {id: PWM_NVIC_ENABLE_COMMENT}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'false'}
   - type: String
     attributes: {id: PWM_OUTPUT_DISABLE_API}
     children:
@@ -324,4 +445,4 @@ children:
       - type: Dynamic
         attributes: {id: pwm0, value: PWM0_ChannelsStop}
 - type: ElementPosition
-  attributes: {x: '505', y: '68', id: pwm0}
+  attributes: {x: '502', y: '82', id: pwm0}

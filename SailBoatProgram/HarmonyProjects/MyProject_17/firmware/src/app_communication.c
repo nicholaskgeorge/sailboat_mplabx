@@ -118,6 +118,7 @@ void APP_COMMUNICATION_Initialize ( void )
 uint8_t decoded[126]={0};
 uint8_t sendbuffer[126]={0};
 uint8_t recbuffer[126] ={0};
+
 char* startptr = 0;
 char* ptr = 0;
 char* numbound = 0;
@@ -185,7 +186,7 @@ void APP_COMMUNICATION_Tasks ( void )
         case APP_COMMUNICATION_STATE_PROCESS_MESSAGE:
         {
             size = Radio_Decode(recbuffer, decoded);
-            if (strncmp(test2,(char*)decoded,sizeof(test2))){
+            if (strncmp("lap send",(char*)decoded,sizeof("lap send")-1)==0){
                 app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
                 break;
             }
@@ -248,38 +249,49 @@ void APP_COMMUNICATION_Tasks ( void )
         
         case APP_COMMUNICATION_STATE_RECEIVE:
         {
-            while(true){
-                if (DRV_USART_ReadBuffer(app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)) == true){
-                    app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_MCU_SENT;
-                    break;   
-                }
+            if (DRV_USART_ReadBuffer(app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)) == true){
+                //asm(" BKPT ");
+                //without this delay it doesnt work for some reason
+//                delay = 0/ portTICK_PERIOD_MS;
+//                vTaskDelay(delay);
+                app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_MCU_RECEIVED;
+                break;   
             }
+//            app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
+//            break;
         }
         /* The default state should never be executed. */
+        
+        case APP_COMMUNICATION_STATE_CONFIRM_MCU_RECEIVED:
+        {
+            delay = 1000/ portTICK_PERIOD_MS;
+            vTaskDelay(delay);
+            size = Radio_Encode((uint8_t*)confirmed,sendbuffer, sizeof(confirmed));
+            //asm(" BKPT ");
+            if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
+                app_communicationData.state = APP_COMMUNICATION_STATE_PROCESS_MESSAGE;
+                break;
+            } 
+        }
         case APP_COMMUNICATION_STATE_SEND:
         {
-            delay = 0/ portTICK_PERIOD_MS;
+            delay = 300/ portTICK_PERIOD_MS;
             vTaskDelay(delay);
             size = Radio_Encode((uint8_t*)test,sendbuffer, sizeof(test));
+            //asm(" BKPT ");
             if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
                 app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED;
                 break;
             }
         }
-        case APP_COMMUNICATION_STATE_CONFIRM_MCU_SENT:
-        {
-            size = Radio_Encode((uint8_t*)confirmed,sendbuffer, sizeof(confirmed));
-            if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
-                app_communicationData.state = APP_COMMUNICATION_STATE_PROCESS_MESSAGE;
-                break;
-            } 
-        }   
         case APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED:
         {
-            delay = 1000/ portTICK_PERIOD_MS;
+            delay = 500/ portTICK_PERIOD_MS;
             vTaskDelay(delay);
             if (DRV_USART_ReadBuffer(app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)) == true){
-                if (strncmp(confirmed,(char*)decoded,sizeof(confirmed))){
+                size = Radio_Decode(recbuffer, decoded);
+                if (strncmp("confirmed",(char*)decoded,sizeof("confirmed")-1)==0){
+                    //asm(" BKPT ");
                     num_times_confimred_receive = 0;
                     app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
                     break;

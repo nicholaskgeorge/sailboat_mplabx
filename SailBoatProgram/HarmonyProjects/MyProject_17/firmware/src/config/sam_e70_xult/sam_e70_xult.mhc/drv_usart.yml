@@ -119,7 +119,7 @@ children:
         - type: Values
           children:
           - type: User
-            attributes: {value: '4'}
+            attributes: {value: '5'}
       - type: String
         attributes: {id: DRV_USART_PLIB}
         children:

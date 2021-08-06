@@ -119,6 +119,8 @@ typedef struct
 
 } IMU_INFO ;
 
+extern IMU_INFO* IMU_info;
+
 bool IMU_Process(IMU_INFO* IMU_info,char* incoming_str);
 bool Parse_IMU_Field(IMU_INFO* IMU_info);
 

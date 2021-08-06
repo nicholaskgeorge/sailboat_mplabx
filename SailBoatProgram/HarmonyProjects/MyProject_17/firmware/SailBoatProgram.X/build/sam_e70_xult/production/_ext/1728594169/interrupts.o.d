@@ -143,7 +143,6 @@ build/sam_e70_xult/production/_ext/1728594169/interrupts.o: \
  ../src/third_party/rtos/FreeRTOS/Source/include/task.h \
  ../src/config/sam_e70_xult/peripheral/clk/plib_clk.h \
  ../src/config/sam_e70_xult/peripheral/pio/plib_pio.h \
- ../src/config/sam_e70_xult/definitions.h \
  ../src/config/sam_e70_xult/peripheral/nvic/plib_nvic.h \
  ../src/config/sam_e70_xult/peripheral/xdmac/plib_xdmac.h \
  ../src/config/sam_e70_xult/peripheral/xdmac/plib_xdmac_common.h \
@@ -477,8 +476,6 @@ build/sam_e70_xult/production/_ext/1728594169/interrupts.o: \
 ../src/config/sam_e70_xult/peripheral/clk/plib_clk.h:
 
 ../src/config/sam_e70_xult/peripheral/pio/plib_pio.h:
-
-../src/config/sam_e70_xult/definitions.h:
 
 ../src/config/sam_e70_xult/peripheral/nvic/plib_nvic.h:
 

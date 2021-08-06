@@ -92,8 +92,6 @@ extern void PMC_Handler                ( void ) __attribute__((weak, alias("Dumm
 extern void EFC_Handler                ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void UART0_Handler              ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void UART1_Handler              ( void ) __attribute__((weak, alias("Dummy_Handler")));
-extern void PIOA_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler")));
-extern void PIOB_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void PIOC_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void PIOE_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void TWIHS1_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler")));
@@ -107,7 +105,6 @@ extern void TC1_CH1_Handler            ( void ) __attribute__((weak, alias("Dumm
 extern void TC1_CH2_Handler            ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void AFEC0_Handler              ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void DACC_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler")));
-extern void PWM0_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void ICM_Handler                ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void ACC_Handler                ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void USBHS_Handler              ( void ) __attribute__((weak, alias("Dummy_Handler")));
@@ -177,8 +174,8 @@ const H3DeviceVectors exception_table=
     .pfnEFC_Handler                = EFC_Handler,
     .pfnUART0_Handler              = UART0_Handler,
     .pfnUART1_Handler              = UART1_Handler,
-    .pfnPIOA_Handler               = PIOA_Handler,
-    .pfnPIOB_Handler               = PIOB_Handler,
+    .pfnPIOA_Handler               = PIOA_InterruptHandler,
+    .pfnPIOB_Handler               = PIOB_InterruptHandler,
     .pfnPIOC_Handler               = PIOC_Handler,
     .pfnUSART0_Handler             = USART0_InterruptHandler,
     .pfnUSART1_Handler             = USART1_InterruptHandler,
@@ -198,7 +195,7 @@ const H3DeviceVectors exception_table=
     .pfnTC1_CH2_Handler            = TC1_CH2_Handler,
     .pfnAFEC0_Handler              = AFEC0_Handler,
     .pfnDACC_Handler               = DACC_Handler,
-    .pfnPWM0_Handler               = PWM0_Handler,
+    .pfnPWM0_Handler               = PWM0_InterruptHandler,
     .pfnICM_Handler                = ICM_Handler,
     .pfnACC_Handler                = ACC_Handler,
     .pfnUSBHS_Handler              = USBHS_Handler,

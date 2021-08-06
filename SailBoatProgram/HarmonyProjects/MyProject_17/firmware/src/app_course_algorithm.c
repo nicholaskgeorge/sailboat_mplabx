@@ -29,7 +29,9 @@
 
 #include "app_course_algorithm.h"
 #include "app_mast_control.h"
+#include "app_anemometer.h"
 #include "app_gps.h"
+#include "app_imu.h"
 #include <math.h>
 
 // *****************************************************************************
@@ -144,11 +146,19 @@ void APP_COURSE_ALGORITHM_Initialize ( void )
     See prototype in app_course_algorithm.h.
  */
 GPS_INFO* GPS_info;
+Anemometer_INFO* Anemometer_info;
+IMU_INFO* IMU_info;
 float magnetic_variation;
 float testdist = 0;
-float allowed_angle_error =0;
+float allowed_angle_error = 6;
 float turn_angle = 0;
-float turn_error;
+int allowed_rudder_wind_error = 10;
+int rudder_angle_to_wind = 0;
+int mast_angle_to_wind = 0;
+int desired_mast_angle;
+int desired_rudder_angle;
+float rudder_angle;
+
 void APP_COURSE_ALGORITHM_Tasks ( void )
 {
 
@@ -168,28 +178,48 @@ void APP_COURSE_ALGORITHM_Tasks ( void )
 
         case APP_COURSE_ALGORITHM_STATE_NAVIGATE:
         {
-            
-            //This is a simple straight line point to point procedure
-//            if(destination.destination_reached | destination.gotopoint){
-//                //set mode
-//                break;
-//            }
-//            destination.distance = distancetopt(GPS_info->latitude, GPS_info->longitude, destination.latitude, destination.longitude);
-//            destination.angle_to_point = angletopt(GPS_info->latitude, GPS_info->longitude, destination.latitude, destination.longitude);
-//            if(destination.distance<=0.05){
-//                    destination.destination_reached = true;
-//            }
-//            if (compass_angle is not within error){
-//                turn_angle = destination.angle_to_point;  
-//                app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_TURN;
-//                break
-//            }
+            rudder_angle_to_wind = mast_angle-Anemometer_info->boatwinddir+rudder_angle;
+            mast_angle_to_wind = mast_angle-Anemometer_info->boatwinddir;
+//            This is a simple straight line point to point procedure
+            if(destination.destination_reached | destination.gotopoint){
+                //set mode
+                break;
+            }
+            destination.distance = distancetopt(GPS_info->latitude, GPS_info->longitude, destination.latitude, destination.longitude);
+            destination.angle_to_point = angletopt(GPS_info->latitude, GPS_info->longitude, destination.latitude, destination.longitude);
+            if(destination.distance<=0.05){
+                    destination.destination_reached = true;
+            }
+            if (abs(destination.angle_to_point)>allowed_angle_error){
+                turn_angle = destination.angle_to_point;  
+                app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_TURN;
+                break;
+            }
         }
         case APP_COURSE_ALGORITHM_STATE_TURN:
         {
-//            if(compass angle is within error){
-//                app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_NAVIGATE; 
-//            }
+            destination.angle_to_point = angletopt(GPS_info->latitude, GPS_info->longitude, destination.latitude, destination.longitude);
+            if(abs(destination.angle_to_point)>allowed_angle_error){
+                desired_mast_angle = Anemometer_info->boatwinddir;
+                if(destination.angle_to_point>0){
+                    desired_rudder_angle = -15;
+                }
+                else{
+                    desired_rudder_angle = 15;
+                }
+            }
+            else{
+                if(Anemometer_info->boatwinddir>0){
+                    desired_mast_angle = Anemometer_info->boatwinddir-15;
+                    desired_rudder_angle = desired_mast_angle+15;
+                }
+                else{
+                    desired_mast_angle = Anemometer_info->boatwinddir+15;
+                    desired_rudder_angle = desired_mast_angle+15;
+                }
+                app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_NAVIGATE; 
+                break;
+            }
         }
 
         /* TODO: implement your application state machine.*/

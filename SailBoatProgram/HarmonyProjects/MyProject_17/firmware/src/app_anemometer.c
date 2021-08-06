@@ -228,6 +228,13 @@ void realtive_to_boat(Anemometer_INFO* aminfo, IMU_INFO* imuinfo, int mast_angle
     aminfo->boatv = vel_wind_rel_an[0]-vel_an_rel_boat[0];
     aminfo->boatu = vel_wind_rel_an[1]-vel_an_rel_boat[1];
     aminfo->boatw = vel_wind_rel_an[2]-vel_an_rel_boat[2];
+    //aminfo->boatwinddir = calculate it
+    if (abs(aminfo->boatwinddir)<90){
+        aminfo->wind_is_from_front = true;
+    }
+    else{
+        aminfo->wind_is_from_front = false;
+    }
 }
 
 void APP_ANEMOMETER_Tasks ( void )
@@ -274,7 +281,7 @@ void APP_ANEMOMETER_Tasks ( void )
                 if(abs(Anemometer_info->u)<0.7 && abs(Anemometer_info->v)<0.7){
                     dir = 0;
                 }
-                desired_angle = -(dir-45);
+                desired_mast_angle = -(dir-45);
                 
             }
             break;

@@ -46,7 +46,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <stddef.h>
-#include "definitions.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -62,6 +61,15 @@
 // *****************************************************************************
 // *****************************************************************************
 
+
+/*** Macros for GPIO_PC0 pin ***/
+#define GPIO_PC0_Set()               (PIOC_REGS->PIO_SODR = (1<<0))
+#define GPIO_PC0_Clear()             (PIOC_REGS->PIO_CODR = (1<<0))
+#define GPIO_PC0_Toggle()            (PIOC_REGS->PIO_ODSR ^= (1<<0))
+#define GPIO_PC0_OutputEnable()      (PIOC_REGS->PIO_OER = (1<<0))
+#define GPIO_PC0_InputEnable()       (PIOC_REGS->PIO_ODR = (1<<0))
+#define GPIO_PC0_Get()               ((PIOC_REGS->PIO_PDSR >> 0) & 0x1)
+#define GPIO_PC0_PIN                  PIO_PIN_PC0
 
 /*** Macros for Mast_B_signal pin ***/
 #define Mast_B_signal_Set()               (PIOC_REGS->PIO_SODR = (1<<31))
@@ -92,6 +100,15 @@
 #define Mast_Z_signal_InterruptEnable()   (PIOD_REGS->PIO_IER = (1<<30))
 #define Mast_Z_signal_InterruptDisable()  (PIOD_REGS->PIO_IDR = (1<<30))
 
+/*** Macros for Rudder_B_signal pin ***/
+#define Rudder_B_signal_Set()               (PIOA_REGS->PIO_SODR = (1<<22))
+#define Rudder_B_signal_Clear()             (PIOA_REGS->PIO_CODR = (1<<22))
+#define Rudder_B_signal_Toggle()            (PIOA_REGS->PIO_ODSR ^= (1<<22))
+#define Rudder_B_signal_OutputEnable()      (PIOA_REGS->PIO_OER = (1<<22))
+#define Rudder_B_signal_InputEnable()       (PIOA_REGS->PIO_ODR = (1<<22))
+#define Rudder_B_signal_Get()               ((PIOA_REGS->PIO_PDSR >> 22) & 0x1)
+#define Rudder_B_signal_PIN                  PIO_PIN_PA22
+
 /*** Macros for Mast_A_signal pin ***/
 #define Mast_A_signal_Set()               (PIOD_REGS->PIO_SODR = (1<<26))
 #define Mast_A_signal_Clear()             (PIOD_REGS->PIO_CODR = (1<<26))
@@ -102,6 +119,28 @@
 #define Mast_A_signal_PIN                  PIO_PIN_PD26
 #define Mast_A_signal_InterruptEnable()   (PIOD_REGS->PIO_IER = (1<<26))
 #define Mast_A_signal_InterruptDisable()  (PIOD_REGS->PIO_IDR = (1<<26))
+
+/*** Macros for Rudder_A_signal pin ***/
+#define Rudder_A_signal_Set()               (PIOA_REGS->PIO_SODR = (1<<10))
+#define Rudder_A_signal_Clear()             (PIOA_REGS->PIO_CODR = (1<<10))
+#define Rudder_A_signal_Toggle()            (PIOA_REGS->PIO_ODSR ^= (1<<10))
+#define Rudder_A_signal_OutputEnable()      (PIOA_REGS->PIO_OER = (1<<10))
+#define Rudder_A_signal_InputEnable()       (PIOA_REGS->PIO_ODR = (1<<10))
+#define Rudder_A_signal_Get()               ((PIOA_REGS->PIO_PDSR >> 10) & 0x1)
+#define Rudder_A_signal_PIN                  PIO_PIN_PA10
+#define Rudder_A_signal_InterruptEnable()   (PIOA_REGS->PIO_IER = (1<<10))
+#define Rudder_A_signal_InterruptDisable()  (PIOA_REGS->PIO_IDR = (1<<10))
+
+/*** Macros for Rudder_Z_signal pin ***/
+#define Rudder_Z_signal_Set()               (PIOB_REGS->PIO_SODR = (1<<13))
+#define Rudder_Z_signal_Clear()             (PIOB_REGS->PIO_CODR = (1<<13))
+#define Rudder_Z_signal_Toggle()            (PIOB_REGS->PIO_ODSR ^= (1<<13))
+#define Rudder_Z_signal_OutputEnable()      (PIOB_REGS->PIO_OER = (1<<13))
+#define Rudder_Z_signal_InputEnable()       (PIOB_REGS->PIO_ODR = (1<<13))
+#define Rudder_Z_signal_Get()               ((PIOB_REGS->PIO_PDSR >> 13) & 0x1)
+#define Rudder_Z_signal_PIN                  PIO_PIN_PB13
+#define Rudder_Z_signal_InterruptEnable()   (PIOB_REGS->PIO_IER = (1<<13))
+#define Rudder_Z_signal_InterruptDisable()  (PIOB_REGS->PIO_IDR = (1<<13))
 
 
 // *****************************************************************************

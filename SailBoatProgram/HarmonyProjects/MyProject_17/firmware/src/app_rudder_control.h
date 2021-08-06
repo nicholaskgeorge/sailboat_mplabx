@@ -1,4 +1,4 @@
-/*******************************************************************************
+ /*******************************************************************************
   MPLAB Harmony Application Header File
 
   Company:
@@ -32,6 +32,9 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include "configuration.h"
+#include "FreeRTOS.h"
+#include "queue.h"
+#include "driver/usart/drv_usart.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -85,11 +88,18 @@ typedef struct
 {
     /* The application's current state */
     APP_RUDDER_CONTROL_STATES state;
-
+    DRV_HANDLE usartHandle;
+    //EVENT_INFO eventInfo; //I do not know where this comes from 
+    uint8_t i2cRxBuffer[5];  
+    uint8_t i2cTxBuffer[2];  
+    uint8_t usartTxBuffer[35];       
+    uint8_t wrIndex;
     /* TODO: Define any additional data used by the application. */
 
 } APP_RUDDER_CONTROL_DATA;
 
+extern int rudder_desired_angle;
+extern float rudder_angle;
 // *****************************************************************************
 // *****************************************************************************
 // Section: Application Callback Routines
