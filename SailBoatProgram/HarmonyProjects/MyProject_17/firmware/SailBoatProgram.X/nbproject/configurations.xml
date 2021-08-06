@@ -121,7 +121,6 @@
           <itemPath>../src/config/sam_e70_xult/user.h</itemPath>
           <itemPath>../src/config/sam_e70_xult/configuration.h</itemPath>
         </logicalFolder>
-        <itemPath>../src/radio.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="FreeRTOS" projectFiles="true">
         <logicalFolder name="f1" displayName="Source" projectFiles="true">
@@ -421,7 +420,6 @@
       <itemPath>../src/app_rudder_control.c</itemPath>
       <itemPath>../src/app_anemometer.c</itemPath>
       <itemPath>../src/app_gps.c</itemPath>
-      <itemPath>../src/radio.c</itemPath>
       <itemPath>../src/app_imu.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"

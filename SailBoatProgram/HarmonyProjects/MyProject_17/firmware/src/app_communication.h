@@ -35,6 +35,10 @@
 #include "driver/usart/drv_usart.h"
 #include "FreeRTOS.h"
 #include "queue.h"
+#include <stdio.h>
+#include <string.h>
+
+
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -74,6 +78,8 @@ typedef enum
 
 } APP_COMMUNICATION_STATES;
 
+int Radio_Encode(uint8_t* data, uint8_t* buffer, int size);
+int Radio_Decode(uint8_t* data, uint8_t* buffer);
 
 // *****************************************************************************
 /* Application Data
