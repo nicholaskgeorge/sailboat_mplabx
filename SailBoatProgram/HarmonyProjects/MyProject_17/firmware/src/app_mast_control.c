@@ -11,7 +11,7 @@ bool calibrate = false;
 bool ontheleft = false;
 bool startchange = false;
 // +/- restrict_angle is the farthest the mast will be allowed to go
-int restrict_angle = 170;
+int restrict_angle = 135;
 //duty values go between 5000 and 10000. Lower value spins faster
 int duty = 0;
 int sleep = 0;

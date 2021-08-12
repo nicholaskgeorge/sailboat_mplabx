@@ -130,7 +130,7 @@ children:
       - type: Integer
         attributes: {id: max}
         children:
-        - {type: Value, value: '11500'}
+        - {type: Value, value: '11700'}
       - type: Boolean
         attributes: {id: visible}
         children:
@@ -138,7 +138,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '10600'}
+        attributes: {value: '11489'}
   - type: KeyValueSet
     attributes: {id: PWM_CH_1_CMR_CALG}
     children:
@@ -191,7 +191,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '11500'}
+        attributes: {value: '11700'}
   - type: Boolean
     attributes: {id: PWM_CH_1_ENABLE}
     children:
@@ -216,7 +216,7 @@ children:
       - type: String
         attributes: {id: text}
         children:
-        - {type: Value, value: '**** PWM Frequency is 50.9510869565 Hz ****'}
+        - {type: Value, value: '**** PWM Frequency is 50.0801282051 Hz ****'}
       - type: Boolean
         attributes: {id: visible}
         children:

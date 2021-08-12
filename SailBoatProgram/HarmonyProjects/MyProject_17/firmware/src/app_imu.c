@@ -1,90 +1,7 @@
-/*******************************************************************************
-  MPLAB Harmony Application Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    app_imu.c
-
-  Summary:
-    This file contains the source code for the MPLAB Harmony application.
-
-  Description:
-    This file contains the source code for the MPLAB Harmony application.  It
-    implements the logic of the application's state machine and it may call
-    API routines of other MPLAB Harmony modules in the system, such as drivers,
-    system services, and middleware.  However, it does not call any of the
-    system interfaces (such as the "Initialize" and "Tasks" functions) of any of
-    the modules in the system or make any assumptions about when those functions
-    are called.  That is the responsibility of the configuration-specific system
-    files.
- *******************************************************************************/
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: Included Files
-// *****************************************************************************
-// *****************************************************************************
 
 #include "app_imu.h"
 
-// *****************************************************************************
-// *****************************************************************************
-// Section: Global Data Definitions
-// *****************************************************************************
-// *****************************************************************************
-
-// *****************************************************************************
-/* Application Data
-
-  Summary:
-    Holds application data
-
-  Description:
-    This structure holds the application's data.
-
-  Remarks:
-    This structure should be initialized by the APP_IMU_Initialize function.
-
-    Application strings and buffers are be defined outside this structure.
-*/
-
 APP_IMU_DATA app_imuData;
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: Application Callback Functions
-// *****************************************************************************
-// *****************************************************************************
-
-/* TODO:  Add any necessary callback functions.
-*/
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: Application Local Functions
-// *****************************************************************************
-// *****************************************************************************
-
-
-/* TODO:  Add any necessary local functions.
-*/
-
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: Application Initialization and State Machine Functions
-// *****************************************************************************
-// *****************************************************************************
-
-/*******************************************************************************
-  Function:
-    void APP_IMU_Initialize ( void )
-
-  Remarks:
-    See prototype in app_imu.h.
- */
 
 void APP_IMU_Initialize ( void )
 {
@@ -220,28 +137,20 @@ void APP_IMU_Tasks ( void )
         }
 
         case APP_IMU_STATE_SERVICE_TASKS:
-        {
-            
+        {  
             if (DRV_USART_ReadBuffer(app_imuData.usartHandle, IMU_values, sizeof(IMU_values)) == true){
                 IMU_Process(IMU_info,(char*)IMU_values);
             }
-            
-            delay = 200 / portTICK_PERIOD_MS;
-            vTaskDelay(delay);
-            
-            heading = IMU_info->heading;
-            itoa(heading, sheading, 10);
-            if (DRV_USART_WriteBuffer(app_imuData.send, sheading, sizeof(sheading)) == true){
-                delay = 200 / portTICK_PERIOD_MS;
-                vTaskDelay(delay);
-            }
-            break;
+            delay = 500 / portTICK_PERIOD_MS;
+            vTaskDelay(delay);  
+//            heading = IMU_info->heading;
+//            itoa(heading, sheading, 10);
+//            if (DRV_USART_WriteBuffer(app_imuData.send, sheading, sizeof(sheading)) == true){
+//                delay = 200 / portTICK_PERIOD_MS;
+//                vTaskDelay(delay);
+//            }
+//            break;
         }
-
-        /* TODO: implement your application state machine.*/
-
-
-        /* The default state should never be executed. */
         default:
         {
             /* TODO: Handle error in application's state machine. */

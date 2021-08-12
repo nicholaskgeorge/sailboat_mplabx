@@ -1,92 +1,9 @@
-/*******************************************************************************
-  MPLAB Harmony Application Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    app_communication.c
-
-  Summary:
-    This file contains the source code for the MPLAB Harmony application.
-
-  Description:
-    This file contains the source code for the MPLAB Harmony application.  It
-    implements the logic of the application's state machine and it may call
-    API routines of other MPLAB Harmony modules in the system, such as drivers,
-    system services, and middleware.  However, it does not call any of the
-    system interfaces (such as the "Initialize" and "Tasks" functions) of any of
-    the modules in the system or make any assumptions about when those functions
-    are called.  That is the responsibility of the configuration-specific system
-    files.
- *******************************************************************************/
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: Included Files
-// *****************************************************************************
-// *****************************************************************************
-
 #include "app_communication.h"
 #include "app_mast_control.h"
 #include "app_course_algorithm.h"
 
-// *****************************************************************************
-// *****************************************************************************
-// Section: Global Data Definitions
-// *****************************************************************************
-// *****************************************************************************
-
-// *****************************************************************************
-/* Application Data
-
-  Summary:
-    Holds application data
-
-  Description:
-    This structure holds the application's data.
-
-  Remarks:
-    This structure should be initialized by the APP_COMMUNICATION_Initialize function.
-
-    Application strings and buffers are be defined outside this structure.
-*/
-
 APP_COMMUNICATION_DATA app_communicationData;
 
-// *****************************************************************************
-// *****************************************************************************
-// Section: Application Callback Functions
-// *****************************************************************************
-// *****************************************************************************
-
-/* TODO:  Add any necessary callback functions.
-*/
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: Application Local Functions
-// *****************************************************************************
-// *****************************************************************************
-
-
-/* TODO:  Add any necessary local functions.
-*/
-
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: Application Initialization and State Machine Functions
-// *****************************************************************************
-// *****************************************************************************
-
-/*******************************************************************************
-  Function:
-    void APP_COMMUNICATION_Initialize ( void )
-
-  Remarks:
-    See prototype in app_communication.h.
- */
 
 //bool next_command(char** ptr, char* end){
 //    while(**ptr != '$'){
@@ -165,22 +82,14 @@ double value =0;
 char* endptr = 0;
 int size = 0;
 int delay = 0;
-char test[] = "boat send";
+char test[] = "boat send\n";
 char test2[] = "lap send";
-char confirmed[] = "confirmed";
+char confirmed[] = "confirmed\n";
+char signal_confirmed[] = "signal_confirmed\n";
 int num_times_confimred_receive = 0;
 bool send = false;
 int retry_num = 4;
 //int start = 0;
-
-
-/******************************************************************************
-  Function:
-    void APP_COMMUNICATION_Tasks ( void )
-
-  Remarks:
-    See prototype in app_communication.h.
- */
 
 void APP_COMMUNICATION_Tasks ( void )
 {
@@ -195,6 +104,7 @@ void APP_COMMUNICATION_Tasks ( void )
             app_communicationData.usartHandle = DRV_USART_Open(DRV_USART_INDEX_0, 0);
             app_communicationData.send = DRV_USART_Open(DRV_USART_INDEX_0, 0);
             app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
+            break;
 //            while(!appInitialized){
 //                if (DRV_USART_ReadBuffer(app_communicationData.usartHandle, &buffer, sizeof(buffer)) == true){
 //                    delay = 100 / portTICK_PERIOD_MS;
@@ -217,16 +127,14 @@ void APP_COMMUNICATION_Tasks ( void )
 //                    }
 //                }
 //            }
-            //app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
-            app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
-            break;
         }
         
         case APP_COMMUNICATION_STATE_PROCESS_MESSAGE:
         {
+//            asm(" BKPT ");
             size = Radio_Decode(recbuffer, decoded);
-            if (strncmp("lap send",(char*)decoded,sizeof("lap send")-1)==0){
-                app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
+            if (strncmp("signal check",(char*)decoded,sizeof("signal check")-1)==0){
+                app_communicationData.state = APP_COMMUNICATION_STATE_SIGNAL_CONFIRM;
                 break;
             }
             else{
@@ -288,25 +196,25 @@ void APP_COMMUNICATION_Tasks ( void )
         
         case APP_COMMUNICATION_STATE_RECEIVE:
         {
-            if (DRV_USART_ReadBuffer(app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)) == true){
-                //asm(" BKPT ");
-                //without this delay it doesnt work for some reason
-//                delay = 0/ portTICK_PERIOD_MS;
-//                vTaskDelay(delay);
-                app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_MCU_RECEIVED;
-                break;   
+            //Without this the filler bits move around to the front of the message
+            //screw it up. I do not know why
+            while(1){
+                delay = 200/ portTICK_PERIOD_MS;
+                vTaskDelay(delay);
+                if (DRV_USART_ReadBuffer(app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)) == true){
+//                    asm(" BKPT ");
+                    app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_MCU_RECEIVED;
+                    break;   
+                }
             }
-//            app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
-//            break;
+            break;
         }
-        /* The default state should never be executed. */
         
         case APP_COMMUNICATION_STATE_CONFIRM_MCU_RECEIVED:
         {
             delay = 1000/ portTICK_PERIOD_MS;
             vTaskDelay(delay);
             size = Radio_Encode((uint8_t*)confirmed,sendbuffer, sizeof(confirmed));
-            //asm(" BKPT ");
             if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
                 app_communicationData.state = APP_COMMUNICATION_STATE_PROCESS_MESSAGE;
                 break;
@@ -325,23 +233,37 @@ void APP_COMMUNICATION_Tasks ( void )
         }
         case APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED:
         {
-            delay = 500/ portTICK_PERIOD_MS;
-            vTaskDelay(delay);
-            if (DRV_USART_ReadBuffer(app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)) == true){
-                size = Radio_Decode(recbuffer, decoded);
-                if (strncmp("confirmed",(char*)decoded,sizeof("confirmed")-1)==0){
+            while(1){
+                delay = 400/ portTICK_PERIOD_MS;
+                vTaskDelay(delay);
+                if (DRV_USART_ReadBuffer(app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)) == true){
+                    size = Radio_Decode(recbuffer, decoded);
                     //asm(" BKPT ");
+                    if (strncmp("confirmed",(char*)decoded,sizeof("confirmed")-1)==0){
+                        num_times_confimred_receive = 0;
+                        app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
+                        break;
+                    }
+                }
+                num_times_confimred_receive += 1;
+                if (num_times_confimred_receive == retry_num){
                     num_times_confimred_receive = 0;
-                    app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
+                    app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
                     break;
                 }
             }
-            num_times_confimred_receive += 1;
-            if (num_times_confimred_receive == retry_num){
-                num_times_confimred_receive = 0;
-                app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
+            break;
+        }
+        case APP_COMMUNICATION_STATE_SIGNAL_CONFIRM:
+        {
+            delay = 1000/ portTICK_PERIOD_MS;
+            vTaskDelay(delay);
+            size = Radio_Encode((uint8_t*)signal_confirmed,sendbuffer, sizeof(signal_confirmed));
+            //asm(" BKPT ");
+            if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
+                app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED;
                 break;
-            }
+            } 
         }
         default:
         {
@@ -350,8 +272,3 @@ void APP_COMMUNICATION_Tasks ( void )
         }
     }
 }
-
-
-/*******************************************************************************
- End of File
- */

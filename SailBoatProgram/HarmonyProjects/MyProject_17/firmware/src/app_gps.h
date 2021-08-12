@@ -56,7 +56,6 @@ typedef struct
 	// Information from current NMEA sentence
 	char talkerID;
 	char messageID[3];
-
 	// Variables parsed and kept for user
 	char navSystem;
 	bool isValid;

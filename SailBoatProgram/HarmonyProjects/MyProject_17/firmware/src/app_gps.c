@@ -279,7 +279,6 @@ uint8_t buf[128];
 
 void APP_GPS_Tasks ( void )
 {
-
     /* Check the application's current state. */
     switch ( app_gpsData.state )
     {
@@ -289,6 +288,8 @@ void APP_GPS_Tasks ( void )
             app_gpsData.i2cHandle = DRV_I2C_Open( DRV_I2C_INDEX_0, DRV_IO_INTENT_READWRITE );
             DRV_I2C_TransferSetup(app_gpsData.i2cHandle, &app_gpsData.i2cSetup);
             bool appInitialized = true;
+            //wait to find satellite
+            vTaskDelay(10000/portTICK_PERIOD_MS);
             if (appInitialized)
             {
                 app_gpsData.state = APP_GPS_STATE_SERVICE_TASKS;
@@ -298,7 +299,6 @@ void APP_GPS_Tasks ( void )
 
         case APP_GPS_STATE_SERVICE_TASKS:
         {
-            
             if (true == DRV_I2C_ReadTransfer(app_gpsData.i2cHandle, address, buf, sizeof(buf))){
                 GPS_Process(GPS_info,(char*)buf);
             }

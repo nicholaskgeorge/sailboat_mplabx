@@ -246,8 +246,8 @@ void APP_ANEMOMETER_Tasks ( void )
         case APP_ANEMOMETER_STATE_INIT:
         {
             bool appInitialized = true;
-            app_anemometerData.usartHandleSEND = DRV_USART_Open(DRV_USART_INDEX_1, 0);
-            app_anemometerData.usartHandleREC = DRV_USART_Open(DRV_USART_INDEX_1, 0);
+//            app_anemometerData.usartHandleSEND = DRV_USART_Open(DRV_USART_INDEX_1, 0);
+//            app_anemometerData.usartHandleREC = DRV_USART_Open(DRV_USART_INDEX_1, 0);
             if (appInitialized)
             {
                 app_anemometerData.state = APP_ANEMOMETER_STATE_SERVICE_TASKS;
@@ -261,16 +261,17 @@ void APP_ANEMOMETER_Tasks ( void )
             sdir[5]='\r';
             sdir[6]='\n';
             while(1){
-                if (DRV_USART_ReadBuffer(app_anemometerData.usartHandleREC, &Anemometer_values, sizeof(Anemometer_values)) == true){
-                    Anem_Process(Anemometer_info,(char*)Anemometer_values); // parse it into fields 
-                }
+//                if (DRV_USART_ReadBuffer(app_anemometerData.usartHandleREC, &Anemometer_values, sizeof(Anemometer_values)) == true){
+//                    Anem_Process(Anemometer_info,(char*)Anemometer_values); // parse it into fields 
+//                }
                 /*
                  *Things don't change very fast when sailing so we don't need to
                  * be reading instantaneously. This blocks the process for 100 ms
                  * to create a delay before the next read.
                  */
-//                delay = 200 / portTICK_PERIOD_MS;
-//                vTaskDelay(delay);
+                delay = 300 / portTICK_PERIOD_MS;
+                vTaskDelay(delay);
+                
                 dir = Anemometer_info->direction;
                 if(dir>180){
                     dir = 360-dir;
@@ -278,11 +279,13 @@ void APP_ANEMOMETER_Tasks ( void )
                 else if (dir<180){
                     dir*=-1;
                 }
-                if(abs(Anemometer_info->u)<0.7 && abs(Anemometer_info->v)<0.7){
-                    dir = 0;
+                if(Anemometer_info->speed <2.28){
+                    Anemometer_info->wind_present = false;
+                }
+                else{
+                    Anemometer_info->wind_present = true;
                 }
                 desired_mast_angle = -(dir-45);
-                
             }
             break;
         }
@@ -294,8 +297,3 @@ void APP_ANEMOMETER_Tasks ( void )
         }
     }
 }
-
-
-/*******************************************************************************
- End of File
- */

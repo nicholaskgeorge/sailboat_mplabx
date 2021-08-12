@@ -118,6 +118,7 @@ typedef struct
     double boatu,boatv,boatw;
     double boatwinddir;
     bool wind_is_from_front;
+    bool wind_present;
 
 } Anemometer_INFO ;
 

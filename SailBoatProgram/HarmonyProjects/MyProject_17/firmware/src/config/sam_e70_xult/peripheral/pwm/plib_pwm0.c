@@ -91,10 +91,10 @@ void PWM0_Initialize (void)
                     | PWM_CMR_CES_SINGLE_EVENT | (PWM_CMR_DTE_Msk);
 
     /* PWM period */
-    PWM0_REGS->PWM_CH_NUM[1].PWM_CPRD = 11500U;
+    PWM0_REGS->PWM_CH_NUM[1].PWM_CPRD = 11700U;
 
     /* PWM duty cycle */
-    PWM0_REGS->PWM_CH_NUM[1].PWM_CDTY = 10600U;
+    PWM0_REGS->PWM_CH_NUM[1].PWM_CDTY = 11489U;
     /* Dead time */
     PWM0_REGS->PWM_CH_NUM[1].PWM_DT = (100U << PWM_DT_DTL_Pos) | (100U);
          

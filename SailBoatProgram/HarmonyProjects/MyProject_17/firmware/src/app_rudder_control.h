@@ -98,7 +98,7 @@ typedef struct
 
 } APP_RUDDER_CONTROL_DATA;
 
-extern int rudder_desired_angle;
+extern int desired_rudder_angle;
 extern float rudder_angle;
 // *****************************************************************************
 // *****************************************************************************
