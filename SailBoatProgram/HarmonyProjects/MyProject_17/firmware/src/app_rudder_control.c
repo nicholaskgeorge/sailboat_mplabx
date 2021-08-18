@@ -9,13 +9,14 @@ int desired_rudder_angle = 0;
 float rudder_angle = 0;
 int rudder_error = 0;
 int rudder_allowed_error = 1;
-bool rudder_calibrate = false;
+bool rudder_calibrated = false;
 bool rudder_startchange = false;
-int rudder_duty = 10900;
+int rudder_duty = 10600;
 int wait = 500/ portTICK_PERIOD_MS;;
 char angles[6]; 
 int pwm_min = 11200;
 int pwm_max = 10600;
+bool jitter = true;
 void rudder_encoder(PIO_PIN pin, uintptr_t context)
 {   
     if(Rudder_B_signal_Get()==1){
@@ -28,7 +29,7 @@ void rudder_encoder(PIO_PIN pin, uintptr_t context)
 
 void rudder_reset(PIO_PIN pin, uintptr_t context){
     rudder_angle = 0;
-    rudder_calibrate = true;
+    rudder_calibrated = true;
 }
 
 
@@ -42,6 +43,8 @@ void APP_RUDDER_CONTROL_Initialize ( void )
     PIO_PinInterruptEnable(PIO_PIN_PB13);
     PWM0_ChannelsStart(PWM_CHANNEL_1_MASK);
     app_rudder_controlData.usartHandle = DRV_USART_Open(DRV_USART_INDEX_1, 0);
+    PWM0_ChannelDutySet(PWM_CHANNEL_1, rudder_duty);
+    vTaskDelay(1000/ portTICK_PERIOD_MS);
     /* TODO: Initialize your application's state machine and other
      * parameters.
      */
@@ -55,18 +58,20 @@ void APP_RUDDER_CONTROL_Tasks ( void )
         /* Application's initial state. */
         case APP_RUDDER_CONTROL_STATE_INIT:
         {
-            bool appInitialized = true;
-            angles[5] = '\n';
-            if (appInitialized)
-            {
-                app_rudder_controlData.state = APP_RUDDER_CONTROL_STATE_SERVICE_TASKS;
-            }
-            break;
+          if(!rudder_calibrated){
+              rudder_duty += 10;
+//              PWM0_ChannelDutySet(PWM_CHANNEL_1, rudder_duty);
+              vTaskDelay(400/ portTICK_PERIOD_MS);
+          }
+          else{
+              app_rudder_controlData.state = APP_RUDDER_CONTROL_STATE_SERVICE_TASKS;
+              break;
+          }
         }
 
         case APP_RUDDER_CONTROL_STATE_SERVICE_TASKS:
         {
-            desired_rudder_angle = -30;
+            desired_rudder_angle = 0;
             
             if (desired_rudder_angle>15){
                 desired_rudder_angle=15;
@@ -77,13 +82,24 @@ void APP_RUDDER_CONTROL_Tasks ( void )
                 
             rudder_error = desired_rudder_angle-(int)rudder_angle;
             if(abs(rudder_error)>rudder_allowed_error){
+                jitter = true;
                 if(rudder_angle>desired_rudder_angle){
-                    rudder_duty += 20;
+                    rudder_duty += 10;
                 }
                 else if (rudder_angle<desired_rudder_angle){
-                    rudder_duty -= 20;
+                    rudder_duty -= 10;
                 }
-                vTaskDelay(300/ portTICK_PERIOD_MS);
+                vTaskDelay(200/ portTICK_PERIOD_MS);
+            }
+            //We noticed that sometimes when the servo reaches the desired angle
+            //it draws a lot of current and needs a little nudge to stop it. This
+            //simulates that nudge
+            else if (jitter == true){
+                PWM0_ChannelDutySet(PWM_CHANNEL_1, rudder_duty+20);
+                vTaskDelay(1500/ portTICK_PERIOD_MS);
+                PWM0_ChannelDutySet(PWM_CHANNEL_1, rudder_duty-20);
+                vTaskDelay(1500/ portTICK_PERIOD_MS);
+                jitter = false;
             }
             if(rudder_duty > pwm_min){rudder_duty = pwm_min;}
             else if (rudder_duty < pwm_max){rudder_duty = pwm_max;}

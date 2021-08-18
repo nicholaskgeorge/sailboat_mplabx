@@ -70,7 +70,9 @@ void APP_COMMUNICATION_Initialize ( void )
      */
 }
 
-//Remeber that the radio will add 7 bytes to any message you send
+//Remember that the radio will add 7 bytes to any message you send (7 bytes more than
+//the unencoded message)
+
 uint8_t decoded[126]={0};
 uint8_t sendbuffer[126]={0};
 uint8_t recbuffer[126] ={0};
@@ -86,9 +88,13 @@ char test[] = "boat send\n";
 char test2[] = "lap send";
 char confirmed[] = "confirmed\n";
 char signal_confirmed[] = "signal_confirmed\n";
+char gps_not_ready[] = "GPS connection not yet established";
 int num_times_confimred_receive = 0;
-bool send = false;
 int retry_num = 4;
+navigation_goal destination;
+//this is so that only one entity tries to use the send buffer at once
+bool clear_to_send = false;
+bool send = false;
 //int start = 0;
 
 void APP_COMMUNICATION_Tasks ( void )
@@ -105,28 +111,6 @@ void APP_COMMUNICATION_Tasks ( void )
             app_communicationData.send = DRV_USART_Open(DRV_USART_INDEX_0, 0);
             app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
             break;
-//            while(!appInitialized){
-//                if (DRV_USART_ReadBuffer(app_communicationData.usartHandle, &buffer, sizeof(buffer)) == true){
-//                    delay = 100 / portTICK_PERIOD_MS;
-//                    vTaskDelay(delay);
-//                    size = Radio_Decode(buffer,decoded);
-//                }
-//                if(start == 0){
-//                    if (DRV_USART_WriteBuffer(app_communicationData.send, &decoded, sizeof(size)) == true){}
-//                    if(strncmp((char*)decoded, "checking connection", size) == 0){
-//                        char confirmed[] = "messsage confirmed1";
-//                        size = Radio_Encode((uint8_t*)confirmed,buffer,sizeof(confirmed));
-//                        if (DRV_USART_WriteBuffer(app_communicationData.send, &buffer, sizeof(buffer)) == true){}
-//                        start = 1;
-//                    }
-//                }
-//                if (start == 1){
-//                    if(strncmp((char*)decoded, "messsage confirmed2", size) == 0){
-//                        appInitialized = true;
-//                        break;
-//                    }
-//                }
-//            }
         }
         
         case APP_COMMUNICATION_STATE_PROCESS_MESSAGE:
@@ -140,64 +124,76 @@ void APP_COMMUNICATION_Tasks ( void )
             else{
                 app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
                 break;
+            
+                //Now we interpret the message
+                startptr = (char*)decoded;
+                endptr = (char*) decoded;
+                //finding bounds of message
+                while(*startptr != '/'){
+                    startptr++;
+                }
+                ptr = startptr;
+                while(*endptr != '%'){
+                    endptr++;
+                }
+                //executing each command
+                while(ptr != endptr){
+                  if(!find_char(&ptr,'$',endptr)){break;}
+                  //parse for diffrent commands
+                  //Change Mode
+                  if(*(ptr+1) == 'C' && *(ptr+2) == 'M'){
+                      //send = true;
+                      ptr+=3;
+                      //parsing for mode to change to
+                      if(*(ptr+1) == 'N' && *(ptr+2) == 'M'){
+                          //Note: I dont think this will make the state change imediatly
+                          //you will have to work this out
+                          app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_NAVIGATE;
+                      }
+                      //break;
+                  }
+                  //Change Course
+                  else if(*(ptr+1) == 'C' && *(ptr+2) == 'C'){
+                      //send = true;
+                      ptr+=3;
+                      break;
+                  }
+                  //Change Parameter
+                  else if(*(ptr+1) == 'C' && *(ptr+2) == 'P'){
+                      find_char(&ptr,':',endptr);
+                      //Specify which parameter
+                      if(*(ptr+1) == 'D' && *(ptr+2) == 'A'){
+                          ptr+=4;
+                          value = strtod(ptr,&numbound);
+                          ptr = numbound;
+                          desired_mast_angle =(int)value;
+                          //break;
+                      }
+                      if(*(ptr+1) == 'G' && *(ptr+2) == 'C'){
+                          ptr+=4;
+                          value = strtod(ptr,&numbound);
+                          ptr = numbound;
+                          destination.latitude =(int)value;
+                          ptr++;
+                          value = strtod(ptr,&numbound);
+                          destination.latitude =(int)value;
+                          //break;
+                      }
+                  }
+                  else{break;}
+                }
+                if(send){break;}
+                //asm(" BKPT ");
+//                app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
+//                break; 
             }
-//                    //Now we interpret the message
-//                    startptr = (char*)decoded;
-//                    endptr = (char*) decoded;
-//                    //finding bounds of message
-//                    while(*startptr != '/'){
-//                        startptr++;
-//                    }
-//                    ptr = startptr;
-//                    while(*endptr != '%'){
-//                        endptr++;
-//                    }
-//                    //executing each command
-//                    while(ptr != endptr){
-//                      if(!find_char(&ptr,'$',endptr)){break;}
-//                      //parse for diffrent commands
-//                      //Change Mode
-//                      if(*(ptr+1) == 'C' && *(ptr+2) == 'M'){
-//                          //send = true;
-//                          ptr+=3;
-//                          //parsing for mode to change to
-//                          if(*(ptr+1) == 'N' && *(ptr+2) == 'M'){
-//                              //Note: I dont think this will make the state change imediatly
-//                              //you will have to work this out
-//                              app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_NAVIGATE;
-//                          }
-//                          //break;
-//                      }
-//                      //Change Course
-//                      else if(*(ptr+1) == 'C' && *(ptr+2) == 'C'){
-//                          //send = true;
-//                          ptr+=3;
-//                          break;
-//                      }
-//                      //Change Parameter
-//                      else if(*(ptr+1) == 'C' && *(ptr+2) == 'P'){
-//                          find_char(&ptr,':',endptr);
-//                          //Specify which parameter
-//                          if(*(ptr+1) == 'D' && *(ptr+2) == 'A'){
-//                              ptr+=4;
-//                              value = strtod(ptr,&numbound);
-//                              ptr = numbound;
-//                              desired_angle =(int)value;
-//                              //break;
-//                          }
-//                      }
-//                      else{break;}
-//                    }
-//                    if(send){break;}
-//                    //asm(" BKPT ");
-//    //                app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
-//    //                break; 
         }
         
         case APP_COMMUNICATION_STATE_RECEIVE:
         {
             //Without this the filler bits move around to the front of the message
             //screw it up. I do not know why
+            clear_to_send = true;
             while(1){
                 delay = 200/ portTICK_PERIOD_MS;
                 vTaskDelay(delay);
@@ -212,23 +208,27 @@ void APP_COMMUNICATION_Tasks ( void )
         
         case APP_COMMUNICATION_STATE_CONFIRM_MCU_RECEIVED:
         {
-            delay = 1000/ portTICK_PERIOD_MS;
-            vTaskDelay(delay);
-            size = Radio_Encode((uint8_t*)confirmed,sendbuffer, sizeof(confirmed));
-            if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
-                app_communicationData.state = APP_COMMUNICATION_STATE_PROCESS_MESSAGE;
-                break;
-            } 
+            while(1){
+                delay = 1000/ portTICK_PERIOD_MS;
+                vTaskDelay(delay);
+                size = Radio_Encode((uint8_t*)confirmed,sendbuffer, sizeof(confirmed));
+                if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
+                    app_communicationData.state = APP_COMMUNICATION_STATE_PROCESS_MESSAGE;
+                    break;
+                } 
+            }
         }
         case APP_COMMUNICATION_STATE_SEND:
         {
-            delay = 300/ portTICK_PERIOD_MS;
-            vTaskDelay(delay);
-            size = Radio_Encode((uint8_t*)test,sendbuffer, sizeof(test));
-            //asm(" BKPT ");
-            if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
-                app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED;
-                break;
+            while(1){
+                delay = 300/ portTICK_PERIOD_MS;
+                vTaskDelay(delay);
+                size = Radio_Encode((uint8_t*)test,sendbuffer, sizeof(test));
+                //asm(" BKPT ");
+                if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
+                    app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED;
+                    break;
+                }
             }
         }
         case APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED:
@@ -256,14 +256,16 @@ void APP_COMMUNICATION_Tasks ( void )
         }
         case APP_COMMUNICATION_STATE_SIGNAL_CONFIRM:
         {
-            delay = 1000/ portTICK_PERIOD_MS;
-            vTaskDelay(delay);
-            size = Radio_Encode((uint8_t*)signal_confirmed,sendbuffer, sizeof(signal_confirmed));
-            //asm(" BKPT ");
-            if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
-                app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED;
-                break;
-            } 
+            while(1){
+                delay = 1000/ portTICK_PERIOD_MS;
+                vTaskDelay(delay);
+                size = Radio_Encode((uint8_t*)signal_confirmed,sendbuffer, sizeof(signal_confirmed));
+                //asm(" BKPT ");
+                if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
+                    app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED;
+                    break;
+                }
+            }
         }
         default:
         {

@@ -46,6 +46,7 @@ int mast_angle_to_wind = 0;
 int desired_mast_angle;
 int desired_rudder_angle;
 float rudder_angle;
+navigation_goal destination;
 
 void APP_COURSE_ALGORITHM_Tasks ( void )
 {
@@ -59,62 +60,70 @@ void APP_COURSE_ALGORITHM_Tasks ( void )
             bool appInitialized = true;
             if (appInitialized)
             {
-                app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_NAVIGATE;
+//                app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_NAVIGATE;
+                app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_GPS_NOT_READY;
             }
             break;
         }
-
+        case APP_COURSE_ALGORITHM_STATE_GPS_NOT_READY:
+        {
+            if(GPS_info->isValid){
+              app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_NAVIGATE;  
+            }
+            vTaskDelay(10000/ portTICK_PERIOD_MS);
+            //send message that the GPS is not ready
+        }
         case APP_COURSE_ALGORITHM_STATE_NAVIGATE:
         {
-////            This is a simple straight line point to point procedure
-//            rudder_angle_to_wind = mast_angle-Anemometer_info->boatwinddir+rudder_angle;
-//            mast_angle_to_wind = mast_angle-Anemometer_info->boatwinddir;
-//            destination.distance = distancetopt(GPS_info->latitude, GPS_info->longitude, destination.latitude, destination.longitude);
-//            destination.angle_to_point = angletopt(GPS_info->latitude, GPS_info->longitude, destination.latitude, destination.longitude);
-//            if(destination.distance<=0.05){
-//                    destination.destination_reached = true;
-//            }
-//            if(destination.destination_reached | destination.gotopoint){
-//                app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_DONT_MOVE;
-//                break;
-//            }
-//            if (abs(destination.angle_to_point)>allowed_cruise_angle_error){
-//                app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_TURN;
-//                break;
-//            }
+//            This is a simple straight line point to point procedure
+            rudder_angle_to_wind = mast_angle-Anemometer_info->boatwinddir+rudder_angle;
+            mast_angle_to_wind = mast_angle-Anemometer_info->boatwinddir;
+            destination.distance = distancetopt(GPS_info->latitude, GPS_info->longitude, destination.latitude, destination.longitude);
+            destination.angle_to_point = angletopt(GPS_info->latitude, GPS_info->longitude, destination.latitude, destination.longitude);
+            if(destination.distance<=0.05){
+                    destination.destination_reached = true;
+            }
+            if(destination.destination_reached | destination.gotopoint){
+                app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_DONT_MOVE;
+                break;
+            }
+            if (abs(destination.angle_to_point)>allowed_cruise_angle_error){
+                app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_TURN;
+                break;
+            }
         }
         
         case APP_COURSE_ALGORITHM_STATE_TURN:
         {
-//            destination.angle_to_point = angletopt(GPS_info->latitude, GPS_info->longitude, destination.latitude, destination.longitude);
-//            if(abs(destination.angle_to_point)>allowed_set_angle_error){
-//                //With no wind the wind direction from the anemometer is nonsense
-//                //We don't want to use it if there is no wind. Other wise we should
-//                //just keep our current position
-//                if(Anemometer_info->wind_present){
-//                    desired_mast_angle = Anemometer_info->boatwinddir;
-//                    if(destination.angle_to_point>0){
-//                        desired_rudder_angle = -15;
-//                    }
-//                    else{
-//                        desired_rudder_angle = 15;
-//                    }
-//                }
-//            }
-//            else{
-//                if(Anemometer_info->wind_present){
-//                    if(Anemometer_info->boatwinddir>0){
-//                        desired_mast_angle = Anemometer_info->boatwinddir-15;
-//                        desired_rudder_angle = 15;
-//                    }
-//                    else{
-//                        desired_mast_angle = Anemometer_info->boatwinddir+15;
-//                        desired_rudder_angle = -15;
-//                    }
-//                }
-//                app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_NAVIGATE; 
-//                break;
-//            }
+            destination.angle_to_point = angletopt(GPS_info->latitude, GPS_info->longitude, destination.latitude, destination.longitude);
+            if(abs(destination.angle_to_point)>allowed_set_angle_error){
+                //With no wind the wind direction from the anemometer is nonsense
+                //We don't want to use it if there is no wind. Other wise we should
+                //just keep our current position
+                if(Anemometer_info->wind_present){
+                    desired_mast_angle = Anemometer_info->boatwinddir;
+                    if(destination.angle_to_point>0){
+                        desired_rudder_angle = -15;
+                    }
+                    else{
+                        desired_rudder_angle = 15;
+                    }
+                }
+            }
+            else{
+                if(Anemometer_info->wind_present){
+                    if(Anemometer_info->boatwinddir>0){
+                        desired_mast_angle = Anemometer_info->boatwinddir-15;
+                        desired_rudder_angle = 15;
+                    }
+                    else{
+                        desired_mast_angle = Anemometer_info->boatwinddir+15;
+                        desired_rudder_angle = -15;
+                    }
+                }
+                app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_NAVIGATE; 
+                break;
+            }
         }
         
         case APP_COURSE_ALGORITHM_STATE_DONT_MOVE:

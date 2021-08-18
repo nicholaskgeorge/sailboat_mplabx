@@ -28,6 +28,7 @@ typedef enum
     APP_COURSE_ALGORITHM_STATE_TURN,
     APP_COURSE_ALGORITHM_STATE_STOP,
     APP_COURSE_ALGORITHM_STATE_DONT_MOVE,
+    APP_COURSE_ALGORITHM_STATE_GPS_NOT_READY,
   
     /* TODO: Define states used by the application state machine. */
 
@@ -57,7 +58,7 @@ typedef struct
         bool gotopoint;// = false;
     } navigation_goal;
     
-navigation_goal destination;
+extern navigation_goal destination;
 extern APP_COURSE_ALGORITHM_DATA app_course_algorithmData;
 
 void APP_COURSE_ALGORITHM_Initialize ( void );
