@@ -88,13 +88,16 @@ char test[] = "boat send\n";
 char test2[] = "lap send";
 char confirmed[] = "confirmed\n";
 char signal_confirmed[] = "signal_confirmed\n";
-char gps_not_ready[] = "GPS connection not yet established";
 int num_times_confimred_receive = 0;
 int retry_num = 4;
 navigation_goal destination;
 //this is so that only one entity tries to use the send buffer at once
-bool clear_to_send = false;
-bool send = false;
+//and so that the boat knows to send
+bool sending = false;
+//this points to the char which we want to send
+char* message_ptr;
+//this holds the size of the char we want to send
+int message_size = 0;
 //int start = 0;
 
 void APP_COMMUNICATION_Tasks ( void )
@@ -182,7 +185,7 @@ void APP_COMMUNICATION_Tasks ( void )
                   }
                   else{break;}
                 }
-                if(send){break;}
+//                if(send){break;}
                 //asm(" BKPT ");
 //                app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
 //                break; 
@@ -193,10 +196,13 @@ void APP_COMMUNICATION_Tasks ( void )
         {
             //Without this the filler bits move around to the front of the message
             //screw it up. I do not know why
-            clear_to_send = true;
             while(1){
                 delay = 200/ portTICK_PERIOD_MS;
                 vTaskDelay(delay);
+                if(sending){
+                    app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
+                    break;
+                }
                 if (DRV_USART_ReadBuffer(app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)) == true){
 //                    asm(" BKPT ");
                     app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_MCU_RECEIVED;
@@ -223,9 +229,10 @@ void APP_COMMUNICATION_Tasks ( void )
             while(1){
                 delay = 300/ portTICK_PERIOD_MS;
                 vTaskDelay(delay);
-                size = Radio_Encode((uint8_t*)test,sendbuffer, sizeof(test));
+                size = Radio_Encode((uint8_t*)message_ptr,sendbuffer, sizeof(message_size));
                 //asm(" BKPT ");
                 if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
+                    sending = false;
                     app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED;
                     break;
                 }

@@ -111,6 +111,9 @@ typedef struct
     /* TODO: Define any additional data used by the application. */
 } APP_COMMUNICATION_DATA;
 
+extern bool sending;
+extern char* message_ptr;
+extern int message_size;
 
 // *****************************************************************************
 // *****************************************************************************

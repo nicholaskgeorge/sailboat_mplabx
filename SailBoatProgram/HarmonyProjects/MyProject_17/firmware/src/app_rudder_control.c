@@ -67,6 +67,8 @@ void APP_RUDDER_CONTROL_Tasks ( void )
               app_rudder_controlData.state = APP_RUDDER_CONTROL_STATE_SERVICE_TASKS;
               break;
           }
+          app_rudder_controlData.state = APP_RUDDER_CONTROL_STATE_SERVICE_TASKS;
+          break;
         }
 
         case APP_RUDDER_CONTROL_STATE_SERVICE_TASKS:
@@ -105,6 +107,7 @@ void APP_RUDDER_CONTROL_Tasks ( void )
             else if (rudder_duty < pwm_max){rudder_duty = pwm_max;}
             PWM0_ChannelDutySet(PWM_CHANNEL_1, rudder_duty);
             itoa(rudder_angle,angles,10);
+//            asm(" BKPT ");
             if (DRV_USART_WriteBuffer(app_rudder_controlData.usartHandle, &angles, sizeof(angles)) == true){}
 //            int wait = 1000/ portTICK_PERIOD_MS;
             //11200 = -15

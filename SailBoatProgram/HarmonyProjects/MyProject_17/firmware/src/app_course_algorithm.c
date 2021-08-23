@@ -47,6 +47,11 @@ int desired_mast_angle;
 int desired_rudder_angle;
 float rudder_angle;
 navigation_goal destination;
+char* message_ptr;
+int message_size;
+char gps_not_ready[] = "GPS connection not yet established";
+char gps_ready[] = "GPS Connection established";
+bool sending;
 
 void APP_COURSE_ALGORITHM_Tasks ( void )
 {
@@ -68,10 +73,19 @@ void APP_COURSE_ALGORITHM_Tasks ( void )
         case APP_COURSE_ALGORITHM_STATE_GPS_NOT_READY:
         {
             if(GPS_info->isValid){
-              app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_NAVIGATE;  
+              while(sending){vTaskDelay(100/ portTICK_PERIOD_MS);}//wait till ready to send
+              message_ptr = gps_ready;
+              message_size = sizeof(gps_ready);
+              sending = true;
+              app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_NAVIGATE;
+              break;
             }
             vTaskDelay(10000/ portTICK_PERIOD_MS);
             //send message that the GPS is not ready
+            while(sending){vTaskDelay(100/ portTICK_PERIOD_MS);}//wait till ready to send
+            message_ptr = gps_not_ready;
+            message_size = sizeof(gps_not_ready);
+            sending = true;
         }
         case APP_COURSE_ALGORITHM_STATE_NAVIGATE:
         {
