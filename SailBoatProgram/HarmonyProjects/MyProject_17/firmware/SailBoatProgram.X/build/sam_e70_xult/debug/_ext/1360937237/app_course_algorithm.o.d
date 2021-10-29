@@ -139,7 +139,8 @@ build/sam_e70_xult/debug/_ext/1360937237/app_course_algorithm.o: \
  ../src/third_party/rtos/FreeRTOS/Source/include/queue.h \
  ../src/third_party/rtos/FreeRTOS/Source/include/task.h \
  ../src/app_mast_control.h ../src/app_anemometer.h ../src/app_imu.h \
- ../src/app_gps.h ../src/config/sam_e70_xult/driver/i2c/drv_i2c.h \
+ ../src/app_communication.h ../src/app_gps.h \
+ ../src/config/sam_e70_xult/driver/i2c/drv_i2c.h \
  ../src/config/sam_e70_xult/driver/i2c/drv_i2c_definitions.h \
  ../src/config/sam_e70_xult/driver/i2c/src/drv_i2c_local.h
 
@@ -426,6 +427,8 @@ build/sam_e70_xult/debug/_ext/1360937237/app_course_algorithm.o: \
 ../src/app_anemometer.h:
 
 ../src/app_imu.h:
+
+../src/app_communication.h:
 
 ../src/app_gps.h:
 

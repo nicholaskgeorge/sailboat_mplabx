@@ -165,7 +165,7 @@ bool processRMC(GPS_INFO* GPS_info, char* start)
         return false;
     }
 	ptr += 2; // Skip validity and comma
-    //asm(" BKPT ");
+
 	GPS_info->latitude = parseDegreeMinute(ptr, 2, &ptr);
 
 	if (*ptr == ',')
@@ -210,10 +210,9 @@ bool GPS_Process(GPS_INFO* GPS_info,char* incoming_str)
     while (*ptr=='\0'){ // find the start of non-null values
         ++ptr;
     }
-    //asm(" BKPT ");
+
     char msg[3];
 
-    
     while (*ptr != '\0'){ // find the start of the message
         if (*ptr == '$'){
             start = ptr;
@@ -232,19 +231,13 @@ bool GPS_Process(GPS_INFO* GPS_info,char* incoming_str)
             GPS_info->buffer = start;
 
             GPS_info->talkerID = start[2];
+
             strncpy(msg, start+3, 3);
             strcpy(GPS_info->messageID, msg);
-            /*
-             For some reason if you use strcmp instead of strncmp here it will will
-             not work. I checked that GGA is in the char variable with the debugger
-             but it doesn't seem to matter. This should me investigated in the future
-             */
-            if (strncmp(msg, "GGA",3) == 0){// maybe unnecessary
+            if (strncmp(msg, "GGA",3) == 0) // maybe unnecessary
                 result[0] = processGGA(GPS_info,start);
-            }
-            else if (strncmp(msg, "RMC", 3) == 0)
+            else if (strncmp(msg, "RMC",3) == 0)
                 result[1] = processRMC(GPS_info,start);
-            
 
             ptr = end;
         }
@@ -252,7 +245,6 @@ bool GPS_Process(GPS_INFO* GPS_info,char* incoming_str)
     }
     return result[0]&&result[1];
 }
-
 
 APP_GPS_DATA app_gpsData;
 GPS_INFO* GPS_info;
@@ -292,6 +284,7 @@ void APP_GPS_Tasks ( void )
             vTaskDelay(10000/portTICK_PERIOD_MS);
             if (appInitialized)
             {
+                GPS_info->isValid = false;
                 app_gpsData.state = APP_GPS_STATE_SERVICE_TASKS;
             }
             break;
@@ -300,10 +293,12 @@ void APP_GPS_Tasks ( void )
         case APP_GPS_STATE_SERVICE_TASKS:
         {
             if (true == DRV_I2C_ReadTransfer(app_gpsData.i2cHandle, address, buf, sizeof(buf))){
+//                asm(" BKPT ");
                 GPS_Process(GPS_info,(char*)buf);
             }
             vTaskDelay(1000/portTICK_PERIOD_MS);
             //break;
+            
         }
         default:
         {

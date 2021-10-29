@@ -112,7 +112,7 @@ void APP_COMMUNICATION_Tasks ( void )
 //            bool appInitialized = false;
             app_communicationData.usartHandle = DRV_USART_Open(DRV_USART_INDEX_0, 0);
             app_communicationData.send = DRV_USART_Open(DRV_USART_INDEX_0, 0);
-            app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
+            app_communicationData.state =APP_COMMUNICATION_STATE_RECEIVE;
             break;
         }
         
@@ -190,23 +190,26 @@ void APP_COMMUNICATION_Tasks ( void )
 //                app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
 //                break; 
             }
+            break;
         }
         
         case APP_COMMUNICATION_STATE_RECEIVE:
         {
             //Without this the filler bits move around to the front of the message
             //screw it up. I do not know why
+//            asm(" BKPT ");
             while(1){
                 delay = 200/ portTICK_PERIOD_MS;
                 vTaskDelay(delay);
-                if(sending){
-                    app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
-                    break;
-                }
                 if (DRV_USART_ReadBuffer(app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)) == true){
 //                    asm(" BKPT ");
                     app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_MCU_RECEIVED;
                     break;   
+                }
+                if(sending){
+                    asm(" BKPT ");
+                    app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
+                    break;
                 }
             }
             break;
@@ -219,24 +222,28 @@ void APP_COMMUNICATION_Tasks ( void )
                 vTaskDelay(delay);
                 size = Radio_Encode((uint8_t*)confirmed,sendbuffer, sizeof(confirmed));
                 if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
+                    //asm(" BKPT ");
                     app_communicationData.state = APP_COMMUNICATION_STATE_PROCESS_MESSAGE;
                     break;
                 } 
             }
+            break;
         }
+        
         case APP_COMMUNICATION_STATE_SEND:
         {
+//            asm(" BKPT ");
             while(1){
                 delay = 300/ portTICK_PERIOD_MS;
                 vTaskDelay(delay);
                 size = Radio_Encode((uint8_t*)message_ptr,sendbuffer, sizeof(message_size));
-                //asm(" BKPT ");
                 if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
                     sending = false;
                     app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED;
                     break;
                 }
             }
+            break;
         }
         case APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED:
         {
@@ -267,12 +274,12 @@ void APP_COMMUNICATION_Tasks ( void )
                 delay = 1000/ portTICK_PERIOD_MS;
                 vTaskDelay(delay);
                 size = Radio_Encode((uint8_t*)signal_confirmed,sendbuffer, sizeof(signal_confirmed));
-                //asm(" BKPT ");
                 if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
                     app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED;
                     break;
                 }
             }
+            break;
         }
         default:
         {

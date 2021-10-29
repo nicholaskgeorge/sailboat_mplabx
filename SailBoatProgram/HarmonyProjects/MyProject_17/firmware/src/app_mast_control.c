@@ -93,8 +93,10 @@ void APP_MAST_CONTROL_Tasks ( void )
 
         case APP_MAST_CONTROL_STATE_SERVICE_TASKS:
         {
+//            vTaskDelay(100000/ portTICK_PERIOD_MS);
             
             //mast_angle restriction
+//            asm(" BKPT ");
             if(desired_mast_angle > restrict_angle){
                 desired_mast_angle = restrict_angle;
             }

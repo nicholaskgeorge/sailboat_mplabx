@@ -26,7 +26,7 @@ children:
         - type: Values
           children:
           - type: User
-            attributes: {value: '2'}
+            attributes: {value: '3'}
       - type: Comment
         attributes: {id: DRV_USART_DEPENDENCY_DMA_COMMENT}
         children:

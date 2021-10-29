@@ -44,7 +44,8 @@ void APP_RUDDER_CONTROL_Initialize ( void )
     PWM0_ChannelsStart(PWM_CHANNEL_1_MASK);
     app_rudder_controlData.usartHandle = DRV_USART_Open(DRV_USART_INDEX_1, 0);
     PWM0_ChannelDutySet(PWM_CHANNEL_1, rudder_duty);
-    vTaskDelay(1000/ portTICK_PERIOD_MS);
+    //putting a delay here produces a catastrophic error. DONT DO IT.
+    //vTaskDelay(1000/ portTICK_PERIOD_MS);
     /* TODO: Initialize your application's state machine and other
      * parameters.
      */
@@ -58,14 +59,11 @@ void APP_RUDDER_CONTROL_Tasks ( void )
         /* Application's initial state. */
         case APP_RUDDER_CONTROL_STATE_INIT:
         {
-          if(!rudder_calibrated){
+          vTaskDelay(2000/ portTICK_PERIOD_MS);
+          while(!rudder_calibrated){
               rudder_duty += 10;
-//              PWM0_ChannelDutySet(PWM_CHANNEL_1, rudder_duty);
-              vTaskDelay(400/ portTICK_PERIOD_MS);
-          }
-          else{
-              app_rudder_controlData.state = APP_RUDDER_CONTROL_STATE_SERVICE_TASKS;
-              break;
+              PWM0_ChannelDutySet(PWM_CHANNEL_1, rudder_duty);
+              vTaskDelay(100/ portTICK_PERIOD_MS);
           }
           app_rudder_controlData.state = APP_RUDDER_CONTROL_STATE_SERVICE_TASKS;
           break;

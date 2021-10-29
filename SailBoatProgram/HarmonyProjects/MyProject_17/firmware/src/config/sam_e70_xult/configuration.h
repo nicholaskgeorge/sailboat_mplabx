@@ -145,7 +145,7 @@ extern "C" {
 
 /* USART Driver Instance 0 Configuration Options */
 #define DRV_USART_INDEX_0                  0
-#define DRV_USART_CLIENTS_NUMBER_IDX0      2
+#define DRV_USART_CLIENTS_NUMBER_IDX0      3
 
 /* USART Driver Global Configuration Options */
 #define DRV_USART_INSTANCES_NUMBER         3

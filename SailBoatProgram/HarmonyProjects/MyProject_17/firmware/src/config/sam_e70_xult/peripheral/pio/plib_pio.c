@@ -105,7 +105,9 @@ void PIO_Initialize ( void )
     /* PORTB PIO Disable and Peripheral Enable*/
     ((pio_registers_t*)PIO_PORT_B)->PIO_PDR = 0x13;
     ((pio_registers_t*)PIO_PORT_B)->PIO_PER = ~0x13;
-    ((pio_registers_t*)PIO_PORT_B)->PIO_MDDR = 0xFFFFFFFF;
+    /* PORTB Multi Drive or Open Drain Enable */
+    ((pio_registers_t*)PIO_PORT_B)->PIO_MDER = 0x1;
+    ((pio_registers_t*)PIO_PORT_B)->PIO_MDDR = ~0x1;
     /* PORTB Pull Up Enable/Disable as per MHC selection */
     ((pio_registers_t*)PIO_PORT_B)->PIO_PUDR = 0xFFFFFFFF;
     /* PORTB Pull Down Enable/Disable as per MHC selection */

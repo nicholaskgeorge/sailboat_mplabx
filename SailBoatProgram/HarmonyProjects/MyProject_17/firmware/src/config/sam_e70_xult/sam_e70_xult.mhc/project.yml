@@ -223,13 +223,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: ABA9512293385118D00ED27AF16307B7
-- generatedChecksum: 7214ACF6577E2C5CF10A2F2EE52B1A83
+- generatedChecksum: AEDF885A5AE56F7BB0522EE9F1292006
   logicalPath: config\sam_e70_xult\peripheral\pio
   name: plib_pio.c
   physicalPath: peripheral\pio
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 7214ACF6577E2C5CF10A2F2EE52B1A83
+  userChecksum: AEDF885A5AE56F7BB0522EE9F1292006
 - generatedChecksum: 6A608B4117752F0BCC93EA86D1575523
   logicalPath: config\sam_e70_xult\peripheral\pwm
   name: plib_pwm0.c
@@ -559,13 +559,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 52F91AC0727F2311EDA0E3BAA7719A9F
-- generatedChecksum: 7C9165B7F37B8C1E9A65000B2C3BE3E7
+- generatedChecksum: CAACE42C1D08EE6F272F1DC2E813E521
   logicalPath: config\sam_e70_xult
   name: configuration.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 7C9165B7F37B8C1E9A65000B2C3BE3E7
+  userChecksum: CAACE42C1D08EE6F272F1DC2E813E521
 - generatedChecksum: 8DA90CDFAED934C14DB1E81B104CEE2F
   logicalPath: packs\CMSIS\CMSIS\Core\Include
   name: core_cm7.h
