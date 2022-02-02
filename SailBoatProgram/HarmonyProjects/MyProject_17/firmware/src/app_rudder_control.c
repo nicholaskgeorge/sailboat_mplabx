@@ -19,6 +19,8 @@ int pwm_max = 10600;
 bool jitter = true;
 void rudder_encoder(PIO_PIN pin, uintptr_t context)
 {   
+    //The encoder rudder encoder has 384 ticks per revolution.
+    //This means each tick has 360/384 = 0.18 degrees
     if(Rudder_B_signal_Get()==1){
        rudder_angle += 0.18;
     }
@@ -42,7 +44,7 @@ void APP_RUDDER_CONTROL_Initialize ( void )
     PIO_PinInterruptEnable(PIO_PIN_PA10);
     PIO_PinInterruptEnable(PIO_PIN_PB13);
     PWM0_ChannelsStart(PWM_CHANNEL_1_MASK);
-    app_rudder_controlData.usartHandle = DRV_USART_Open(DRV_USART_INDEX_1, 0);
+//    app_rudder_controlData.usartHandle = DRV_USART_Open(DRV_USART_INDEX_1, 0);
     PWM0_ChannelDutySet(PWM_CHANNEL_1, rudder_duty);
     //putting a delay here produces a catastrophic error. DONT DO IT.
     //vTaskDelay(1000/ portTICK_PERIOD_MS);
@@ -106,7 +108,7 @@ void APP_RUDDER_CONTROL_Tasks ( void )
             PWM0_ChannelDutySet(PWM_CHANNEL_1, rudder_duty);
             itoa(rudder_angle,angles,10);
 //            asm(" BKPT ");
-            if (DRV_USART_WriteBuffer(app_rudder_controlData.usartHandle, &angles, sizeof(angles)) == true){}
+//            if (DRV_USART_WriteBuffer(app_rudder_controlData.usartHandle, &angles, sizeof(angles)) == true){}
 //            int wait = 1000/ portTICK_PERIOD_MS;
             //11200 = -15
 //            vTaskDelay(wait);

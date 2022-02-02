@@ -15,26 +15,39 @@ int restrict_angle = 135;
 //duty values go between 5000 and 10000. Lower value spins faster
 int duty = 0;
 int sleep = 0;
-
+int allowed_calibration_error = 3;
+/*
+ * Updates the mast_angle variable accordingly based on encoder measurments
+ * This function is placed on an interrupt which runs whenever we see the 
+ * falling edge of the A signal.
+ */
 void mast_encoder(PIO_PIN pin, uintptr_t context)
 {   
+    //Increment angle if B is high
     if(Mast_B_signal_Get()==1){
        mast_angle += 1;
     }
+    //Decrement if B is low
     else{
        mast_angle -=1;
     }
 }
 
+/*
+ * Resets the mast angle and sets calibrated flag high
+ * Placed to run on an interrupt every time z signal is high
+ */
 void mast_reset(PIO_PIN pin, uintptr_t context){
     mast_angle = 0;
     calibrate = true;
 }
 
+//Move counter clockwise
 void CCW(){
     motor_direction_Set();
 }
 
+//move clockwise
 void CW(){
     motor_direction_Clear();
 }
@@ -43,9 +56,13 @@ void APP_MAST_CONTROL_Initialize ( void )
 {
     /* Place the App state machine in its initial state. */
     app_mast_controlData.state = APP_MAST_CONTROL_STATE_INIT;
+    //Add A signal interrupt
     PIO_PinInterruptCallbackRegister(PIO_PIN_PD26, mast_encoder, (uintptr_t)NULL);
+    //Add B signal interrupt
     PIO_PinInterruptCallbackRegister(PIO_PIN_PD30, mast_reset, (uintptr_t)NULL);
+    //Enable A signal pin
     PIO_PinInterruptEnable(PIO_PIN_PD26);
+    //Enable Z signal pin
     PIO_PinInterruptEnable(PIO_PIN_PD30);
     PWM0_ChannelsStart(PWM_CHANNEL_0_MASK);
     CCW();
@@ -69,14 +86,15 @@ void APP_MAST_CONTROL_Tasks ( void )
                  * When we start we need to find where zero is. When we hit zero 
                  * we are calibrated. This is the algorithm to find zero: We assume
                  * the starting potion is right of zero. we keep moving CCW until 
-                 * we hit zero. If the total mast_angle we travel is greater than 90 
-                 * we know that we actually started on the right side (since
-                 * -90 is the farthest right we can go) We switch to move CW and
-                 * wait to hit zero.
+                 * we hit zero. If the total mast_angle we travel is greater than 
+                 * the restrict angle we know that we actually started on the 
+                 * right side (since -restrict_angle is the farthest right we can go)
+                 * We switch to move CW and wait to hit zero.
                  */
+                //make the motor turn left on start
                 PWM0_ChannelDutySet(PWM_CHANNEL_0, 1000);
                 //I made it plus 3 just to give it a little error tolerance
-                if(mast_angle>restrict_angle+3 && !ontheleft){
+                if(mast_angle>restrict_angle+allowed_calibration_error && !ontheleft){
                     ontheleft = true;
                     CW();
                 }   
@@ -95,14 +113,18 @@ void APP_MAST_CONTROL_Tasks ( void )
         {
 //            vTaskDelay(100000/ portTICK_PERIOD_MS);
             
-            //mast_angle restriction
+            //ensure mast angle is not greater than restrict angle
 //            asm(" BKPT ");
             if(desired_mast_angle > restrict_angle){
+                //if so apply restriction
                 desired_mast_angle = restrict_angle;
             }
+            //ensure mast angle is not greater than restrict angle
             else if (desired_mast_angle < restrict_angle *-1){
+                //if so apply restriction
                 desired_mast_angle = restrict_angle *-1;
             }
+            //calculate error
             error = desired_mast_angle-mast_angle;
             //This makes sure the boat always takes the smallest mast_angle to get back
 //            if (abs(error)>180){
@@ -114,8 +136,11 @@ void APP_MAST_CONTROL_Tasks ( void )
 //            printf("\r\n"); 
 //            printf("Angle Error: %.2d", error);
 //            printf("\r\n"); 
+            //mast angle error correction if substantial error is found
             if(abs(error)>allowed_error){
+                //make mast turn
                 duty = 1000;
+                //set rotation direction
                 if (error>0){
                     CCW();
                 }
@@ -123,9 +148,11 @@ void APP_MAST_CONTROL_Tasks ( void )
                     CW();
                 }
             }
+            //if no substantial error found keep mast still
             else{
                 duty = 10000;
             }
+            //send PWM value to the motor 
             PWM0_ChannelDutySet(PWM_CHANNEL_0, duty);
             break;
         }

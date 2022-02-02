@@ -73,6 +73,7 @@ bool Parse_IMU_Field(IMU_INFO* IMU_info){
     strncpy(IMU_info->messagetype, str+3, 3);
 
     char* endptr = str+field_index[1]-1;
+    
     IMU_info->yaw = strtod (str+1+field_index[0], &endptr);
     endptr = str+field_index[2]-1;
     IMU_info->pitch = strtod (str+1+field_index[1], &endptr);
@@ -111,8 +112,8 @@ bool Parse_IMU_Field(IMU_INFO* IMU_info){
 IMU_INFO* IMU_info;
 uint8_t IMU_values[128];
 int delay;
-int heading =0;
-char sheading[5];
+int heading =1;
+char sheading[7];
 bool appInitialized = false;
 
 void APP_IMU_Tasks ( void )
@@ -125,9 +126,9 @@ void APP_IMU_Tasks ( void )
         case APP_IMU_STATE_INIT:
         {
             app_imuData.usartHandle = DRV_USART_Open(DRV_USART_INDEX_2, 0);
-            app_imuData.send = DRV_USART_Open(DRV_USART_INDEX_1, 0);
-            sheading[3]='\n';
-            sheading[4]='\r';
+//            app_imuData.send = DRV_USART_Open(DRV_USART_INDEX_1, 0);
+            sheading[5]='\n';
+            sheading[6]='\r';
             appInitialized = true;
             if (appInitialized)
             {
@@ -143,13 +144,14 @@ void APP_IMU_Tasks ( void )
             }
             delay = 500 / portTICK_PERIOD_MS;
             vTaskDelay(delay);  
-//            heading = IMU_info->heading;
-//            itoa(heading, sheading, 10);
+            heading = IMU_info->yaw;
+//            asm(" BKPT ");
+            itoa(heading, sheading, 10);
 //            if (DRV_USART_WriteBuffer(app_imuData.send, sheading, sizeof(sheading)) == true){
 //                delay = 200 / portTICK_PERIOD_MS;
 //                vTaskDelay(delay);
 //            }
-//            break;
+            break;
         }
         default:
         {

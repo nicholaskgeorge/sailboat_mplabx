@@ -1,4 +1,4 @@
-/*******************************************************************************
+ /*******************************************************************************
   MPLAB Harmony Application Source File
 
   Company:
@@ -213,21 +213,22 @@ void realtive_to_boat(Anemometer_INFO* aminfo, IMU_INFO* imuinfo, int mast_angle
     double th2 = mast_angle;
     double alpha = imuinfo->roll;
     double phi = imuinfo->pitch;
-    double db = 0.730;
-    double dm = 0.5;
-    double phi_dot = 0;//imuinfo->GyroY;
-    double th2_dot = 0;//we may just not measure wind when the mast moves
-    double alpha_dot = 0;//imuinfo->GyroX;
-    double th1_dot = 0;//imuinfo->GyroZ;
+//    double db = 0.730;
+//    double dm = 0.5;
+//    double phi_dot = 0;//imuinfo->GyroY;
+//    double th2_dot = 0;//we may just not measure wind when the mast moves
+//    double alpha_dot = 0;//imuinfo->GyroX;
+//    double th1_dot = 0;//imuinfo->GyroZ;
     double vel_wind_rel_an[3]= {v*cos(phi)*cos(th2) - w*sin(phi) + u*cos(phi)*sin(th2),
                                 v*cos(alpha)*sin(th2) - u*cos(alpha)*cos(th2) - w*sin(alpha),
                                 u*(sin(alpha)*cos(th2) - sin(phi)*sin(th2)) - v*(cos(th2)*sin(phi) + sin(alpha)*sin(th2)) - w*cos(alpha)*cos(phi)};
-    double vel_an_rel_boat[3]= {-db*phi_dot*sin(phi)*cos(th2)-db*th2_dot*cos(phi)*sin(th2)-dm*phi_dot*cos(phi) + th1_dot*(db*cos(alpha)*sin(th2)-dm*sin(alpha)),
-                                -db*alpha_dot*sin(alpha)*sin(th2) + db*th2_dot*cos(alpha)*cos(th2) - dm*alpha_dot*cos(alpha) - th1_dot*(db*cos(phi)*cos(th2) - dm*sin(phi)),
-                                -(db*(-th2_dot*sin(th2)*sin(phi) + phi_dot*cos(th2)*cos(phi) + alpha_dot*cos(phi)*cos(th2) + th2_dot*sin(alpha)*cos(phi) + phi_dot*cos(alpha)*sin(phi)))};
-    aminfo->boatv = vel_wind_rel_an[0]-vel_an_rel_boat[0];
-    aminfo->boatu = vel_wind_rel_an[1]-vel_an_rel_boat[1];
-    aminfo->boatw = vel_wind_rel_an[2]-vel_an_rel_boat[2];
+//    double vel_an_rel_boat[3]= {-db*phi_dot*sin(phi)*cos(th2)-db*th2_dot*cos(phi)*sin(th2)-dm*phi_dot*cos(phi) + th1_dot*(db*cos(alpha)*sin(th2)-dm*sin(alpha)),
+//                                -db*alpha_dot*sin(alpha)*sin(th2) + db*th2_dot*cos(alpha)*cos(th2) - dm*alpha_dot*cos(alpha) - th1_dot*(db*cos(phi)*cos(th2) - dm*sin(phi)),
+//                                -(db*(-th2_dot*sin(th2)*sin(phi) + phi_dot*cos(th2)*cos(phi) + alpha_dot*cos(phi)*cos(th2) + th2_dot*sin(alpha)*cos(phi) + phi_dot*cos(alpha)*sin(phi)))};
+    //Rename these variables so that they describe the actual vectors as forward back left and right
+    aminfo->boatv = vel_wind_rel_an[0];
+//    aminfo->boatu = vel_wind_rel_an[1]
+    aminfo->boatw = vel_wind_rel_an[2];
     //aminfo->boatwinddir = calculate it
     if (abs(aminfo->boatwinddir)<90){
         aminfo->wind_is_from_front = true;
@@ -247,7 +248,7 @@ void APP_ANEMOMETER_Tasks ( void )
         {
             bool appInitialized = true;
 //            app_anemometerData.usartHandleSEND = DRV_USART_Open(DRV_USART_INDEX_1, 0);
-//            app_anemometerData.usartHandleREC = DRV_USART_Open(DRV_USART_INDEX_1, 0);
+            app_anemometerData.usartHandleREC = DRV_USART_Open(DRV_USART_INDEX_1, 0);
             if (appInitialized)
             {
                 app_anemometerData.state = APP_ANEMOMETER_STATE_SERVICE_TASKS;
@@ -261,9 +262,9 @@ void APP_ANEMOMETER_Tasks ( void )
             sdir[5]='\r';
             sdir[6]='\n';
             while(1){
-//                if (DRV_USART_ReadBuffer(app_anemometerData.usartHandleREC, &Anemometer_values, sizeof(Anemometer_values)) == true){
-//                    Anem_Process(Anemometer_info,(char*)Anemometer_values); // parse it into fields 
-//                }
+                if (DRV_USART_ReadBuffer(app_anemometerData.usartHandleREC, &Anemometer_values, sizeof(Anemometer_values)) == true){
+                    Anem_Process(Anemometer_info,(char*)Anemometer_values); // parse it into fields 
+                }
                 /*
                  *Things don't change very fast when sailing so we don't need to
                  * be reading instantaneously. This blocks the process for 100 ms

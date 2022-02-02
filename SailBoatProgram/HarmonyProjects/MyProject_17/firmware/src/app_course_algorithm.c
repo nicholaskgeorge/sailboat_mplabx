@@ -10,6 +10,27 @@
 
 APP_COURSE_ALGORITHM_DATA app_course_algorithmData;
 APP_COMMUNICATION_DATA app_communicationData;
+GPS_INFO* GPS_info;
+Anemometer_INFO* Anemometer_info;
+IMU_INFO* IMU_info;
+float allowed_cruise_angle_error = 10;
+float allowed_set_angle_error = 7;
+int allowed_rudder_wind_error = 10;
+int rudder_angle_to_wind = 0;
+int mast_angle_to_wind = 0;
+int desired_mast_angle;
+int desired_rudder_angle;
+float rudder_angle;
+char confirmation_year[4];
+char date[11];
+char* date_ptr = 0;
+navigation_goal destination;
+char* message_ptr;
+int message_size;
+char gps_not_ready[] = "GPS connection not yet established";
+char gps_ready[] = "GPS Connection established";
+bool sending;
+int check = 0;
 
 float distancetopt(double lat1,double long1, double lat2, double long2){
     //this is called the Haversine formula. It can be found online
@@ -37,28 +58,6 @@ void APP_COURSE_ALGORITHM_Initialize ( void )
 {
     app_course_algorithmData.state = APP_COURSE_ALGORITHM_STATE_INIT;
 }
-
-GPS_INFO* GPS_info;
-Anemometer_INFO* Anemometer_info;
-IMU_INFO* IMU_info;
-float allowed_cruise_angle_error = 10;
-float allowed_set_angle_error = 7;
-int allowed_rudder_wind_error = 10;
-int rudder_angle_to_wind = 0;
-int mast_angle_to_wind = 0;
-int desired_mast_angle;
-int desired_rudder_angle;
-float rudder_angle;
-char confirmation_year[4];
-char date[11];
-char* date_ptr = 0;
-navigation_goal destination;
-char* message_ptr;
-int message_size;
-char gps_not_ready[] = "GPS connection not yet established";
-char gps_ready[] = "GPS Connection established";
-bool sending;
-int check = 0;
 
 void APP_COURSE_ALGORITHM_Tasks ( void )
 {
@@ -174,7 +173,7 @@ void APP_COURSE_ALGORITHM_Tasks ( void )
 //                desired_mast_angle = Anemometer_info->boatwinddir;
 //                desired_rudder_angle = 0;
 //            }
-        }
+        } 
         
         default:
         {

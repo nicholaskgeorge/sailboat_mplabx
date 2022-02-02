@@ -426,16 +426,14 @@
                    displayName="Important Files"
                    projectFiles="false">
       <logicalFolder name="f2" displayName="default.mhc" projectFiles="true">
-        <itemPath>../../../../../../HarmonyProjects/GPS_test/firmware/src/config/default/default.mhc/cmsis.yml</itemPath>
-        <itemPath>../../../../../../HarmonyProjects/GPS_test/firmware/src/config/default/default.mhc/core.yml</itemPath>
-        <itemPath>../../../../../../HarmonyProjects/GPS_test/firmware/src/config/default/default.mhc/dfp.yml</itemPath>
-        <itemPath>../../../../../../HarmonyProjects/GPS_test/firmware/src/config/default/default.mhc/efc.yml</itemPath>
-        <itemPath>../../../../../../HarmonyProjects/GPS_test/firmware/src/config/default/default.mhc/GraphSettings.yml</itemPath>
-        <itemPath>../../../../../../HarmonyProjects/GPS_test/firmware/src/config/default/default.mhc/project.yml</itemPath>
-        <itemPath>../../../../../../HarmonyProjects/GPS_test/firmware/src/config/default/default.mhc/settings.yml</itemPath>
-        <itemPath>../../../../../../HarmonyProjects/GPS_test/firmware/src/config/default/default.mhc/stdio.yml</itemPath>
-        <itemPath>../../../../../../HarmonyProjects/GPS_test/firmware/src/config/default/default.mhc/twihs0.yml</itemPath>
-        <itemPath>../../../../../../HarmonyProjects/GPS_test/firmware/src/config/default/default.mhc/usart1.yml</itemPath>
+        <itemPath>../../../../../../HarmonyProjects/imu_test/firmware/src/config/default/default.mhc/cmsis.yml</itemPath>
+        <itemPath>../../../../../../HarmonyProjects/imu_test/firmware/src/config/default/default.mhc/core.yml</itemPath>
+        <itemPath>../../../../../../HarmonyProjects/imu_test/firmware/src/config/default/default.mhc/dfp.yml</itemPath>
+        <itemPath>../../../../../../HarmonyProjects/imu_test/firmware/src/config/default/default.mhc/efc.yml</itemPath>
+        <itemPath>../../../../../../HarmonyProjects/imu_test/firmware/src/config/default/default.mhc/GraphSettings.yml</itemPath>
+        <itemPath>../../../../../../HarmonyProjects/imu_test/firmware/src/config/default/default.mhc/project.yml</itemPath>
+        <itemPath>../../../../../../HarmonyProjects/imu_test/firmware/src/config/default/default.mhc/settings.yml</itemPath>
+        <itemPath>../../../../../../HarmonyProjects/imu_test/firmware/src/config/default/default.mhc/usart2.yml</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="sam_e70_xult.mhc" projectFiles="true">
         <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/cmsis.yml</itemPath>
@@ -701,6 +699,8 @@
         <property key="memories.programmemory.ranges" value="400000-5fffff"/>
         <property key="memories.rww" value="true"/>
         <property key="poweroptions.powerenable" value="false"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/Users/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/SailBoatProgram.X/debug/sam_e70_xult/SailBoatProgram_ptg"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preservedataflash.ranges"

@@ -72,10 +72,16 @@ void APP_COMMUNICATION_Initialize ( void )
 
 //Remember that the radio will add 7 bytes to any message you send (7 bytes more than
 //the unencoded message)
+//The buffer MUST be 7 bytes greater than the size (before encoding) of the largest message you 
+//expect to receive
+//i.e if the largest message you expect to send from your laptop is "hello", that is 
+//5 bytes to the buffer must be 12 bytes long
 
-uint8_t decoded[126]={0};
-uint8_t sendbuffer[126]={0};
-uint8_t recbuffer[126] ={0};
+#define max_data_size 80
+#define receive_buffer_size max_data_size+7
+uint8_t decoded[receive_buffer_size]={0};
+uint8_t sendbuffer[receive_buffer_size]={0};
+uint8_t recbuffer[receive_buffer_size] ={0};
 
 char* startptr = 0;
 char* ptr = 0;
@@ -121,12 +127,13 @@ void APP_COMMUNICATION_Tasks ( void )
 //            asm(" BKPT ");
             size = Radio_Decode(recbuffer, decoded);
             if (strncmp("signal check",(char*)decoded,sizeof("signal check")-1)==0){
+//                asm(" BKPT ");
                 app_communicationData.state = APP_COMMUNICATION_STATE_SIGNAL_CONFIRM;
                 break;
             }
             else{
-                app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
-                break;
+//                app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
+//                break;
             
                 //Now we interpret the message
                 startptr = (char*)decoded;
@@ -176,6 +183,7 @@ void APP_COMMUNICATION_Tasks ( void )
                           ptr+=4;
                           value = strtod(ptr,&numbound);
                           ptr = numbound;
+                          //This and issue. Lat and long are double values
                           destination.latitude =(int)value;
                           ptr++;
                           value = strtod(ptr,&numbound);
@@ -190,6 +198,8 @@ void APP_COMMUNICATION_Tasks ( void )
 //                app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
 //                break; 
             }
+            app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
+//                break;
             break;
         }
         
@@ -207,7 +217,7 @@ void APP_COMMUNICATION_Tasks ( void )
                     break;   
                 }
                 if(sending){
-                    asm(" BKPT ");
+//                    asm(" BKPT ");
                     app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
                     break;
                 }
