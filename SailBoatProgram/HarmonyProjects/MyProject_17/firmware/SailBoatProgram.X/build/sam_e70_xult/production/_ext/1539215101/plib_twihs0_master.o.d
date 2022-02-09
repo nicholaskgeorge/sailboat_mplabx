@@ -14,6 +14,7 @@ build/sam_e70_xult/production/_ext/1539215101/plib_twihs0_master.o: \
  ../src/packs/ATSAME70Q21B_DFP/component/chipid.h \
  ../src/packs/ATSAME70Q21B_DFP/component/dacc.h \
  ../src/packs/ATSAME70Q21B_DFP/component/efc.h \
+ ../src/packs/ATSAME70Q21B_DFP/component/fuses.h \
  ../src/packs/ATSAME70Q21B_DFP/component/gmac.h \
  ../src/packs/ATSAME70Q21B_DFP/component/gpbr.h \
  ../src/packs/ATSAME70Q21B_DFP/component/hsmci.h \
@@ -51,6 +52,7 @@ build/sam_e70_xult/production/_ext/1539215101/plib_twihs0_master.o: \
  ../src/packs/ATSAME70Q21B_DFP/instance/chipid.h \
  ../src/packs/ATSAME70Q21B_DFP/instance/dacc.h \
  ../src/packs/ATSAME70Q21B_DFP/instance/efc.h \
+ ../src/packs/ATSAME70Q21B_DFP/instance/fuses.h \
  ../src/packs/ATSAME70Q21B_DFP/instance/gmac.h \
  ../src/packs/ATSAME70Q21B_DFP/instance/gpbr.h \
  ../src/packs/ATSAME70Q21B_DFP/instance/hsmci.h \
@@ -136,6 +138,8 @@ build/sam_e70_xult/production/_ext/1539215101/plib_twihs0_master.o: \
 
 ../src/packs/ATSAME70Q21B_DFP/component/efc.h:
 
+../src/packs/ATSAME70Q21B_DFP/component/fuses.h:
+
 ../src/packs/ATSAME70Q21B_DFP/component/gmac.h:
 
 ../src/packs/ATSAME70Q21B_DFP/component/gpbr.h:
@@ -209,6 +213,8 @@ build/sam_e70_xult/production/_ext/1539215101/plib_twihs0_master.o: \
 ../src/packs/ATSAME70Q21B_DFP/instance/dacc.h:
 
 ../src/packs/ATSAME70Q21B_DFP/instance/efc.h:
+
+../src/packs/ATSAME70Q21B_DFP/instance/fuses.h:
 
 ../src/packs/ATSAME70Q21B_DFP/instance/gmac.h:
 

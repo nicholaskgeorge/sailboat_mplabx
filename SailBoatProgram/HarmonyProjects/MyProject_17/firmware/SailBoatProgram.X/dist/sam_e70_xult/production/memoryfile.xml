@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
   <executable name="dist/sam_e70_xult/production/SailBoatProgram.X.production.elf">
+    <memory name="program">
+      <units>bytes</units>
+      <length>2097152</length>
+      <used>67881</used>
+      <free>2029271</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>393216</length>
+      <used>50522</used>
+      <free>342694</free>
+    </memory>
   </executable>
 </project>

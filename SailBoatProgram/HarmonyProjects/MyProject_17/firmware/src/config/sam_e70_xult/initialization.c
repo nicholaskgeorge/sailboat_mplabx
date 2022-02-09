@@ -147,10 +147,6 @@ const DRV_USART_INIT drvUsart2InitData =
     /* USART Client Objects Pool */
     .clientObjPool = (uintptr_t)&drvUSART2ClientObjPool[0],
 
-    .dmaChannelTransmit = SYS_DMA_CHANNEL_NONE,
-
-    .dmaChannelReceive = SYS_DMA_CHANNEL_NONE,
-
 
     .remapDataWidth = drvUsart2remapDataWidth,
 
@@ -198,10 +194,6 @@ const DRV_USART_INIT drvUsart1InitData =
     /* USART Client Objects Pool */
     .clientObjPool = (uintptr_t)&drvUSART1ClientObjPool[0],
 
-    .dmaChannelTransmit = SYS_DMA_CHANNEL_NONE,
-
-    .dmaChannelReceive = SYS_DMA_CHANNEL_NONE,
-
 
     .remapDataWidth = drvUsart1remapDataWidth,
 
@@ -248,10 +240,6 @@ const DRV_USART_INIT drvUsart0InitData =
 
     /* USART Client Objects Pool */
     .clientObjPool = (uintptr_t)&drvUSART0ClientObjPool[0],
-
-    .dmaChannelTransmit = SYS_DMA_CHANNEL_NONE,
-
-    .dmaChannelReceive = SYS_DMA_CHANNEL_NONE,
 
 
     .remapDataWidth = drvUsart0remapDataWidth,
@@ -378,13 +366,15 @@ const SYS_FS_FUNCTIONS FatFsFunctions =
 };
 
 
+
 const SYS_FS_REGISTRATION_TABLE sysFSInit [ SYS_FS_MAX_FILE_SYSTEM_TYPE ] =
 {
     {
         .nativeFileSystemType = FAT,
         .nativeFileSystemFunctions = &FatFsFunctions
-    }
+    },
 };
+
 
 // </editor-fold>
 

@@ -1,24 +1,12 @@
 build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
  ../src/config/sam_e70_xult/exceptions.c \
  ../src/config/sam_e70_xult/configuration.h \
- ../src/config/sam_e70_xult/user.h \
- ../src/config/sam_e70_xult/toolchain_specifics.h \
- ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h \
- ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_gcc.h \
- ../src/config/sam_e70_xult/interrupts.h \
- ../src/config/sam_e70_xult/definitions.h \
- ../src/config/sam_e70_xult/driver/sdmmc/drv_sdmmc.h \
- ../src/config/sam_e70_xult/system/system.h \
- ../src/config/sam_e70_xult/system/system_common.h \
- ../src/config/sam_e70_xult/system/system_module.h \
- ../src/config/sam_e70_xult/system/system_common.h \
- ../src/config/sam_e70_xult/driver/driver_common.h \
- ../src/config/sam_e70_xult/system/int/sys_int.h \
- ../src/config/sam_e70_xult/device.h \
+ ../src/config/sam_e70_xult/user.h ../src/config/sam_e70_xult/device.h \
  ../src/packs/ATSAME70Q21B_DFP/same70q21b.h \
  ../src/packs/CMSIS/CMSIS/Core/Include/core_cm7.h \
  ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_version.h \
  ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h \
+ ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_gcc.h \
  ../src/packs/CMSIS/CMSIS/Core/Include/mpu_armv7.h \
  ../src/packs/CMSIS/CMSIS/Core/Include/cachel1_armv7.h \
  ../src/packs/ATSAME70Q21B_DFP/component/acc.h \
@@ -27,6 +15,7 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
  ../src/packs/ATSAME70Q21B_DFP/component/chipid.h \
  ../src/packs/ATSAME70Q21B_DFP/component/dacc.h \
  ../src/packs/ATSAME70Q21B_DFP/component/efc.h \
+ ../src/packs/ATSAME70Q21B_DFP/component/fuses.h \
  ../src/packs/ATSAME70Q21B_DFP/component/gmac.h \
  ../src/packs/ATSAME70Q21B_DFP/component/gpbr.h \
  ../src/packs/ATSAME70Q21B_DFP/component/hsmci.h \
@@ -64,6 +53,7 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
  ../src/packs/ATSAME70Q21B_DFP/instance/chipid.h \
  ../src/packs/ATSAME70Q21B_DFP/instance/dacc.h \
  ../src/packs/ATSAME70Q21B_DFP/instance/efc.h \
+ ../src/packs/ATSAME70Q21B_DFP/instance/fuses.h \
  ../src/packs/ATSAME70Q21B_DFP/instance/gmac.h \
  ../src/packs/ATSAME70Q21B_DFP/instance/gpbr.h \
  ../src/packs/ATSAME70Q21B_DFP/instance/hsmci.h \
@@ -115,6 +105,17 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
  ../src/packs/ATSAME70Q21B_DFP/instance/xdmac.h \
  ../src/packs/ATSAME70Q21B_DFP/pio/same70q21b.h \
  ../src/config/sam_e70_xult/device_cache.h \
+ ../src/config/sam_e70_xult/toolchain_specifics.h \
+ ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h \
+ ../src/config/sam_e70_xult/interrupts.h \
+ ../src/config/sam_e70_xult/definitions.h \
+ ../src/config/sam_e70_xult/driver/sdmmc/drv_sdmmc.h \
+ ../src/config/sam_e70_xult/system/system.h \
+ ../src/config/sam_e70_xult/system/system_common.h \
+ ../src/config/sam_e70_xult/system/system_module.h \
+ ../src/config/sam_e70_xult/system/system_common.h \
+ ../src/config/sam_e70_xult/driver/driver_common.h \
+ ../src/config/sam_e70_xult/system/int/sys_int.h \
  ../src/config/sam_e70_xult/device.h \
  ../src/config/sam_e70_xult/system/int/sys_int_mapping.h \
  ../src/config/sam_e70_xult/system/system_media.h \
@@ -157,9 +158,6 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
  ../src/config/sam_e70_xult/system/time/sys_time.h \
  ../src/config/sam_e70_xult/driver/usart/drv_usart.h \
  ../src/config/sam_e70_xult/driver/usart/drv_usart_definitions.h \
- ../src/config/sam_e70_xult/system/dma/sys_dma.h \
- ../src/config/sam_e70_xult/system/dma/sys_dma_mapping.h \
- ../src/config/sam_e70_xult/peripheral/xdmac/plib_xdmac.h \
  ../src/config/sam_e70_xult/driver/usart/src/drv_usart_local.h \
  ../src/config/sam_e70_xult/driver/usart/drv_usart.h \
  ../src/config/sam_e70_xult/system/fs/sys_fs.h \
@@ -182,6 +180,8 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
  ../src/config/sam_e70_xult/system/int/sys_int.h \
  ../src/config/sam_e70_xult/system/cache/sys_cache.h \
  ../src/config/sam_e70_xult/system/dma/sys_dma.h \
+ ../src/config/sam_e70_xult/system/dma/sys_dma_mapping.h \
+ ../src/config/sam_e70_xult/peripheral/xdmac/plib_xdmac.h \
  ../src/config/sam_e70_xult/osal/osal.h \
  ../src/config/sam_e70_xult/system/debug/sys_debug.h \
  ../src/config/sam_e70_xult/peripheral/usart/plib_usart2.h \
@@ -194,30 +194,6 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
 
 ../src/config/sam_e70_xult/user.h:
 
-../src/config/sam_e70_xult/toolchain_specifics.h:
-
-../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h:
-
-../src/packs/CMSIS/CMSIS/Core/Include/cmsis_gcc.h:
-
-../src/config/sam_e70_xult/interrupts.h:
-
-../src/config/sam_e70_xult/definitions.h:
-
-../src/config/sam_e70_xult/driver/sdmmc/drv_sdmmc.h:
-
-../src/config/sam_e70_xult/system/system.h:
-
-../src/config/sam_e70_xult/system/system_common.h:
-
-../src/config/sam_e70_xult/system/system_module.h:
-
-../src/config/sam_e70_xult/system/system_common.h:
-
-../src/config/sam_e70_xult/driver/driver_common.h:
-
-../src/config/sam_e70_xult/system/int/sys_int.h:
-
 ../src/config/sam_e70_xult/device.h:
 
 ../src/packs/ATSAME70Q21B_DFP/same70q21b.h:
@@ -227,6 +203,8 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
 ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_version.h:
 
 ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h:
+
+../src/packs/CMSIS/CMSIS/Core/Include/cmsis_gcc.h:
 
 ../src/packs/CMSIS/CMSIS/Core/Include/mpu_armv7.h:
 
@@ -243,6 +221,8 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
 ../src/packs/ATSAME70Q21B_DFP/component/dacc.h:
 
 ../src/packs/ATSAME70Q21B_DFP/component/efc.h:
+
+../src/packs/ATSAME70Q21B_DFP/component/fuses.h:
 
 ../src/packs/ATSAME70Q21B_DFP/component/gmac.h:
 
@@ -317,6 +297,8 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
 ../src/packs/ATSAME70Q21B_DFP/instance/dacc.h:
 
 ../src/packs/ATSAME70Q21B_DFP/instance/efc.h:
+
+../src/packs/ATSAME70Q21B_DFP/instance/fuses.h:
 
 ../src/packs/ATSAME70Q21B_DFP/instance/gmac.h:
 
@@ -420,6 +402,28 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
 
 ../src/config/sam_e70_xult/device_cache.h:
 
+../src/config/sam_e70_xult/toolchain_specifics.h:
+
+../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h:
+
+../src/config/sam_e70_xult/interrupts.h:
+
+../src/config/sam_e70_xult/definitions.h:
+
+../src/config/sam_e70_xult/driver/sdmmc/drv_sdmmc.h:
+
+../src/config/sam_e70_xult/system/system.h:
+
+../src/config/sam_e70_xult/system/system_common.h:
+
+../src/config/sam_e70_xult/system/system_module.h:
+
+../src/config/sam_e70_xult/system/system_common.h:
+
+../src/config/sam_e70_xult/driver/driver_common.h:
+
+../src/config/sam_e70_xult/system/int/sys_int.h:
+
 ../src/config/sam_e70_xult/device.h:
 
 ../src/config/sam_e70_xult/system/int/sys_int_mapping.h:
@@ -504,12 +508,6 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
 
 ../src/config/sam_e70_xult/driver/usart/drv_usart_definitions.h:
 
-../src/config/sam_e70_xult/system/dma/sys_dma.h:
-
-../src/config/sam_e70_xult/system/dma/sys_dma_mapping.h:
-
-../src/config/sam_e70_xult/peripheral/xdmac/plib_xdmac.h:
-
 ../src/config/sam_e70_xult/driver/usart/src/drv_usart_local.h:
 
 ../src/config/sam_e70_xult/driver/usart/drv_usart.h:
@@ -553,6 +551,10 @@ build/sam_e70_xult/production/_ext/1728594169/exceptions.o: \
 ../src/config/sam_e70_xult/system/cache/sys_cache.h:
 
 ../src/config/sam_e70_xult/system/dma/sys_dma.h:
+
+../src/config/sam_e70_xult/system/dma/sys_dma_mapping.h:
+
+../src/config/sam_e70_xult/peripheral/xdmac/plib_xdmac.h:
 
 ../src/config/sam_e70_xult/osal/osal.h:
 

@@ -56,7 +56,7 @@
 */
 
 #include "user.h"
-#include "toolchain_specifics.h"
+#include "device.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -118,6 +118,7 @@ extern "C" {
 
 
 
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Driver Configuration
@@ -125,7 +126,7 @@ extern "C" {
 // *****************************************************************************
 /* I2C Driver Instance 0 Configuration Options */
 #define DRV_I2C_INDEX_0                       0
-#define DRV_I2C_CLIENTS_NUMBER_IDX0           1
+#define DRV_I2C_CLIENTS_NUMBER_IDX0           2
 #define DRV_I2C_CLOCK_SPEED_IDX0              400000
 
 /* SDMMC Driver Global Configuration Options */

@@ -4,17 +4,17 @@
 
 
 project: MyProject_17
-creation_date: 2021-08-24T11:18:59.869-04:00[America/New_York]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2022-02-09T16:47:13.093-05:00[America/New_York]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mhc_mode: IDE            # [IDE|Standalone|Headless]
-mhc_version: v3.7.1
+mhc_version: v3.8.2
 mplabx_version: v5.50        # if MPLAB X plugin only
 plugin_version: v3.6.4        # if MPLAB X plugin only
-compiler: XC32 (2.50)
+compiler: XC32 (3.01)
 
 modules:
-    - {name: "core", version: "v3.9.0"}
-    - {name: "csp", version: "v3.9.0"}
-    - {name: "dev_packs", version: "v3.9.0"}
+    - {name: "core", version: "v3.10.0"}
+    - {name: "csp", version: "v3.10.0"}
+    - {name: "dev_packs", version: "v3.10.0"}
     - {name: "CMSIS-FreeRTOS", version: "v10.3.1"}
 
