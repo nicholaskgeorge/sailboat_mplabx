@@ -21,6 +21,7 @@ build/sam_e70_xult/debug/_ext/1360937237/main.o: ../src/main.c \
  ../src/packs/ATSAME70Q21B_DFP/component/chipid.h \
  ../src/packs/ATSAME70Q21B_DFP/component/dacc.h \
  ../src/packs/ATSAME70Q21B_DFP/component/efc.h \
+ ../src/packs/ATSAME70Q21B_DFP/component/fuses.h \
  ../src/packs/ATSAME70Q21B_DFP/component/gmac.h \
  ../src/packs/ATSAME70Q21B_DFP/component/gpbr.h \
  ../src/packs/ATSAME70Q21B_DFP/component/hsmci.h \
@@ -58,6 +59,7 @@ build/sam_e70_xult/debug/_ext/1360937237/main.o: ../src/main.c \
  ../src/packs/ATSAME70Q21B_DFP/instance/chipid.h \
  ../src/packs/ATSAME70Q21B_DFP/instance/dacc.h \
  ../src/packs/ATSAME70Q21B_DFP/instance/efc.h \
+ ../src/packs/ATSAME70Q21B_DFP/instance/fuses.h \
  ../src/packs/ATSAME70Q21B_DFP/instance/gmac.h \
  ../src/packs/ATSAME70Q21B_DFP/instance/gpbr.h \
  ../src/packs/ATSAME70Q21B_DFP/instance/hsmci.h \
@@ -153,9 +155,6 @@ build/sam_e70_xult/debug/_ext/1360937237/main.o: ../src/main.c \
  ../src/config/sam_e70_xult/system/time/sys_time.h \
  ../src/config/sam_e70_xult/driver/usart/drv_usart.h \
  ../src/config/sam_e70_xult/driver/usart/drv_usart_definitions.h \
- ../src/config/sam_e70_xult/system/dma/sys_dma.h \
- ../src/config/sam_e70_xult/system/dma/sys_dma_mapping.h \
- ../src/config/sam_e70_xult/peripheral/xdmac/plib_xdmac.h \
  ../src/config/sam_e70_xult/driver/usart/src/drv_usart_local.h \
  ../src/config/sam_e70_xult/driver/usart/drv_usart.h \
  ../src/config/sam_e70_xult/system/fs/sys_fs.h \
@@ -178,6 +177,8 @@ build/sam_e70_xult/debug/_ext/1360937237/main.o: ../src/main.c \
  ../src/config/sam_e70_xult/system/int/sys_int.h \
  ../src/config/sam_e70_xult/system/cache/sys_cache.h \
  ../src/config/sam_e70_xult/system/dma/sys_dma.h \
+ ../src/config/sam_e70_xult/system/dma/sys_dma_mapping.h \
+ ../src/config/sam_e70_xult/peripheral/xdmac/plib_xdmac.h \
  ../src/config/sam_e70_xult/osal/osal.h \
  ../src/config/sam_e70_xult/system/debug/sys_debug.h \
  ../src/config/sam_e70_xult/peripheral/usart/plib_usart2.h \
@@ -229,6 +230,8 @@ build/sam_e70_xult/debug/_ext/1360937237/main.o: ../src/main.c \
 ../src/packs/ATSAME70Q21B_DFP/component/dacc.h:
 
 ../src/packs/ATSAME70Q21B_DFP/component/efc.h:
+
+../src/packs/ATSAME70Q21B_DFP/component/fuses.h:
 
 ../src/packs/ATSAME70Q21B_DFP/component/gmac.h:
 
@@ -303,6 +306,8 @@ build/sam_e70_xult/debug/_ext/1360937237/main.o: ../src/main.c \
 ../src/packs/ATSAME70Q21B_DFP/instance/dacc.h:
 
 ../src/packs/ATSAME70Q21B_DFP/instance/efc.h:
+
+../src/packs/ATSAME70Q21B_DFP/instance/fuses.h:
 
 ../src/packs/ATSAME70Q21B_DFP/instance/gmac.h:
 
@@ -496,12 +501,6 @@ build/sam_e70_xult/debug/_ext/1360937237/main.o: ../src/main.c \
 
 ../src/config/sam_e70_xult/driver/usart/drv_usart_definitions.h:
 
-../src/config/sam_e70_xult/system/dma/sys_dma.h:
-
-../src/config/sam_e70_xult/system/dma/sys_dma_mapping.h:
-
-../src/config/sam_e70_xult/peripheral/xdmac/plib_xdmac.h:
-
 ../src/config/sam_e70_xult/driver/usart/src/drv_usart_local.h:
 
 ../src/config/sam_e70_xult/driver/usart/drv_usart.h:
@@ -545,6 +544,10 @@ build/sam_e70_xult/debug/_ext/1360937237/main.o: ../src/main.c \
 ../src/config/sam_e70_xult/system/cache/sys_cache.h:
 
 ../src/config/sam_e70_xult/system/dma/sys_dma.h:
+
+../src/config/sam_e70_xult/system/dma/sys_dma_mapping.h:
+
+../src/config/sam_e70_xult/peripheral/xdmac/plib_xdmac.h:
 
 ../src/config/sam_e70_xult/osal/osal.h:
 
