@@ -133,7 +133,7 @@ build/sam_e70_xult/debug/_ext/1360937237/app_imu.o: ../src/app_imu.c \
  ../src/third_party/rtos/FreeRTOS/Source/include/list.h \
  ../src/third_party/rtos/FreeRTOS/Source/include/semphr.h \
  ../src/third_party/rtos/FreeRTOS/Source/include/queue.h \
- ../src/third_party/rtos/FreeRTOS/Source/include/task.h
+ ../src/third_party/rtos/FreeRTOS/Source/include/task.h ../src/imu.h
 
 ../src/app_imu.h:
 
@@ -408,3 +408,5 @@ build/sam_e70_xult/debug/_ext/1360937237/app_imu.o: ../src/app_imu.c \
 ../src/third_party/rtos/FreeRTOS/Source/include/queue.h:
 
 ../src/third_party/rtos/FreeRTOS/Source/include/task.h:
+
+../src/imu.h:

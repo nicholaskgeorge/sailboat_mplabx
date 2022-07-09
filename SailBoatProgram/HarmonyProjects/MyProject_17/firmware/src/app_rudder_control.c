@@ -2,7 +2,6 @@
 #include "app_rudder_control.h"
 #include "definitions.h"
 
-
 APP_RUDDER_CONTROL_DATA app_rudder_controlData;
 
 int desired_rudder_angle = 0;
@@ -106,6 +105,7 @@ void APP_RUDDER_CONTROL_Tasks ( void )
             if(rudder_duty > pwm_min){rudder_duty = pwm_min;}
             else if (rudder_duty < pwm_max){rudder_duty = pwm_max;}
             PWM0_ChannelDutySet(PWM_CHANNEL_1, rudder_duty);
+            //snprintf(rudder_angle,angles,10);
             itoa(rudder_angle,angles,10);
 //            asm(" BKPT ");
 //            if (DRV_USART_WriteBuffer(app_rudder_controlData.usartHandle, &angles, sizeof(angles)) == true){}

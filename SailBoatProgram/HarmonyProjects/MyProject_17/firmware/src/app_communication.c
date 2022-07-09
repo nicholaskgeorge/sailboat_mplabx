@@ -101,7 +101,7 @@ navigation_goal destination;
 //and so that the boat knows to send
 bool sending = false;
 //this points to the char which we want to send
-char* message_ptr;
+char message[] = "Hello";
 //this holds the size of the char we want to send
 int message_size = 0;
 //int start = 0;
@@ -118,7 +118,7 @@ void APP_COMMUNICATION_Tasks ( void )
 //            bool appInitialized = false;
             app_communicationData.usartHandle = DRV_USART_Open(DRV_USART_INDEX_0, 0);
             app_communicationData.send = DRV_USART_Open(DRV_USART_INDEX_0, 0);
-            app_communicationData.state =APP_COMMUNICATION_STATE_RECEIVE;
+            app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
             break;
         }
         
@@ -231,6 +231,7 @@ void APP_COMMUNICATION_Tasks ( void )
                 delay = 1000/ portTICK_PERIOD_MS;
                 vTaskDelay(delay);
                 size = Radio_Encode((uint8_t*)confirmed,sendbuffer, sizeof(confirmed));
+                asm(" BKPT ");
                 if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
                     //asm(" BKPT ");
                     app_communicationData.state = APP_COMMUNICATION_STATE_PROCESS_MESSAGE;
@@ -240,13 +241,15 @@ void APP_COMMUNICATION_Tasks ( void )
             break;
         }
         
+        
         case APP_COMMUNICATION_STATE_SEND:
         {
 //            asm(" BKPT ");
             while(1){
                 delay = 300/ portTICK_PERIOD_MS;
                 vTaskDelay(delay);
-                size = Radio_Encode((uint8_t*)message_ptr,sendbuffer, sizeof(message_size));
+                size = Radio_Encode((uint8_t*)&message,sendbuffer, sizeof(message_size));
+                asm(" BKPT ");
                 if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
                     sending = false;
                     app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED;
@@ -257,25 +260,28 @@ void APP_COMMUNICATION_Tasks ( void )
         }
         case APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED:
         {
-            while(1){
-                delay = 400/ portTICK_PERIOD_MS;
-                vTaskDelay(delay);
-                if (DRV_USART_ReadBuffer(app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)) == true){
-                    size = Radio_Decode(recbuffer, decoded);
-                    //asm(" BKPT ");
-                    if (strncmp("confirmed",(char*)decoded,sizeof("confirmed")-1)==0){
-                        num_times_confimred_receive = 0;
-                        app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
-                        break;
-                    }
-                }
-                num_times_confimred_receive += 1;
-                if (num_times_confimred_receive == retry_num){
+            delay = 400/ portTICK_PERIOD_MS;
+            vTaskDelay(delay);
+            if (DRV_USART_ReadBuffer(app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)) == true){
+                size = Radio_Decode(recbuffer, decoded);
+                //asm(" BKPT ");
+                if (strncmp("confirmed",(char*)decoded,sizeof("confirmed")-1)==0){
                     num_times_confimred_receive = 0;
-                    app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
+                    app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
                     break;
                 }
             }
+            else{
+               asm(" BKPT "); 
+            }
+            asm(" BKPT ");
+            if (num_times_confimred_receive == retry_num){
+                num_times_confimred_receive = 0;
+                app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
+                break;
+            }
+            num_times_confimred_receive += 1;
+            app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
             break;
         }
         case APP_COMMUNICATION_STATE_SIGNAL_CONFIRM:

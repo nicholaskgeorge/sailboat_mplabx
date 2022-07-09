@@ -284,8 +284,6 @@
       <itemPath>../src/app_anemometer.h</itemPath>
       <itemPath>../src/app_gps.h</itemPath>
       <itemPath>../src/app_imu.h</itemPath>
-      <itemPath>../src/anemometer.h</itemPath>
-      <itemPath>../src/imu.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -440,27 +438,27 @@
         <itemPath>../../../../../../HarmonyProjects/imu_test/firmware/src/config/default/default.mhc/usart2.yml</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="sam_e70_xult.mhc" projectFiles="true">
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/cmsis.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/core.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/dfp.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/drv_i2c.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/drv_sdmmc.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/drv_usart.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/efc.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/FreeRTOS.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/GraphSettings.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/HarmonyCore.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/hsmci.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/project.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/pwm0.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/settings.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/sys_fs.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/sys_time.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/tc3.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/twihs0.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/usart0.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/usart1.yml</itemPath>
-        <itemPath>../src/config/sam_e70_xult/sam_e70_xult.mhc/usart2.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/cmsis.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/core.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/dfp.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/drv_i2c.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/drv_sdmmc.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/drv_usart.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/efc.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/FreeRTOS.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/GraphSettings.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/HarmonyCore.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/hsmci.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/project.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/pwm0.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/settings.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/sys_fs.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/sys_time.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/tc3.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/twihs0.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/usart0.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/usart1.yml</itemPath>
+        <itemPath>../../../../../../../../Desktop/sailboat_mplabx-main/TestingWindEquation/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/config/sam_e70_xult/sam_e70_xult.mhc/usart2.yml</itemPath>
       </logicalFolder>
       <itemPath>Makefile</itemPath>
       <itemPath>../src/config/sam_e70_xult/harmony-manifest-success.yml</itemPath>
@@ -678,9 +676,13 @@
       </C32Global>
       <EdbgTool>
         <property key="AutoSelectMemRanges" value="auto"/>
+        <property key="arm.use_vtor" value="false"/>
+        <property key="arm.vtor_adr" value="exception_table"/>
         <property key="communication.activationmode" value="nohv"/>
         <property key="communication.interface" value="swd"/>
         <property key="communication.speed" value="2.000"/>
+        <property key="debugoptions.debug-startup" value="Use system settings"/>
+        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
         <property key="firmware.path"
                   value="Press to browse for a specific firmware version"/>
@@ -688,6 +690,7 @@
                   value="Press to select which tool pack to use"/>
         <property key="firmware.update.action" value="firmware.update.use.latest"/>
         <property key="freeze.timers" value="false"/>
+        <property key="lastid" value=""/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
         <property key="memories.configurationmemory" value="true"/>
@@ -701,10 +704,7 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="400000-5fffff"/>
-        <property key="memories.rww" value="true"/>
         <property key="poweroptions.powerenable" value="false"/>
-        <property key="programmerToGoFilePath"
-                  value="C:/Users/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/SailBoatProgram.X/debug/sam_e70_xult/SailBoatProgram_ptg"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preservedataflash.ranges"
@@ -715,6 +715,10 @@
         <property key="programoptions.preserveprogramrange" value="false"/>
         <property key="programoptions.preserveuserid" value="false"/>
         <property key="programoptions.programuserotp" value="false"/>
+        <property key="script.has_reset" value="true"/>
+        <property key="script.log_level" value="1"/>
+        <property key="script.reset_delay" value="0"/>
+        <property key="script.show_output" value="false"/>
         <property key="toolpack.updateoptions"
                   value="toolpack.updateoptions.uselatestoolpack"/>
         <property key="toolpack.updateoptions.packversion"

@@ -2,6 +2,7 @@
 #include "anemometer.h"
 #include "app_mast_control.h"
 #include <math.h>
+#include"stdlib.h"
 
 APP_ANEMOMETER_DATA app_anemometerData;
 Anemometer_INFO* Anemometer_info;
@@ -51,6 +52,7 @@ void APP_ANEMOMETER_Tasks ( void )
                     Anem_Process(Anemometer_info,(char*)Anemometer_values); // parse it into fields
                     u_vector = Anemometer_info->boatu;
                     strcpy(su_vector, "     \n");
+                    //snprintf(u_vector, su_vector, 10);
                     itoa(u_vector, su_vector, 10);
                     if (DRV_USART_WriteBuffer(app_anemometerData.usartHandleSEND, Anemometer_values, sizeof(Anemometer_values)) == true){
                         delay = 200 / portTICK_PERIOD_MS;
