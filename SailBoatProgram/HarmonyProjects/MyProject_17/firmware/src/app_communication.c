@@ -96,6 +96,7 @@ char confirmed[] = "confirmed\n";
 char signal_confirmed[] = "signal_confirmed\n";
 int num_times_confimred_receive = 0;
 int retry_num = 4;
+DRV_USART_BUFFER_HANDLE bufferHandle;
 navigation_goal destination;
 //this is so that only one entity tries to use the send buffer at once
 //and so that the boat knows to send
@@ -262,7 +263,8 @@ void APP_COMMUNICATION_Tasks ( void )
         {
             delay = 400/ portTICK_PERIOD_MS;
             vTaskDelay(delay);
-            if (DRV_USART_ReadBuffer(app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)) == true){
+            DRV_USART_ReadBufferAdd( app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer),&bufferHandle);
+            if (bufferHandle == DRV_USART_BUFFER_EVENT_COMPLETE) {
                 size = Radio_Decode(recbuffer, decoded);
                 //asm(" BKPT ");
                 if (strncmp("confirmed",(char*)decoded,sizeof("confirmed")-1)==0){
@@ -270,9 +272,6 @@ void APP_COMMUNICATION_Tasks ( void )
                     app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
                     break;
                 }
-            }
-            else{
-               asm(" BKPT "); 
             }
             asm(" BKPT ");
             if (num_times_confimred_receive == retry_num){
