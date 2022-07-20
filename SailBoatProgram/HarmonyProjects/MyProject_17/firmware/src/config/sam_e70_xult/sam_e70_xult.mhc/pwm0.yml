@@ -445,4 +445,4 @@ children:
       - type: Dynamic
         attributes: {id: pwm0, value: PWM0_ChannelsStop}
 - type: ElementPosition
-  attributes: {x: '502', y: '82', id: pwm0}
+  attributes: {x: '497', y: '82', id: pwm0}

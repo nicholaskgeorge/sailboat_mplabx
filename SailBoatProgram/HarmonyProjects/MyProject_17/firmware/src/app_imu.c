@@ -11,6 +11,7 @@ int heading =1;
 char sheading[7];
 char hello[6] = "hello\n";
 bool appInitialized = false;
+DRV_USART_BUFFER_HANDLE bufferHandle;
 
 void APP_IMU_Initialize ( void )
 {
@@ -42,7 +43,8 @@ void APP_IMU_Tasks ( void )
         case APP_IMU_STATE_SERVICE_TASKS:
         {  
 //             asm(" BKPT ");
-            if (DRV_USART_ReadBuffer(app_imuData.usartHandle, IMU_values, sizeof(IMU_values)) == true){
+            
+            //if (DRV_USART_ReadBuffer(app_imuData.usartHandle, IMU_values, sizeof(IMU_values)) == true){
                 IMU_Process(IMU_info,(char*)IMU_values);
 //                heading = IMU_info->yaw;
 //                strcpy(sheading, "     \n");
@@ -56,7 +58,7 @@ void APP_IMU_Tasks ( void )
 //                   delay = 200 / portTICK_PERIOD_MS;
 //                    vTaskDelay(delay);
 //                }
-            }
+         //  }
 //            delay = 200 / portTICK_PERIOD_MS;
 //            vTaskDelay(delay);  
             break;
@@ -68,6 +70,7 @@ void APP_IMU_Tasks ( void )
         }
     }
 }
+
 
 
 /*******************************************************************************

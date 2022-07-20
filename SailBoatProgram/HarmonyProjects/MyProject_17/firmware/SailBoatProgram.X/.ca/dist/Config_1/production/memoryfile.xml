@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name=".ca/dist/Config_1/production/SailBoatProgram.X.production.elf">
+    <memory name="program">
+      <units>bytes</units>
+      <length>2097152</length>
+      <used>67989</used>
+      <free>2029163</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>393216</length>
+      <used>50536</used>
+      <free>342680</free>
+    </memory>
+  </executable>
+</project>

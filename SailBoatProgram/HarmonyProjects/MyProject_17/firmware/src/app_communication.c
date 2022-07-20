@@ -212,7 +212,10 @@ void APP_COMMUNICATION_Tasks ( void )
             while(1){
                 delay = 200/ portTICK_PERIOD_MS;
                 vTaskDelay(delay);
-                if (DRV_USART_ReadBuffer(app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)) == true){
+                
+                DRV_USART_ReadBufferAdd( app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer),&bufferHandle);
+                if (bufferHandle == DRV_USART_BUFFER_EVENT_COMPLETE) {
+               // if (DRV_USART_ReadBuffer(app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)) == true){
 //                    asm(" BKPT ");
                     app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_MCU_RECEIVED;
                     break;   
@@ -233,7 +236,9 @@ void APP_COMMUNICATION_Tasks ( void )
                 vTaskDelay(delay);
                 size = Radio_Encode((uint8_t*)confirmed,sendbuffer, sizeof(confirmed));
                 asm(" BKPT ");
-                if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
+                DRV_USART_WriteBufferAdd( app_communicationData.send, &sendbuffer, size, &bufferHandle);
+                if (bufferHandle == DRV_USART_BUFFER_EVENT_COMPLETE) {
+               // if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
                     //asm(" BKPT ");
                     app_communicationData.state = APP_COMMUNICATION_STATE_PROCESS_MESSAGE;
                     break;
@@ -250,8 +255,10 @@ void APP_COMMUNICATION_Tasks ( void )
                 delay = 300/ portTICK_PERIOD_MS;
                 vTaskDelay(delay);
                 size = Radio_Encode((uint8_t*)&message,sendbuffer, sizeof(message_size));
-                asm(" BKPT ");
-                if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
+//                asm(" BKPT ");
+                DRV_USART_WriteBufferAdd( app_communicationData.send, &sendbuffer, size, &bufferHandle);
+                if (bufferHandle == DRV_USART_BUFFER_EVENT_COMPLETE) {
+               // if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
                     sending = false;
                     app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED;
                     break;
@@ -263,7 +270,9 @@ void APP_COMMUNICATION_Tasks ( void )
         {
             delay = 400/ portTICK_PERIOD_MS;
             vTaskDelay(delay);
-            DRV_USART_ReadBufferAdd( app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer),&bufferHandle);
+            
+           
+            DRV_USART_ReadBufferAdd( app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer), &bufferHandle);
             if (bufferHandle == DRV_USART_BUFFER_EVENT_COMPLETE) {
                 size = Radio_Decode(recbuffer, decoded);
                 //asm(" BKPT ");
@@ -273,7 +282,7 @@ void APP_COMMUNICATION_Tasks ( void )
                     break;
                 }
             }
-            asm(" BKPT ");
+//            asm(" BKPT ");
             if (num_times_confimred_receive == retry_num){
                 num_times_confimred_receive = 0;
                 app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
@@ -289,7 +298,9 @@ void APP_COMMUNICATION_Tasks ( void )
                 delay = 1000/ portTICK_PERIOD_MS;
                 vTaskDelay(delay);
                 size = Radio_Encode((uint8_t*)signal_confirmed,sendbuffer, sizeof(signal_confirmed));
-                if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
+                DRV_USART_WriteBufferAdd( app_communicationData.send, &sendbuffer, size, &bufferHandle);
+                if (bufferHandle == DRV_USART_BUFFER_EVENT_COMPLETE) {
+                //if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
                     app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED;
                     break;
                 }

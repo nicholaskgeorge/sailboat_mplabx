@@ -17,6 +17,7 @@ char sdir[7];
 float wind_angle=0;
 int u_vector = 0;
 char su_vector[7];
+DRV_USART_BUFFER_HANDLE bufferHandle;
 
 void APP_ANEMOMETER_Initialize ( void )
 {
@@ -48,13 +49,17 @@ void APP_ANEMOMETER_Tasks ( void )
             sdir[5]='\r';
             sdir[6]='\n';
             while(1){
-                if (DRV_USART_ReadBuffer(app_anemometerData.usartHandleREC, &Anemometer_values, sizeof(Anemometer_values)) == true){
+                DRV_USART_ReadBufferAdd( app_anemometerData.usartHandleREC, &Anemometer_values, sizeof(Anemometer_values), &bufferHandle);
+                if (bufferHandle == DRV_USART_BUFFER_EVENT_COMPLETE) {
+             //   if (DRV_USART_ReadBuffer(app_anemometerData.usartHandleREC, &Anemometer_values, sizeof(Anemometer_values)) == true){
                     Anem_Process(Anemometer_info,(char*)Anemometer_values); // parse it into fields
                     u_vector = Anemometer_info->boatu;
                     strcpy(su_vector, "     \n");
                     //snprintf(u_vector, su_vector, 10);
                     itoa(u_vector, su_vector, 10);
-                    if (DRV_USART_WriteBuffer(app_anemometerData.usartHandleSEND, Anemometer_values, sizeof(Anemometer_values)) == true){
+                    DRV_USART_WriteBufferAdd( app_anemometerData.usartHandleSEND, Anemometer_values, sizeof(Anemometer_values), &bufferHandle);
+                    if (bufferHandle == DRV_USART_BUFFER_EVENT_COMPLETE) {
+                   // if (DRV_USART_WriteBuffer(app_anemometerData.usartHandleSEND, Anemometer_values, sizeof(Anemometer_values)) == true){
                         delay = 200 / portTICK_PERIOD_MS;
                         vTaskDelay(delay);
                     }

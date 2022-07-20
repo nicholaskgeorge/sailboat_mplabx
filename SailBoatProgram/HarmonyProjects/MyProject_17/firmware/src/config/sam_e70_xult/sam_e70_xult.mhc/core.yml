@@ -1890,7 +1890,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '67371008'}
+        attributes: {id: core, value: '67895296'}
   - type: KeyValueSet
     attributes: {id: PMC_PCR_GCLK0CSS}
     children:
@@ -2201,6 +2201,13 @@ children:
       children:
       - type: Dynamic
         attributes: {id: tc3, value: 'true'}
+  - type: Integer
+    attributes: {id: TC3_CH1_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '150000000'}
   - type: Boolean
     attributes: {id: TC3_CH1_INTERRUPT_ENABLE}
     children:
@@ -2229,6 +2236,13 @@ children:
       children:
       - type: Dynamic
         attributes: {id: tc3, value: 'false'}
+  - type: Integer
+    attributes: {id: TC3_CH2_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '150000000'}
   - type: Boolean
     attributes: {id: TC3_CH2_INTERRUPT_ENABLE}
     children:
@@ -2277,7 +2291,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc3, value: 'false'}
+        attributes: {id: tc3, value: 'true'}
   - type: Boolean
     attributes: {id: TC3_CHANNEL2_CLOCK_ENABLE}
     children:

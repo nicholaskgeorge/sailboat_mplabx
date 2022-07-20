@@ -105,9 +105,7 @@ void PIO_Initialize ( void )
     /* PORTB PIO Disable and Peripheral Enable*/
     ((pio_registers_t*)PIO_PORT_B)->PIO_PDR = 0x13;
     ((pio_registers_t*)PIO_PORT_B)->PIO_PER = ~0x13;
-    /* PORTB Multi Drive or Open Drain Enable */
-    ((pio_registers_t*)PIO_PORT_B)->PIO_MDER = 0x1;
-    ((pio_registers_t*)PIO_PORT_B)->PIO_MDDR = ~0x1;
+    ((pio_registers_t*)PIO_PORT_B)->PIO_MDDR = 0xFFFFFFFF;
     /* PORTB Pull Up Enable/Disable as per MHC selection */
     ((pio_registers_t*)PIO_PORT_B)->PIO_PUDR = 0xFFFFFFFF;
     /* PORTB Pull Down Enable/Disable as per MHC selection */
@@ -159,7 +157,8 @@ void PIO_Initialize ( void )
     /* PORTD Pull Up Enable/Disable as per MHC selection */
     ((pio_registers_t*)PIO_PORT_D)->PIO_PUDR = 0xFFFFFFFF;
     /* PORTD Pull Down Enable/Disable as per MHC selection */
-    ((pio_registers_t*)PIO_PORT_D)->PIO_PPDDR = 0xFFFFFFFF;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_PPDDR = ~0x8000;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_PPDER = 0x8000;
     /* PORTD Output Write Enable */
     ((pio_registers_t*)PIO_PORT_D)->PIO_OWER = PIO_OWER_Msk;
     /* PORTD Output Direction Enable */

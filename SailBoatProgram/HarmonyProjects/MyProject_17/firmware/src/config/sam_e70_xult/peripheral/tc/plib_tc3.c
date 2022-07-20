@@ -149,6 +149,69 @@ void TC3_CH0_InterruptHandler(void)
  
  
 
+
+
+/* Initialize channel in timer mode */
+void TC3_CH1_TimerInitialize (void)
+{
+    /* Use peripheral clock */
+    TC3_REGS->TC_CHANNEL[1].TC_EMR = TC_EMR_NODIVCLK_Msk;
+    /* clock selection and waveform selection */
+    TC3_REGS->TC_CHANNEL[1].TC_CMR =  TC_CMR_WAVEFORM_WAVSEL_UP_RC | TC_CMR_WAVE_Msk | (TC_CMR_WAVEFORM_CPCSTOP_Msk);
+
+    /* write period */
+    TC3_REGS->TC_CHANNEL[1].TC_RC = 65535U;
+
+
+}
+
+/* Start the timer */
+void TC3_CH1_TimerStart (void)
+{
+    TC3_REGS->TC_CHANNEL[1].TC_CCR = (TC_CCR_CLKEN_Msk | TC_CCR_SWTRG_Msk);
+}
+
+/* Stop the timer */
+void TC3_CH1_TimerStop (void)
+{
+    TC3_REGS->TC_CHANNEL[1].TC_CCR = (TC_CCR_CLKDIS_Msk);
+}
+
+uint32_t TC3_CH1_TimerFrequencyGet( void )
+{
+    return (uint32_t)(150000000UL);
+}
+
+/* Configure timer period */
+void TC3_CH1_TimerPeriodSet (uint16_t period)
+{
+    TC3_REGS->TC_CHANNEL[1].TC_RC = period;
+}
+
+
+/* Read timer period */
+uint16_t TC3_CH1_TimerPeriodGet (void)
+{
+    return TC3_REGS->TC_CHANNEL[1].TC_RC;
+}
+
+/* Read timer counter value */
+uint16_t TC3_CH1_TimerCounterGet (void)
+{
+    return TC3_REGS->TC_CHANNEL[1].TC_CV;
+}
+
+/* Check if timer period status is set */
+bool TC3_CH1_TimerPeriodHasExpired(void)
+{
+    return (((TC3_REGS->TC_CHANNEL[1].TC_SR) & TC_SR_CPCS_Msk) >> TC_SR_CPCS_Pos);
+}
+ 
+
+ 
+
+ 
+
  
  
 
