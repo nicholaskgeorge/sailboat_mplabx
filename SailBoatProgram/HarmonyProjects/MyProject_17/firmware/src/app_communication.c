@@ -70,6 +70,10 @@ void APP_COMMUNICATION_Initialize ( void )
      */
 }
 
+void check_CTS(PIO_PIN pin, uintptr_t context){
+    checkCTS = USART0_CTS_Get();
+}
+
 //Remember that the radio will add 7 bytes to any message you send (7 bytes more than
 //the unencoded message)
 //The buffer MUST be 7 bytes greater than the size (before encoding) of the largest message you 
@@ -106,6 +110,7 @@ char message[] = "Hello";
 //this holds the size of the char we want to send
 int message_size = 0;
 //int start = 0;
+int checkCTS = 0;
 
 void APP_COMMUNICATION_Tasks ( void )
 {
@@ -120,6 +125,7 @@ void APP_COMMUNICATION_Tasks ( void )
             app_communicationData.usartHandle = DRV_USART_Open(DRV_USART_INDEX_0, 0);
             app_communicationData.send = DRV_USART_Open(DRV_USART_INDEX_0, 0);
             app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
+            PIO_PinInterruptCallbackRegister(PIO_PIN_PB2, check_CTS, (uintptr_t)NULL)
             break;
         }
         
@@ -263,16 +269,33 @@ void APP_COMMUNICATION_Tasks ( void )
         {
             delay = 400/ portTICK_PERIOD_MS;
             vTaskDelay(delay);
-            DRV_USART_ReadBufferAdd( app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer),&bufferHandle);
-            if (bufferHandle == DRV_USART_BUFFER_EVENT_COMPLETE) {
-                size = Radio_Decode(recbuffer, decoded);
-                //asm(" BKPT ");
-                if (strncmp("confirmed",(char*)decoded,sizeof("confirmed")-1)==0){
-                    num_times_confimred_receive = 0;
-                    app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
-                    break;
+            read = false;
+            if (checkCTS){
+                read = true;
+            }
+           
+            else{
+                delay = 1000/ portTICK_PERIOD_MS;
+                vTaskDelay(delay);
+                if (checkCTS){
+                    read = true;
                 }
             }
+            
+            if (read){
+                DRV_USART_ReadBuffer( app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)){
+                    size = Radio_Decode(recbuffer, decoded);
+                    //asm(" BKPT ");
+                    checkCTS = 0;
+                    read = false;
+                    if (strncmp("confirmed",(char*)decoded,sizeof("confirmed")-1)==0){
+                        num_times_confimred_receive = 0;
+                        app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
+                        break;
+                    }
+                }
+            }
+            
             asm(" BKPT ");
             if (num_times_confimred_receive == retry_num){
                 num_times_confimred_receive = 0;

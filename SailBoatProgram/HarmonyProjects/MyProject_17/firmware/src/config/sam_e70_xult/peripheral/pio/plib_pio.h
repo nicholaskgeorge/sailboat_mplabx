@@ -89,6 +89,12 @@
 #define motor_direction_Get()               ((PIOA_REGS->PIO_PDSR >> 19) & 0x1)
 #define motor_direction_PIN                  PIO_PIN_PA19
 
+/*** Macros for USART0_CTS pin ***/
+#define USART0_CTS_Get()               ((PIOB_REGS->PIO_PDSR >> 2) & 0x1)
+#define USART0_CTS_PIN                  PIO_PIN_PB2
+#define USART0_CTS_InterruptEnable()   (PIOB_REGS->PIO_IER = (1<<2))
+#define USART0_CTS_InterruptDisable()  (PIOB_REGS->PIO_IDR = (1<<2))
+
 /*** Macros for Mast_Z_signal pin ***/
 #define Mast_Z_signal_Set()               (PIOD_REGS->PIO_SODR = (1<<30))
 #define Mast_Z_signal_Clear()             (PIOD_REGS->PIO_CODR = (1<<30))

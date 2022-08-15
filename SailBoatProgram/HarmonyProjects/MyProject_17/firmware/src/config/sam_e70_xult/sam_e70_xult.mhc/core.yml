@@ -1066,6 +1066,34 @@ children:
       - type: User
         attributes: {value: ''}
   - type: String
+    attributes: {id: PIN_26_FUNCTION_NAME}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: USART0_CTS}
+  - type: String
+    attributes: {id: PIN_26_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: USART0_CTS0}
+  - type: String
+    attributes: {id: PIN_26_PERIPHERAL_FUNCTION}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: C}
+  - type: String
+    attributes: {id: PIN_26_PIO_INTERRUPT}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: High Level}
+  - type: String
     attributes: {id: PIN_27_FUNCTION_TYPE}
     children:
     - type: Values
@@ -1109,6 +1137,27 @@ children:
         attributes: {value: ''}
   - type: String
     attributes: {id: PIN_2_PERIPHERAL_FUNCTION}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: ''}
+  - type: String
+    attributes: {id: PIN_31_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: USART0_RTS0}
+  - type: String
+    attributes: {id: PIN_31_PERIPHERAL_FUNCTION}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: C}
+  - type: String
+    attributes: {id: PIN_31_PIO_INTERRUPT}
     children:
     - type: Values
       children:
@@ -1547,14 +1596,14 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '19'}
+        attributes: {id: core, value: '31'}
   - type: Hex
     attributes: {id: PIOB_AIMER_VALUE}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '8192'}
+        attributes: {id: core, value: '8196'}
   - type: Boolean
     attributes: {id: PIOB_CLOCK_ENABLE}
     children:
@@ -1603,7 +1652,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '0'}
+        attributes: {id: core, value: '4'}
   - type: Hex
     attributes: {id: PIOB_MDER_VALUE}
     children:
@@ -1617,14 +1666,14 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '19'}
+        attributes: {id: core, value: '31'}
   - type: Hex
     attributes: {id: PIOB_REHLSR_VALUE}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '0'}
+        attributes: {id: core, value: '4'}
   - type: Hex
     attributes: {id: PIOC_ABCDSR1_VALUE}
     children:
