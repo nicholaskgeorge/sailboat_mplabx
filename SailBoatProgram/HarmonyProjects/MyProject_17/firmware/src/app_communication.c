@@ -1,7 +1,47 @@
 #include "app_communication.h"
 #include "app_mast_control.h"
 #include "app_course_algorithm.h"
+#include "peripheral/pio/plib_pio.h"
 
+
+//Remember that the radio will add 7 bytes to any message you send (7 bytes more than
+//the unencoded message)
+//The buffer MUST be 7 bytes greater than the size (before encoding) of the largest message you 
+//expect to receive
+//i.e if the largest message you expect to send from your laptop is "hello", that is 
+//5 bytes to the buffer must be 12 bytes long
+
+#define max_data_size 80
+#define receive_buffer_size max_data_size+7
+uint8_t decoded[receive_buffer_size]={0};
+uint8_t sendbuffer[receive_buffer_size]={0};
+uint8_t recbuffer[receive_buffer_size] ={0};
+
+char* startptr = 0;
+char* ptr = 0;
+char* numbound = 0;
+double value =0;
+char* endptr = 0;
+int size = 0;
+int delay = 0;
+char test[] = "boat send\n";
+char test2[] = "lap send";
+char confirmed[] = "confirmed\n";
+char signal_confirmed[] = "signal_confirmed\n";
+int num_times_confimred_receive = 0;
+int retry_num = 4;
+DRV_USART_BUFFER_HANDLE bufferHandle;
+navigation_goal destination;
+//this is so that only one entity tries to use the send buffer at once
+//and so that the boat knows to send
+bool sending = false;
+bool read = false;
+//this points to the char which we want to send
+char message[] = "Hello";
+//this holds the size of the char we want to send
+int message_size = 0;
+//int start = 0;
+int checkCTS = 0;
 APP_COMMUNICATION_DATA app_communicationData;
 
 
@@ -72,45 +112,10 @@ void APP_COMMUNICATION_Initialize ( void )
 
 void check_CTS(PIO_PIN pin, uintptr_t context){
     checkCTS = USART0_CTS_Get();
+//    asm(" BKPT ");
 }
 
-//Remember that the radio will add 7 bytes to any message you send (7 bytes more than
-//the unencoded message)
-//The buffer MUST be 7 bytes greater than the size (before encoding) of the largest message you 
-//expect to receive
-//i.e if the largest message you expect to send from your laptop is "hello", that is 
-//5 bytes to the buffer must be 12 bytes long
 
-#define max_data_size 80
-#define receive_buffer_size max_data_size+7
-uint8_t decoded[receive_buffer_size]={0};
-uint8_t sendbuffer[receive_buffer_size]={0};
-uint8_t recbuffer[receive_buffer_size] ={0};
-
-char* startptr = 0;
-char* ptr = 0;
-char* numbound = 0;
-double value =0;
-char* endptr = 0;
-int size = 0;
-int delay = 0;
-char test[] = "boat send\n";
-char test2[] = "lap send";
-char confirmed[] = "confirmed\n";
-char signal_confirmed[] = "signal_confirmed\n";
-int num_times_confimred_receive = 0;
-int retry_num = 4;
-DRV_USART_BUFFER_HANDLE bufferHandle;
-navigation_goal destination;
-//this is so that only one entity tries to use the send buffer at once
-//and so that the boat knows to send
-bool sending = false;
-//this points to the char which we want to send
-char message[] = "Hello";
-//this holds the size of the char we want to send
-int message_size = 0;
-//int start = 0;
-int checkCTS = 0;
 
 void APP_COMMUNICATION_Tasks ( void )
 {
@@ -125,7 +130,7 @@ void APP_COMMUNICATION_Tasks ( void )
             app_communicationData.usartHandle = DRV_USART_Open(DRV_USART_INDEX_0, 0);
             app_communicationData.send = DRV_USART_Open(DRV_USART_INDEX_0, 0);
             app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
-            PIO_PinInterruptCallbackRegister(PIO_PIN_PB2, check_CTS, (uintptr_t)NULL)
+            PIO_PinInterruptCallbackRegister(PIO_PIN_PB2, check_CTS, (uintptr_t)NULL);
             break;
         }
         
@@ -238,7 +243,6 @@ void APP_COMMUNICATION_Tasks ( void )
                 delay = 1000/ portTICK_PERIOD_MS;
                 vTaskDelay(delay);
                 size = Radio_Encode((uint8_t*)confirmed,sendbuffer, sizeof(confirmed));
-                asm(" BKPT ");
                 if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
                     //asm(" BKPT ");
                     app_communicationData.state = APP_COMMUNICATION_STATE_PROCESS_MESSAGE;
@@ -256,7 +260,7 @@ void APP_COMMUNICATION_Tasks ( void )
                 delay = 300/ portTICK_PERIOD_MS;
                 vTaskDelay(delay);
                 size = Radio_Encode((uint8_t*)&message,sendbuffer, sizeof(message_size));
-                asm(" BKPT ");
+//                asm(" BKPT ");
                 if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
                     sending = false;
                     app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED;
@@ -283,7 +287,7 @@ void APP_COMMUNICATION_Tasks ( void )
             }
             
             if (read){
-                DRV_USART_ReadBuffer( app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)){
+                if(DRV_USART_ReadBuffer(app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)) == true){
                     size = Radio_Decode(recbuffer, decoded);
                     //asm(" BKPT ");
                     checkCTS = 0;
@@ -296,7 +300,7 @@ void APP_COMMUNICATION_Tasks ( void )
                 }
             }
             
-            asm(" BKPT ");
+//            asm(" BKPT ");
             if (num_times_confimred_receive == retry_num){
                 num_times_confimred_receive = 0;
                 app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;

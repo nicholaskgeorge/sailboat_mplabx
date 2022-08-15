@@ -135,7 +135,8 @@ build/sam_e70_xult/production/_ext/1360937237/app_communication.o: \
  ../src/third_party/rtos/FreeRTOS/Source/include/semphr.h \
  ../src/third_party/rtos/FreeRTOS/Source/include/queue.h \
  ../src/third_party/rtos/FreeRTOS/Source/include/task.h \
- ../src/app_mast_control.h ../src/app_course_algorithm.h
+ ../src/app_mast_control.h ../src/app_course_algorithm.h \
+ ../src/config/sam_e70_xult/peripheral/pio/plib_pio.h
 
 ../src/app_communication.h:
 
@@ -414,3 +415,5 @@ build/sam_e70_xult/production/_ext/1360937237/app_communication.o: \
 ../src/app_mast_control.h:
 
 ../src/app_course_algorithm.h:
+
+../src/config/sam_e70_xult/peripheral/pio/plib_pio.h:
