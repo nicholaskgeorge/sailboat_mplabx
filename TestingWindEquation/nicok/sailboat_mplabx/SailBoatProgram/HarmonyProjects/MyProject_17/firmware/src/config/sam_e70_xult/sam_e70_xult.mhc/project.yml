@@ -251,13 +251,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 618A850993F2C71CF51F61BBED137616
-- generatedChecksum: D42263C54EBAC21BB8F6EB8FE0F36BB9
+- generatedChecksum: 0BA466E90871E0139192A05368282861
   logicalPath: config/sam_e70_xult/peripheral/usart
   name: plib_usart0.c
   physicalPath: peripheral/usart
   security: NON_SECURE
   type: SOURCE
-  userChecksum: D42263C54EBAC21BB8F6EB8FE0F36BB9
+  userChecksum: 0BA466E90871E0139192A05368282861
 - generatedChecksum: 3FC92DC9614C3C2528E4705C24CB39E1
   logicalPath: config/sam_e70_xult/peripheral/usart
   name: plib_usart1.c
@@ -1476,13 +1476,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 1C75A8A6B60598A2FD0D533F57839B72
-- generatedChecksum: 84B3224817BDD8B37961BB3B3441E134
+- generatedChecksum: A80AD1D4F58091203DCED0B2F0B93486
   logicalPath: FreeRTOS/Source/include
   name: task.h
   physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
   security: NON_SECURE
   type: HEADER
-  userChecksum: 84B3224817BDD8B37961BB3B3441E134
+  userChecksum: A80AD1D4F58091203DCED0B2F0B93486
 - generatedChecksum: 39B6C8FEA554983045986D04CDFA051C
   logicalPath: packs/ATSAME70Q21B_DFP/component
   name: tc.h

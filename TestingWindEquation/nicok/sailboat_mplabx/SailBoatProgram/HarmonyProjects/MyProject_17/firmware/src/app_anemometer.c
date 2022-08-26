@@ -5,7 +5,7 @@
 
 APP_ANEMOMETER_DATA app_anemometerData;
 Anemometer_INFO* Anemometer_info;
-uint8_t Anemometer_values[128];
+uint8_t Anemometer_values[99];
 
 int delay;
 int dir = 0;
@@ -34,7 +34,7 @@ void APP_ANEMOMETER_Tasks ( void )
             bool appInitialized = true;
             //for the test we must use USART1 for sending messages to the computer so I changed it
 //            app_anemometerData.usartHandleSEND = DRV_USART_Open(DRV_USART_INDEX_0, 0);
-            app_anemometerData.usartHandleREC = DRV_USART_Open(DRV_USART_INDEX_2, 0);
+            app_anemometerData.usartHandleREC = DRV_USART_Open(DRV_USART_INDEX_0, 0);
             if (appInitialized)
             {
                 app_anemometerData.state = APP_ANEMOMETER_STATE_SERVICE_TASKS;
@@ -48,17 +48,18 @@ void APP_ANEMOMETER_Tasks ( void )
             sdir[5]='\r';
             sdir[6]='\n';
             while(1){
-//                  vTaskDelay(1000 / portTICK_PERIOD_MS);
-//                if (DRV_USART_ReadBuffer(app_anemometerData.usartHandleREC, &Anemometer_values, sizeof(Anemometer_values)) == true){
-//                    Anem_Process(Anemometer_info,(char*)Anemometer_values); // parse it into fields
-////                    u_vector = Anemometer_info->boatu;
-////                    strcpy(su_vector, "     \n");
-////                    itoa(u_vector, su_vector, 10);
-////                    if (DRV_USART_WriteBuffer(app_anemometerData.usartHandleSEND, Anemometer_values, sizeof(Anemometer_values)) == true){
-////                        delay = 200 / portTICK_PERIOD_MS;
-////                        vTaskDelay(delay);
-////                    }
-//                }
+                  vTaskDelay(1000 / portTICK_PERIOD_MS);
+                if (DRV_USART_ReadBuffer(app_anemometerData.usartHandleREC, &Anemometer_values, sizeof(Anemometer_values)) == true){
+                    Anem_Process(Anemometer_info,(char*)Anemometer_values); // parse it into fields
+//                    asm(" BKPT ");
+//                    u_vector = Anemometer_info->boatu;
+//                    strcpy(su_vector, "     \n");
+//                    itoa(u_vector, su_vector, 10);
+//                    if (DRV_USART_WriteBuffer(app_anemometerData.usartHandleSEND, Anemometer_values, sizeof(Anemometer_values)) == true){
+//                        delay = 200 / portTICK_PERIOD_MS;
+//                        vTaskDelay(delay);
+//                    }
+                }
                 /*
                  *Things don't change very fast when sailing so we don't need to
                  * be reading instantaneously. This blocks the process for 100 ms

@@ -194,6 +194,20 @@ children:
       children:
       - type: Dynamic
         attributes: {id: tc3, value: '0.0'}
+  - type: Integer
+    attributes: {id: TC1_CLOCK_FREQ}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc3, value: '150000000'}
+  - type: Boolean
+    attributes: {id: TC1_CMR_CPCSTOP}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'false'}
   - type: Boolean
     attributes: {id: TC1_ENABLE}
     children:
@@ -201,6 +215,8 @@ children:
       children:
       - type: Dynamic
         attributes: {id: tc3, value: 'false'}
+      - type: User
+        attributes: {value: 'false'}
   - type: Boolean
     attributes: {id: TC1_IER_CPAS}
     children:
@@ -215,6 +231,15 @@ children:
       children:
       - type: Dynamic
         attributes: {id: tc3, value: 'false'}
+  - type: Comment
+    attributes: {id: TC1_Resolution}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: text}
+        children:
+        - {type: Value, value: '****Clock resolution is 6.66666666667 nS****'}
   - type: Boolean
     attributes: {id: TC1_SYS_TIME_CONNECTED}
     children:

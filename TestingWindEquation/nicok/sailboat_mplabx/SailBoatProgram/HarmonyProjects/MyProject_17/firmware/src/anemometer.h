@@ -19,15 +19,16 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-    
-void realtive_to_earth(Anemometer_INFO* aminfo, IMU_INFO* imuinfo, int mast_angle){
-    double v = aminfo->v;
-    double u = aminfo->u;
-    double w = aminfo->w;
+    double testv = 65;  
+
+    void realtive_to_earth(Anemometer_INFO* Anemometer_info, IMU_INFO* IMU_info, int mast_angle){
+    double v = Anemometer_info->v;
+    double u = Anemometer_info->u;
+    double w = Anemometer_info->w;
     double ths = mast_angle; // mast angle
-    double imu_thy = imuinfo->yaw; // raw yaw angle
-    double imu_alpha = imuinfo->roll; //raw roll angle
-    double imu_phi = imuinfo->pitch; //raw test angle
+    double imu_thy = IMU_info->yaw; // raw yaw angle
+    double imu_alpha = IMU_info->roll; //raw roll angle
+    double imu_phi = IMU_info->pitch; //raw test angle
     //First Correction:
     //convert the rotated IMU setup to the standard IMU setup (undo 90 degree rotation)
     double cor1_thy = imu_thy; // raw yaw angle
@@ -45,9 +46,9 @@ void realtive_to_earth(Anemometer_INFO* aminfo, IMU_INFO* imuinfo, int mast_angl
                                   u*(sin(cor2_alpha)*cos(ths)-sin(cor2_phi)*sin(ths))+v*(sin(cor2_alpha)*sin(ths)-cos(ths)*sin(cor2_phi))+w*(cos(cor2_alpha)*cos(cor2_phi))//Up Vector
                                  };
 
-    aminfo->boatu = wind_vec_rel_boat[0];
-    aminfo->boatv = wind_vec_rel_boat[1];
-    aminfo->boatw = wind_vec_rel_boat[2];
+    Anemometer_info->boatu = wind_vec_rel_boat[0];
+    Anemometer_info->boatv = wind_vec_rel_boat[1];
+    Anemometer_info->boatw = wind_vec_rel_boat[2];
 }
 
 bool Anem_Process(Anemometer_INFO* Anemometer_info,char* incoming_str){
@@ -102,10 +103,13 @@ char* ParseField(Anemometer_INFO* Anemometer_info,char* s){
         return endptr;
     }else if (*s == 'U'){
         Anemometer_info->u = strtod (s+2, &endptr);//skip space;
+//        asm(" BKPT ");
         return endptr;
     }else if (*s == 'V'){
-        Anemometer_info->v = strtod (s+2, &endptr);//skip space;
-        return endptr;
+         testv = strtod (s+2, &endptr);//skip space;
+//         asm(" BKPT ");
+         Anemometer_info->v = testv;
+       return endptr;
     }else if (*s == 'W'){
         Anemometer_info->w = strtod (s+2, &endptr);//skip space;
         return endptr;

@@ -104,10 +104,9 @@ void APP_COMMUNICATION_Tasks ( void )
         /* Application's initial state. */
         case APP_COMMUNICATION_STATE_INIT:
         {
-            //NOTE THIS STOPS THE TASK FROM RUNNING WE DONT NEED IT
-            app_communicationData.usartHandle = DRV_USART_Open(DRV_USART_INDEX_1, 0);
-            app_communicationData.state =APP_COMMUNICATION_STATE_PROCESS_MESSAGE;
-            break;
+          //NOTE THIS STOPS THE TASK FROM RUNNING WE DONT NEED IT
+          vTaskDelay(1000/ portTICK_PERIOD_MS);
+          break;
         }
         
         case APP_COMMUNICATION_STATE_PROCESS_MESSAGE:

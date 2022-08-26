@@ -126,7 +126,7 @@ typedef struct
 bool Anem_Process(Anemometer_INFO* Anemometer_info,char* incoming_str);
 char* ParseField(Anemometer_INFO* Anemometer_info,char* s);
 extern Anemometer_INFO* Anemometer_info;
-extern uint8_t Anemometer_values[128];
+extern uint8_t Anemometer_values[99];
 
 // *****************************************************************************
 // *****************************************************************************
