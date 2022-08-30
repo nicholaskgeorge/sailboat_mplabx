@@ -223,13 +223,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: ABA9512293385118D00ED27AF16307B7
-- generatedChecksum: CD8906D9A2EB08834136436B8710F1C6
+- generatedChecksum: C903A7F384337B7149A213DF552B9C28
   logicalPath: config/sam_e70_xult/peripheral/pio
   name: plib_pio.c
   physicalPath: peripheral/pio
   security: NON_SECURE
   type: SOURCE
-  userChecksum: CD8906D9A2EB08834136436B8710F1C6
+  userChecksum: C903A7F384337B7149A213DF552B9C28
 - generatedChecksum: 6A608B4117752F0BCC93EA86D1575523
   logicalPath: config/sam_e70_xult/peripheral/pwm
   name: plib_pwm0.c
@@ -1014,13 +1014,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 55ECCC7FA71BD15B46EF80DC0515ED7A
-- generatedChecksum: 1DCE2640A0999DD514855346BA18D90A
+- generatedChecksum: B8EB7A36DAC08CFF29B97D4604B8BF47
   logicalPath: config/sam_e70_xult/peripheral/pio
   name: plib_pio.h
   physicalPath: peripheral/pio
   security: NON_SECURE
   type: HEADER
-  userChecksum: 1DCE2640A0999DD514855346BA18D90A
+  userChecksum: B8EB7A36DAC08CFF29B97D4604B8BF47
 - generatedChecksum: 6D5C083A75566AB27DEAA929452E2927
   logicalPath: config/sam_e70_xult/peripheral/pwm
   name: plib_pwm0.h

@@ -145,8 +145,6 @@
 #define Rudder_Z_signal_InputEnable()       (PIOB_REGS->PIO_ODR = (1<<13))
 #define Rudder_Z_signal_Get()               ((PIOB_REGS->PIO_PDSR >> 13) & 0x1)
 #define Rudder_Z_signal_PIN                  PIO_PIN_PB13
-#define Rudder_Z_signal_InterruptEnable()   (PIOB_REGS->PIO_IER = (1<<13))
-#define Rudder_Z_signal_InterruptDisable()  (PIOB_REGS->PIO_IDR = (1<<13))
 
 
 // *****************************************************************************

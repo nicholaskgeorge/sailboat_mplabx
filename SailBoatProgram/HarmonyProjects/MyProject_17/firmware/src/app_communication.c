@@ -16,6 +16,7 @@
 uint8_t decoded[receive_buffer_size]={0};
 uint8_t sendbuffer[receive_buffer_size]={0};
 uint8_t recbuffer[receive_buffer_size] ={0};
+uint32_t mask =0x0f; 
 
 char* startptr = 0;
 char* ptr = 0;
@@ -111,8 +112,9 @@ void APP_COMMUNICATION_Initialize ( void )
 }
 
 void check_CTS(PIO_PIN pin, uintptr_t context){
-    checkCTS = USART0_CTS_Get();
-//    asm(" BKPT ");
+    checkCTS = 1;
+    asm(" BKPT ");
+    //PIO_PinInterruptDisable(pin);
 }
 
 
@@ -130,7 +132,9 @@ void APP_COMMUNICATION_Tasks ( void )
             app_communicationData.usartHandle = DRV_USART_Open(DRV_USART_INDEX_0, 0);
             app_communicationData.send = DRV_USART_Open(DRV_USART_INDEX_0, 0);
             app_communicationData.state = APP_COMMUNICATION_STATE_SEND;
+            //app_communicationData.state = APP_COMMUNICATION_STATE_CONFIRM_COMP_RECEIVED;
             PIO_PinInterruptCallbackRegister(PIO_PIN_PB2, check_CTS, (uintptr_t)NULL);
+            PIO_PinInterruptEnable(PIO_PIN_PB2);
             break;
         }
         
@@ -244,7 +248,7 @@ void APP_COMMUNICATION_Tasks ( void )
                 vTaskDelay(delay);
                 size = Radio_Encode((uint8_t*)confirmed,sendbuffer, sizeof(confirmed));
                 if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
-                    //asm(" BKPT ");
+                    asm(" BKPT ");
                     app_communicationData.state = APP_COMMUNICATION_STATE_PROCESS_MESSAGE;
                     break;
                 } 
@@ -259,7 +263,7 @@ void APP_COMMUNICATION_Tasks ( void )
             while(1){
                 delay = 300/ portTICK_PERIOD_MS;
                 vTaskDelay(delay);
-                size = Radio_Encode((uint8_t*)&message,sendbuffer, sizeof(message_size));
+                size = Radio_Encode((uint8_t*)&message,sendbuffer, sizeof(message));
 //                asm(" BKPT ");
                 if (DRV_USART_WriteBuffer(app_communicationData.send, &sendbuffer, size) == true){
                     sending = false;
@@ -275,6 +279,7 @@ void APP_COMMUNICATION_Tasks ( void )
             vTaskDelay(delay);
             read = false;
             if (checkCTS){
+                asm(" BKPT ");
                 read = true;
             }
            
@@ -283,16 +288,18 @@ void APP_COMMUNICATION_Tasks ( void )
                 vTaskDelay(delay);
                 if (checkCTS){
                     read = true;
+                    asm(" BKPT ");
                 }
             }
             
             if (read){
                 if(DRV_USART_ReadBuffer(app_communicationData.usartHandle, &recbuffer, sizeof(recbuffer)) == true){
                     size = Radio_Decode(recbuffer, decoded);
-                    //asm(" BKPT ");
+                    asm(" BKPT ");
                     checkCTS = 0;
                     read = false;
                     if (strncmp("confirmed",(char*)decoded,sizeof("confirmed")-1)==0){
+                        asm(" BKPT ");
                         num_times_confimred_receive = 0;
                         app_communicationData.state = APP_COMMUNICATION_STATE_RECEIVE;
                         break;
