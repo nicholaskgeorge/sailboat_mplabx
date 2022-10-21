@@ -61,7 +61,7 @@ void APP_RUDDER_CONTROL_Tasks ( void )
         /* Application's initial state. */
         case APP_RUDDER_CONTROL_STATE_INIT:
         {
-          vTaskDelay(2000/ portTICK_PERIOD_MS);
+//          vTaskDelay(2000/ portTICK_PERIOD_MS);
           while(!rudder_calibrated){
               rudder_duty += 10;
               PWM0_ChannelDutySet(PWM_CHANNEL_1, rudder_duty);
@@ -73,7 +73,7 @@ void APP_RUDDER_CONTROL_Tasks ( void )
 
         case APP_RUDDER_CONTROL_STATE_SERVICE_TASKS:
         {
-            desired_rudder_angle = 0;
+            desired_rudder_angle = 15;
             
             if (desired_rudder_angle>15){
                 desired_rudder_angle=15;

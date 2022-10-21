@@ -3,7 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/nicok/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/app_communication.c</file>
+            <file>file:/C:/Users/lenovo/Documents/GitHub/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/main.c</file>
+            <file>file:/C:/Users/lenovo/Documents/GitHub/sailboat_mplabx/SailBoatProgram/HarmonyProjects/MyProject_17/firmware/src/app_rudder_control.c</file>
         </group>
     </open-files>
 </project-private>
