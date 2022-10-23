@@ -2,7 +2,8 @@
 #include "app_rudder_control.h"
 #include "definitions.h"
 
-
+#define pwm_min 11200
+#define pwm_max 10600
 APP_RUDDER_CONTROL_DATA app_rudder_controlData;
 
 int desired_rudder_angle = 0;
@@ -11,11 +12,9 @@ int rudder_error = 0;
 int rudder_allowed_error = 1;
 bool rudder_calibrated = false;
 bool rudder_startchange = false;
-int rudder_duty = 10600;
+int rudder_duty = pwm_max;
 int wait = 500/ portTICK_PERIOD_MS;;
 char angles[6]; 
-int pwm_min = 11200;
-int pwm_max = 10600;
 bool jitter = true;
 void rudder_encoder(PIO_PIN pin, uintptr_t context)
 {   
@@ -45,7 +44,9 @@ void APP_RUDDER_CONTROL_Initialize ( void )
     PIO_PinInterruptEnable(PIO_PIN_PB13);
     PWM0_ChannelsStart(PWM_CHANNEL_1_MASK);
 //    app_rudder_controlData.usartHandle = DRV_USART_Open(DRV_USART_INDEX_1, 0);
+
     PWM0_ChannelDutySet(PWM_CHANNEL_1, rudder_duty);
+    asm("BKPT");
     //putting a delay here produces a catastrophic error. DONT DO IT.
     //vTaskDelay(1000/ portTICK_PERIOD_MS);
     /* TODO: Initialize your application's state machine and other
@@ -62,6 +63,7 @@ void APP_RUDDER_CONTROL_Tasks ( void )
         case APP_RUDDER_CONTROL_STATE_INIT:
         {
 //          vTaskDelay(2000/ portTICK_PERIOD_MS);
+          asm("BKPT");
           while(!rudder_calibrated){
               rudder_duty += 10;
               PWM0_ChannelDutySet(PWM_CHANNEL_1, rudder_duty);
